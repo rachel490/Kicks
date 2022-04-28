@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-import { COLOR } from 'constants/';
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
@@ -10,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     font-size: 14px;
-    color: ${COLOR.TEXT};
+    color: ${({ theme }) => theme.color.text};
     background: #f1f1f1;
   }
   html, body, #root{
@@ -26,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
   }
   a, a:active{
     text-decoration: none;
-    color: ${COLOR.TEXT};
+    color: ${({ theme }) => theme.color.text};
   }
 `;
 

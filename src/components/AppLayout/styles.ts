@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { COLOR, STYLE } from 'constants/';
 
 export const AppContainer = styled.div`
   display: flex;
@@ -22,7 +21,7 @@ export const MainNavigation = styled.ul`
 export const MenuItem = styled.li`
   width: 100%;
   & + & {
-    border-left: ${STYLE.BORDER_LIGHT};
+    border-left: ${({ theme }) => theme.style.border_light};
   }
 
   a {
@@ -32,14 +31,14 @@ export const MenuItem = styled.li`
     height: 70px;
     line-height: 70px;
     font-size: 16px;
-    color: ${COLOR.TEXT};
+    color: ${({ theme }) => theme.color.text};
     text-align: center;
-    background-color: ${COLOR.BG_NAV};
+    background-color: ${({ theme }) => theme.color.nav_bg};
     &.active {
-      background-color: ${COLOR.BG_NAV_ACTIVE};
+      background-color: ${({ theme }) => theme.color.nav_active_bg};
     }
     &:focus {
-      color: ${COLOR.TEXT};
+      color: ${({ theme }) => theme.color.text};
     }
   }
 `;

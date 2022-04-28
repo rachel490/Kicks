@@ -2,7 +2,7 @@ import React from 'react';
 import GlobalStyle from 'styles/GlobalStyle';
 import { Routes, Route } from 'react-router-dom';
 import { AppLayout } from 'components';
-import { ChatPage, MainPage, MyPage, SearchPage, UploadPage } from 'pages';
+import { ChatPage, MainPage, ProfilePage, SearchPage, UploadPage } from 'pages';
 import { ThemeProvider } from 'styled-components';
 import defaultTheme from 'styles/DefaultTheme';
 
@@ -18,7 +18,7 @@ function App() {
             <Route path="search" element={<SearchPage />} />
             <Route path="upload" element={<UploadPage />} />
             <Route path="chat" element={<ChatPage />} />
-            <Route path="mypage" element={<MyPage />} />
+            <Route path="profile" element={<ProfilePage />} />
           </Route>
         </Routes>
       </ThemeProvider>

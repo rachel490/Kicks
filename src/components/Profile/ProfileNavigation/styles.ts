@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div`
-	width: 100%;
-	height: 100%;
-	overflow: scroll;
-`	
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+`;
 
 export const ProfileNav = styled.div`
   width: 100%;
@@ -28,4 +28,12 @@ export const ProfileNav = styled.div`
     color: ${({ theme }) => theme.color.text};
     border-bottom: 2px solid ${({ theme }) => theme.color.text};
   }
+`;
+
+export const VideoContent = styled.ul`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 3px;
 `;

@@ -5,7 +5,7 @@ export const ProfileHeader = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 20px;
 
   .profile-img {
     width: 100px;
@@ -17,7 +17,7 @@ export const ProfileHeader = styled.div`
 
   .profile-username {
     span {
-      font-size: 18px;
+      font-size: 15px;
     }
   }
 
@@ -30,7 +30,7 @@ export const ProfileHeader = styled.div`
 `;
 
 export const ProfileStats = styled.ul`
-  margin: 10px 0;
+  margin: 20px 0;
   width: 100%;
   height: 50px;
   display: flex;
@@ -52,6 +52,7 @@ export const ProfileStats = styled.ul`
 
     .profile-stat-name {
       font-size: 13px;
+      margin-top: 5px;
     }
   }
 `;

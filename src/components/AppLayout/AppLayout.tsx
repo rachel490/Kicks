@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { AppContainer, Contents, MainNavigation, MenuItem } from './styles';
+import * as S from './styles';
 
 export const AppLayout = () => {
   const menuList = [
@@ -12,22 +12,20 @@ export const AppLayout = () => {
   ];
 
   return (
-    <AppContainer>
-      <Contents>
-        <Outlet />
-      </Contents>
-      <MainNavigation>
+    <S.AppContainer>
+      <Outlet />
+      <S.MainNavigation>
         {menuList.map((menu, i) => (
-          <MenuItem key={i}>
+          <S.MenuItem key={i}>
             <NavLink
               to={menu.linkTo}
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
               {menu.name}
             </NavLink>
-          </MenuItem>
+          </S.MenuItem>
         ))}
-      </MainNavigation>
-    </AppContainer>
+      </S.MainNavigation>
+    </S.AppContainer>
   );
 };

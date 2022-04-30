@@ -1,5 +1,5 @@
 import { IChat } from 'data/types';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import * as S from './styles';
 
 interface Props {
@@ -8,6 +8,8 @@ interface Props {
 
 export const MessageBox = ({ sendMessage }: Props) => {
   const [input, setInput] = useState('');
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  const INPUT_HEIGHT = '30px';
 
   const handleSubmit = (
     e:
@@ -20,18 +22,29 @@ export const MessageBox = ({ sendMessage }: Props) => {
       content: input,
       send_at: new Date()
     });
-    console.log(input);
     setInput('');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(e.target.value);
+    if (textAreaRef.current) {
+      if (
+        Number(textAreaRef.current.style.height.replace(/[^0-9]/g, '')) <= 80
+      ) {
+        textAreaRef.current.style.height = INPUT_HEIGHT;
+        textAreaRef.current.style.height =
+          textAreaRef.current.scrollHeight + 'px';
+      }
+    }
   };
 
   const handleEnter = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter') {
       if (!e.shiftKey) {
         handleSubmit(e);
+        if (textAreaRef.current) {
+          textAreaRef.current.style.height = INPUT_HEIGHT;
+        }
       }
     }
   };
@@ -43,13 +56,16 @@ export const MessageBox = ({ sendMessage }: Props) => {
         alt="add"
       />
       <S.Form onSubmit={handleSubmit}>
-        <S.ChatTextArea
-          value={input}
-          onChange={handleChange}
-          onKeyDown={handleEnter}
-          placeholder="메세지를 입력하세요"
-        />
-        {input && <S.SendButton>➤</S.SendButton>}
+        <S.InputContainer>
+          <textarea
+            value={input}
+            onChange={handleChange}
+            onKeyDown={handleEnter}
+            ref={textAreaRef}
+            placeholder="메세지를 입력하세요"
+          />
+        </S.InputContainer>
+        <S.SendButton className={input ? 'active' : ''}>➤</S.SendButton>
       </S.Form>
     </S.MessageBoxContainer>
   );

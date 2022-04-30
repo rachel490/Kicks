@@ -21,12 +21,16 @@ const GlobalStyle = createGlobalStyle`
     outline: none;
   }
   button {
+    cursor: pointer;
     border: none;
     background-color: transparent;
   }
   a, a:active{
     text-decoration: none;
     color: ${({ theme }) => theme.color.text};
+  }
+  ul,li{
+    list-style: none;
   }
 `;
 

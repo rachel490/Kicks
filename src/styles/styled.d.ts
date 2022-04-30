@@ -6,6 +6,7 @@ declare module 'styled-components' {
       main: string;
       text: string;
       text_white: string;
+      msg_bg: string;
       nav_bg: string;
       nav_active_bg: string;
     };

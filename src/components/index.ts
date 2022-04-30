@@ -9,6 +9,9 @@ export { ProfileNavigation } from './Profile/ProfileNavigation/ProfileNavigation
 export { EmptyChat } from './Chat/EmptyChat/EmptyChat';
 export { ChatList } from './Chat/ChatList/ChatList';
 export { ChatItem } from './Chat/ChatItem/ChatItem';
+export { MessageList } from './Chat/MessageList/MessageList';
+export { MessageItem } from './Chat/MessageItem/MessageItem';
+export { MessageBox } from './Chat/MessageBox/MessageBox';
 
 // Common
 export { PageHeader } from './Common/PageHeader/PageHeader';

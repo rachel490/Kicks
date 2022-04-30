@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChatItem } from 'components';
-import { IChat } from 'data/types';
+import { IChatRoom } from 'data/types';
 import * as S from './styles';
 
 interface Prop {
-  chatList: IChat[];
+  chatList: IChatRoom[];
 }
 
 export const ChatList = ({ chatList }: Prop) => {

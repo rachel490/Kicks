@@ -3,8 +3,14 @@ export interface IUser {
   profile_image_url: string;
 }
 
-export interface IChat {
+export interface IChatRoom {
   id: number;
   with_user: IUser;
-  chats: string[];
+  chats: IChat[];
+}
+
+export interface IChat {
+  sender: string;
+  content: string;
+  send_at: LocalDateTime;
 }

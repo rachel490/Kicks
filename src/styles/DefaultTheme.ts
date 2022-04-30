@@ -5,6 +5,7 @@ const defaultTheme: DefaultTheme = {
     main: '#C13128',
     text: '#333',
     text_white: '#eee',
+    msg_bg: '#eaeaea',
     nav_bg: '#dcdcdc',
     nav_active_bg: '#bebebe'
   },

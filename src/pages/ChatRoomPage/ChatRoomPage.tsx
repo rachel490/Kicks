@@ -6,6 +6,7 @@ import { IChat } from 'data/types';
 import { dividedByDate } from 'utils/dividedByDate';
 
 export const ChatRoomPage = () => {
+  const [toBottom, setToBottom] = useState(false);
   const { id } = useParams();
   const userData = chatData.filter(chat => chat.id === Number(id));
   const [messages, setMessages] = useState(userData[0].chats);
@@ -20,8 +21,12 @@ export const ChatRoomPage = () => {
   return (
     <AppContainer>
       <PageHeader title={name} />
-      <MessageList sections={sections} profile={profile_image_url} />
-      <MessageBox sendMessage={sendMessage} />
+      <MessageList
+        sections={sections}
+        profile={profile_image_url}
+        toBottom={toBottom}
+      />
+      <MessageBox sendMessage={sendMessage} setToBottom={setToBottom} />
     </AppContainer>
   );
 };

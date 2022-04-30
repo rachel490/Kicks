@@ -4,9 +4,10 @@ import * as S from './styles';
 
 interface Props {
   sendMessage: (message: IChat) => void;
+  setToBottom: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const MessageBox = ({ sendMessage }: Props) => {
+export const MessageBox = ({ sendMessage, setToBottom }: Props) => {
   const [input, setInput] = useState('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const INPUT_HEIGHT = '30px';
@@ -22,6 +23,7 @@ export const MessageBox = ({ sendMessage }: Props) => {
       content: input,
       send_at: new Date()
     });
+    setToBottom(true);
     setInput('');
   };
 

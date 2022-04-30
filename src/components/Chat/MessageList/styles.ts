@@ -4,6 +4,11 @@ export const MessageListContainer = styled.ul`
   flex: 1;
   padding: ${({ theme }) => theme.style.edge_padding};
   padding-right: 5px;
+
+  & > div > div:first-of-type {
+    overflow-x: auto !important;
+    margin-bottom: 0 !important;
+  }
 `;
 
 export const DateSection = styled.section`

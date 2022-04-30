@@ -1,0 +1,1 @@
+export { chatData } from './chatData';

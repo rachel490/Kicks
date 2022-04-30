@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { AppContainer, PageHeader } from 'components';
-import { chatData } from 'pages/ChatListPage/ChatListPage';
+import { chatData } from 'data';
 
 export const ChatRoomPage = () => {
   const { id } = useParams();

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './styles';
-import { IChat } from 'pages/ChatListPage/types';
+import { IChat } from 'data/types';
 
 interface Prop {
   chatItem: IChat;

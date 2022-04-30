@@ -1,7 +1,7 @@
 import { ChatList, EmptyChat } from 'components';
 import * as S from './styles';
 
-const chatData = [
+export const chatData = [
   {
     id: 1,
     with_user: {

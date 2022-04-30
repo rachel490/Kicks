@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import { AppLayout } from 'components';
 import {
   ChatListPage,
+  ChatRoomPage,
   MainPage,
   ProfilePage,
   SearchPage,
@@ -18,7 +19,6 @@ function App() {
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyle />
         <Routes>
-          {/* <Route path="/login" element={} /> */}
           <Route path="/" element={<AppLayout />}>
             <Route index element={<MainPage />} />
             <Route path="search" element={<SearchPage />} />
@@ -26,6 +26,8 @@ function App() {
             <Route path="chats" element={<ChatListPage />} />
             <Route path="profile" element={<ProfilePage />} />
           </Route>
+          <Route path="/chat/:id" element={<ChatRoomPage />} />
+          {/* <Route path="/login" element={} /> */}
         </Routes>
       </ThemeProvider>
     </>

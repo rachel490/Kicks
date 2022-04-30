@@ -8,7 +8,7 @@ import {
   MainPage,
   ProfilePage,
   SearchPage,
-  UploadPage
+  VideoUploadPage
 } from 'pages';
 import { ThemeProvider } from 'styled-components';
 import defaultTheme from 'styles/DefaultTheme';
@@ -22,7 +22,7 @@ function App() {
           <Route path="/" element={<AppLayout />}>
             <Route index element={<MainPage />} />
             <Route path="search" element={<SearchPage />} />
-            <Route path="upload" element={<UploadPage />} />
+            <Route path="upload" element={<VideoUploadPage />} />
             <Route path="chats" element={<ChatListPage />} />
             <Route path="profile" element={<ProfilePage />} />
           </Route>

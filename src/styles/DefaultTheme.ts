@@ -9,7 +9,8 @@ const defaultTheme: DefaultTheme = {
     nav_active_bg: '#bebebe'
   },
   style: {
-    border_light: '1px solid #ddd'
+    border_light: '1px solid #ddd',
+    edge_padding: '15px'
   }
 };
 

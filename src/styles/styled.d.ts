@@ -11,6 +11,7 @@ declare module 'styled-components' {
     };
     style: {
       border_light: string;
+      edge_padding: string;
     };
   }
 }

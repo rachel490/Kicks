@@ -7,7 +7,7 @@ export const AppLayout = () => {
     { name: '홈', linkTo: '/' },
     { name: '검색', linkTo: '/search' },
     { name: '업로드', linkTo: '/upload' },
-    { name: '채팅', linkTo: '/chat' },
+    { name: '채팅', linkTo: '/chats' },
     { name: '프로필', linkTo: '/profile' }
   ];
 

@@ -1,5 +1,5 @@
 export { MainPage } from './MainPage';
-export { ChatPage } from './ChatPage/ChatPage';
+export { ChatListPage } from './ChatListPage/ChatListPage';
 export { SearchPage } from './SearchPage';
 export { UploadPage } from './UploadPage';
 export { ProfilePage } from './ProfilePage/ProfilePage';

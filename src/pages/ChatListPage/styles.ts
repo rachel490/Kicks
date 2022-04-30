@@ -17,6 +17,7 @@ export const PageTitle = styled.h3`
 `;
 
 export const AdSection = styled.div`
+  cursor: pointer;
   img {
     width: 100%;
     height: 100px;

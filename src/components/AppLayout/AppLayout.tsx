@@ -8,7 +8,7 @@ export const AppLayout = () => {
     { name: '검색', linkTo: '/search' },
     { name: '업로드', linkTo: '/upload' },
     { name: '채팅', linkTo: '/chat' },
-    { name: '마이페이지', linkTo: '/mypage' }
+    { name: '프로필', linkTo: '/profile' }
   ];
 
   return (

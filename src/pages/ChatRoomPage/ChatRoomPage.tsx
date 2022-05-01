@@ -20,7 +20,7 @@ export const ChatRoomPage = () => {
 
   return (
     <AppContainer>
-      <PageHeader title={name} />
+      <PageHeader title={name} backTo="/chats" />
       <MessageList
         sections={sections}
         profile={profile_image_url}

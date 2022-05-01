@@ -6,6 +6,7 @@ export const MessageItemContainer = styled.li`
   &.my-message {
     justify-content: flex-end;
     p {
+      margin-left: 5px;
       color: ${({ theme }) => theme.color.text_white};
       background-color: ${({ theme }) => theme.color.main};
     }
@@ -16,16 +17,19 @@ export const MessageItemContainer = styled.li`
     border-radius: 50%;
   }
   p {
+    max-width: 80%;
     margin-left: 10px;
+    margin-right: 5px;
     padding: 10px 12px;
     font-size: 14px;
     background-color: ${({ theme }) => theme.color.msg_bg};
     border-radius: 20px;
-    margin-right: 5px;
     white-space: pre-wrap;
     line-height: 1.3;
   }
   span {
+    align-self: flex-end;
+    margin-bottom: 10px;
     font-size: 13px;
     color: #aaa;
   }

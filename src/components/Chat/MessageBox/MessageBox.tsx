@@ -18,13 +18,15 @@ export const MessageBox = ({ sendMessage, setToBottom }: Props) => {
       | React.KeyboardEvent<HTMLTextAreaElement>
   ) => {
     e.preventDefault();
-    sendMessage({
-      sender: 'me',
-      content: input,
-      send_at: new Date()
-    });
-    setToBottom(true);
-    setInput('');
+    if (input) {
+      sendMessage({
+        sender: 'me',
+        content: input,
+        send_at: new Date()
+      });
+      setToBottom(true);
+      setInput('');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

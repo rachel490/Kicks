@@ -65,5 +65,89 @@ export const FileInputContainer = styled.div`
       background-color: rgba(0, 0, 0, 0.03);
     }
   }
-	
+`;
+
+export const InputContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  input[type='text'] {
+    border: ${({ theme }) => theme.style.border_light};
+    height: 35px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+    &::placeholder {
+      font-size: 13px;
+      color: #fe2c55;
+    }
+  }
+
+  input[type='number'] {
+    width: 80%;
+    border: ${({ theme }) => theme.style.border_light};
+    height: 35px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 10px 10px 0;
+
+    &::placeholder {
+      font-size: 13px;
+      color: #fe2c55;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  input[type='checkbox'] {
+    display: none;
+
+    & + label:before {
+      margin-right: 5px;
+      content: '';
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      line-height: 17px;
+      border: 1px solid #cbcbcb;
+      border-radius: 50%;
+      vertical-align: middle; /*체크 전과 체크 후 높이 차이 때문에 설정*/
+    }
+
+    &:checked + label:before {
+      content: '✔';
+      color: #fff;
+      border-radius: 50%;
+      background-color: #fe2c55;
+      border-color: #fe2c55;
+      font-size: 13px;
+      text-align: center;
+    }
+  }
+
+  label {
+    color: #fe2c55;
+    font-size: 13px;
+  }
+
+  textarea {
+    resize: none;
+    border: ${({ theme }) => theme.style.border_light};
+    border-radius: 10px;
+    padding: 10px;
+    font-family: inherit;
+    height: 100px;
+
+    &::placeholder {
+      font-size: 13px;
+      color: #fe2c55;
+    }
+  }
 `;

@@ -2,7 +2,6 @@ import { PageHeader } from 'components';
 import * as S from './styles';
 
 export const VideoUploadPage = () => {
-
   const validateVideo = (e: React.ChangeEvent<HTMLInputElement>) => {
     const maxSize = 1024 * 1024 * 250;
     if (!e.target?.files) {
@@ -34,6 +33,15 @@ export const VideoUploadPage = () => {
             <button>파일 선택</button>
           </label>
         </S.FileInputContainer>
+        <S.InputContainer>
+          <input type="text" id="title" placeholder="제목" />
+          <div className="priceContainer">
+            <input type="number" id="price" placeholder="가격" />
+            <input type="checkbox" id="second-hand" />
+            <label htmlFor="second-hand">중고</label>
+          </div>
+          <textarea id="description" placeholder="상세 설명" />
+        </S.InputContainer>
       </S.Form>
     </S.Wrap>
   );

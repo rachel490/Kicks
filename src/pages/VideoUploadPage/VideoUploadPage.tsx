@@ -30,7 +30,7 @@ export const VideoUploadPage = () => {
             />
             <h2>업로드할 동영상 선택</h2>
             <span>or 파일 드래그 & 드롭</span>
-            <button>파일 선택</button>
+            <button>비디오 선택</button>
           </label>
         </S.FileInputContainer>
         <S.InputContainer>
@@ -42,6 +42,13 @@ export const VideoUploadPage = () => {
           </div>
           <textarea id="description" placeholder="상세 설명" />
         </S.InputContainer>
+        <S.ThumbnailInputContainer>
+          <input type="file" accept="image/*" id="thumbnail" />
+          <label htmlFor="thumbnail">
+            <span>썸네일 지정</span>
+            <div>이미지 선택</div>
+          </label>
+        </S.ThumbnailInputContainer>
       </S.Form>
     </S.Wrap>
   );

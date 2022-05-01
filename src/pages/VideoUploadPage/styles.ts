@@ -4,11 +4,11 @@ export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
 `;
 
 export const Form = styled.form`
   width: 100%;
+  padding: 20px;
 `;
 
 export const FileInputContainer = styled.div`
@@ -144,10 +144,49 @@ export const InputContainer = styled.div`
     padding: 10px;
     font-family: inherit;
     height: 100px;
+    margin-bottom: 10px;
 
     &::placeholder {
       font-size: 13px;
       color: #fe2c55;
+    }
+  }
+`;
+
+export const ThumbnailInputContainer = styled.div`
+  input {
+    display: none;
+  }
+
+  label {
+    border: ${({ theme }) => theme.style.border_light};
+    border-radius: 10px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 13px;
+    color: #fe2c55;
+    cursor: pointer;
+
+    div {
+      cursor: pointer;
+      font-size: 13px;
+      border-radius: 10px;
+      color: ${({ theme }) => theme.color.text_white};
+      background-color: #fe2c55;
+      width: 100px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover {
+      border-color: #fe2c55;
+      background-color: rgba(0, 0, 0, 0.03);
     }
   }
 `;

@@ -1,15 +1,16 @@
 import React from 'react';
 import * as S from './styles';
-import { IChatRoom } from 'data/types';
+import { IChatList } from 'data/types';
 
 interface Prop {
-  chatItem: IChatRoom;
+  chatItem: IChatList;
 }
 
 export const ChatItem = ({ chatItem }: Prop) => {
   const {
     with_user: { profile_image_url, name },
-    chats
+    last_content,
+    last_chatted_at
   } = chatItem;
 
   return (
@@ -17,7 +18,7 @@ export const ChatItem = ({ chatItem }: Prop) => {
       <img src={profile_image_url} alt={name} />
       <S.ChatPreview>
         <p className="chat_user">{name}</p>
-        {/* <p className="chat_text">{chats[chats.length - 1].content}</p> */}
+        <p className="last_content">{last_content}</p>
       </S.ChatPreview>
     </S.ChatItemContainer>
   );

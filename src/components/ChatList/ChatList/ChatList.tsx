@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ChatItem } from 'components';
-import { IChatRoom } from 'data/types';
+import { IChatList } from 'data/types';
 import { Scrollbars } from 'react-custom-scrollbars';
 import * as S from './styles';
 
 interface Prop {
-  chatList: IChatRoom[];
+  chatList: IChatList[];
 }
 
 export const ChatList = ({ chatList }: Prop) => {

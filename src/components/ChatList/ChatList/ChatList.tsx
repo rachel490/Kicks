@@ -1,17 +1,18 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ChatItem } from 'components';
-import { IChatRoom } from 'data/types';
+import { IChatList } from 'data/types';
 import { Scrollbars } from 'react-custom-scrollbars';
 import * as S from './styles';
+import { EmptyChat } from '../EmptyChat/EmptyChat';
 
 interface Prop {
-  chatList: IChatRoom[];
+  chatList: IChatList[];
 }
 
 export const ChatList = ({ chatList }: Prop) => {
   const scrollbarRef = useRef(null);
-  return (
+  return chatList.length ? (
     <S.ChatListContainer>
       <Scrollbars autoHide ref={scrollbarRef}>
         {chatList.map(item => (
@@ -21,5 +22,7 @@ export const ChatList = ({ chatList }: Prop) => {
         ))}
       </Scrollbars>
     </S.ChatListContainer>
+  ) : (
+    <EmptyChat />
   );
 };

@@ -25,7 +25,22 @@ export const ChatPreview = styled.div`
     font-weight: 600;
     font-size: 15px;
   }
-  .chat_text {
-    font-size: 14px;
+  .last_chatted_at {
+    font-size: 13px;
+    font-weight: 400;
+    margin-left: 7px;
+    padding-left: 7px;
+    position: relative;
+    &:before {
+      content: '';
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: #333;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      position: absolute;
+    }
   }
 `;

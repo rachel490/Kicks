@@ -1,3 +1,2 @@
-export { chatData } from './chatData';
-export {uploadedVideoData, likedVideoData} from './videoData';
-export {profileStatData} from './profileData';
+export { uploadedVideoData, likedVideoData } from './videoData';
+export { profileStatData } from './profileData';

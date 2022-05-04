@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrap = styled.div`
   width: 100%;
   height: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 export const ProfileNav = styled.div`

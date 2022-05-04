@@ -1,15 +1,9 @@
 import React from 'react';
 import * as S from './styles';
+import { profileStatData } from '../../../data';
 
 export const ProfileHeader = () => {
-	
-  const profileStatData = {
-    videos: 3,
-    following: 14,
-    followers: 38
-  };
-
-	const {videos, following, followers} = profileStatData;
+  const { videos, following, followers } = profileStatData;
 
   return (
     <S.ProfileHeader>

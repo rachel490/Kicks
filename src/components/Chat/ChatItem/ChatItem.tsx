@@ -17,7 +17,7 @@ export const ChatItem = ({ chatItem }: Prop) => {
       <img src={profile_image_url} alt={name} />
       <S.ChatPreview>
         <p className="chat_user">{name}</p>
-        <p className="chat_text">{chats[chats.length - 1].content}</p>
+        {/* <p className="chat_text">{chats[chats.length - 1].content}</p> */}
       </S.ChatPreview>
     </S.ChatItemContainer>
   );

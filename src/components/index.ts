@@ -15,3 +15,6 @@ export { MessageBox } from './Chat/MessageBox/MessageBox';
 
 // Common
 export { PageHeader } from './Common/PageHeader/PageHeader';
+
+// Main
+export { VideoPlayer } from './Main/VideoPlayer/VideoPlayer';

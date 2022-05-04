@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { IChat } from 'data/types';
-import { MessageItem } from '../MessageItem/MessageItem';
+import { MessageItem } from 'components';
 import { Scrollbars } from 'react-custom-scrollbars';
 import * as S from './styles';
 

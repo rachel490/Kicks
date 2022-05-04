@@ -1,21 +1,31 @@
 import { useParams } from 'react-router-dom';
-import { AppContainer, MessageBox, MessageList, PageHeader } from 'components';
-import { useState } from 'react';
+import {
+  AppContainer,
+  Loading,
+  MessageBox,
+  MessageList,
+  PageHeader
+} from 'components';
+import { useEffect, useState } from 'react';
 import { IChat, IChatRoom } from 'data/types';
-import { dividedByDate } from 'utils/dividedByDate';
 import { CHAT_ROOM_API } from 'utils/api';
 import { fetcher } from 'utils/swr';
 import useSWR from 'swr';
 
 export const ChatRoomPage = () => {
-  const [toBottom, setToBottom] = useState(false);
   const { id } = useParams();
   const { data, error } = useSWR<IChatRoom>(CHAT_ROOM_API(Number(id)), fetcher);
   const name = data?.with_user?.name || '';
   const profile = data?.with_user?.profile_image_url || '';
 
-  const [messages, setMessages] = useState<IChat[]>(data?.chats || []);
-  const sections = dividedByDate(messages);
+  const [toBottom, setToBottom] = useState(false);
+  const [messages, setMessages] = useState<IChat[]>([]);
+
+  useEffect(() => {
+    if (data) {
+      setMessages(data.chats);
+    }
+  }, [data]);
 
   const sendMessage = (message: IChat) => {
     setMessages([...messages, message]);
@@ -24,7 +34,15 @@ export const ChatRoomPage = () => {
   return (
     <AppContainer>
       <PageHeader title={name} backTo="/chats" />
-      <MessageList sections={sections} profile={profile} toBottom={toBottom} />
+      {data ? (
+        <MessageList
+          messages={messages}
+          profile={profile}
+          toBottom={toBottom}
+        />
+      ) : (
+        <Loading />
+      )}
       <MessageBox sendMessage={sendMessage} setToBottom={setToBottom} />
     </AppContainer>
   );

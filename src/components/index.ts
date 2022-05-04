@@ -17,3 +17,4 @@ export { MessageBox } from './ChatRoom/MessageBox/MessageBox';
 
 // Common
 export { PageHeader } from './Common/PageHeader/PageHeader';
+export { Loading } from './Common/Loading/Loading';

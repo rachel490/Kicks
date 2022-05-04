@@ -1,6 +1,6 @@
 import * as S from './styles';
 import useSWR from 'swr';
-import { ChatList, EmptyChat } from 'components';
+import { ChatList, Loading } from 'components';
 import { CHAT_LIST_API } from 'utils/api';
 import { fetcher } from 'utils/swr';
 import { IChatList } from 'data/types';
@@ -17,7 +17,7 @@ export const ChatListPage = () => {
           alt="ad"
         />
       </S.AdSection>
-      {chatData?.length ? <ChatList chatList={chatData} /> : <EmptyChat />}
+      {chatData ? <ChatList chatList={chatData} /> : <Loading />}
     </S.Wrap>
   );
 };

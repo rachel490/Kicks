@@ -20,3 +20,4 @@ export { PageHeader } from './Common/PageHeader/PageHeader';
 export { VideoPlayer } from './Main/VideoPlayer/VideoPlayer';
 export { PlayerMenu } from './Main/PlayerMenu/PlayerMenu';
 export { DescriptionBox } from './Main/DescriptionBox/DescriptionBox';
+export { MainHeader } from './Main/MainHeader/MainHeader';

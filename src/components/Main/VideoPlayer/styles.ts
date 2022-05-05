@@ -3,8 +3,17 @@ import styled from 'styled-components';
 export const Wrap = styled.div`
   width: 100%;
   height: 100%;
-  background-color: blue;
+`;
 
+export const Video = styled.video`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const ControlButton = styled.button`
+  cursor: none;
+  
   .icon {
     position: absolute;
     top: 50%;
@@ -29,11 +38,5 @@ export const Wrap = styled.div`
     100% {
       opacity: 0;
     }
-  }
-
-  video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 `;

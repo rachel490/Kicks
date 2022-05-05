@@ -1,4 +1,4 @@
-import { PlayerMenu, VideoPlayer } from 'components';
+import { PlayerMenu, VideoPlayer, DescriptionBox } from 'components';
 import * as S from './styles';
 
 export const MainPage = () => {
@@ -6,6 +6,7 @@ export const MainPage = () => {
     <S.Wrap>
       <VideoPlayer />
       <PlayerMenu />
+      <DescriptionBox />
     </S.Wrap>
   );
 };

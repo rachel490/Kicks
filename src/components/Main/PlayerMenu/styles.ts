@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
-`;
+  width: 100%;
+`
 
 export const Nav = styled.nav`
   position: absolute;
@@ -16,20 +14,27 @@ export const Nav = styled.nav`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 70px;
+  width: 60px;
   height: 300px;
 `;
 
 export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
   .icon {
-    width: 40px;
-    height: 40px;
-		color: white;
+    width: 32px;
+    height: 32px;
+    color: white;
   }
 
   img {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
   }
 `;

@@ -4,6 +4,7 @@ export { AppContainer } from './AppLayout/styles';
 // Common
 export { PageHeader } from './Common/PageHeader/PageHeader';
 export { Loading } from './Common/Loading/Loading';
+export { AdBanner } from './Common/AdBanner/AdBanner';
 
 // Profile
 export { ProfileHeader } from './Profile/ProfileHeader/ProfileHeader';

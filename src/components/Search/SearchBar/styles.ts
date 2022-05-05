@@ -4,7 +4,7 @@ export const SearchBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid ${({ theme }) => theme.color.main};
+  border-bottom: 1px solid #dadada;
   padding: 0 ${({ theme }) => theme.style.edge_padding};
   background: #fff;
   height: ${({ theme }) => theme.style.header_height};

@@ -25,6 +25,7 @@ export const MessageItemContainer = styled.li`
     background-color: ${({ theme }) => theme.color.msg_bg};
     border-radius: 20px;
     white-space: pre-wrap;
+    word-wrap: break-word;
     line-height: 1.3;
   }
   span {

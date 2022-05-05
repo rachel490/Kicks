@@ -13,14 +13,14 @@ export const MessageItem = ({ profile, message }: Prop) => {
 
   return sender === 'me' ? (
     <S.MessageItemContainer className="my-message">
-      <span>{dayjs(send_at).format('h:mm A')}</span>
+      <span>{dayjs(send_at).format('A h:mm')}</span>
       <p>{content}</p>
     </S.MessageItemContainer>
   ) : (
     <S.MessageItemContainer>
       <img src={profile} alt="profile" />
       <p>{content}</p>
-      <span>{dayjs(send_at).format('h:mm A')}</span>
+      <span>{dayjs(send_at).format('A h:mm')}</span>
     </S.MessageItemContainer>
   );
 };

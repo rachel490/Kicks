@@ -20,5 +20,12 @@ export { MessageList } from './ChatRoom/MessageList/MessageList';
 export { MessageItem } from './ChatRoom/MessageItem/MessageItem';
 export { MessageBox } from './ChatRoom/MessageBox/MessageBox';
 
+// Main
+export { VideoPlayer } from './Main/VideoPlayer/VideoPlayer';
+export { PlayerMenu } from './Main/PlayerMenu/PlayerMenu';
+export { DescriptionBox } from './Main/DescriptionBox/DescriptionBox';
+export { MainHeader } from './Main/MainHeader/MainHeader';
+
 // Search
 export { SearchBar } from './Search/SearchBar/SearchBar';
+

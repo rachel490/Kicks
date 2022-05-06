@@ -1,0 +1,4 @@
+{
+  "/v1/users/chatting": "/chatList",
+  "/v1/users/chatting/:id": "/chatRoom/:id"
+}

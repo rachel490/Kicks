@@ -59,8 +59,13 @@ export const OnBoardingPage = () => {
           ))}
         </S.CategoryWrap>
         <S.Buttons>
-          <S.Button>다음에 할게요</S.Button>
-          <S.Button type="submit">선택 완료!</S.Button>
+          <S.Button type="submit">다음에 할게요</S.Button>
+          <S.Button
+            type="submit"
+            className={selectedCategory.length > 0 ? 'category' : 'noCategory'}
+          >
+            선택 완료!
+          </S.Button>
         </S.Buttons>
       </S.Form>
     </AppContainer>

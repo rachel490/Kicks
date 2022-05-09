@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const Wrap = styled.div`
+export const Form = styled.form`
   padding: 0 20px;
-	overflow: hidden;
+  overflow: hidden;
 `;
 
 export const Header = styled.h1`
@@ -16,13 +16,6 @@ export const CategoryWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-`;
-export const CategoryButton = styled.button`
-  border: 1px solid black;
-  padding: 12px 17px;
-  font-size: 16px;
-  border-radius: 24.5px;
-  margin: 8px;
 `;
 
 export const Buttons = styled.div`
@@ -38,6 +31,5 @@ export const Button = styled.button`
   border-radius: 3px;
   font-size: 16px;
   font-weight: 600;
-	
-	border: 1px solid black;
+  border: 1px solid black;
 `;

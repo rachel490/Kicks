@@ -27,8 +27,8 @@ function App() {
             <Route path="chats" element={<ChatListPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="/video/:videoId" element={<MainPage />} />
-            <Route path="onboard" element={<OnBoardingPage />} />
           </Route>
+          <Route path="onboard" element={<OnBoardingPage />} />
           <Route path="/chat/:id" element={<ChatRoomPage />} />
           {/* <Route path="/login" element={} /> */}
         </Routes>

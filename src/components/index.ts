@@ -29,3 +29,6 @@ export { MainHeader } from './Main/MainHeader/MainHeader';
 
 // Search
 export { SearchBar } from './Search/SearchBar/SearchBar';
+
+// OnBoard
+export { CategoryButton } from './OnBoard/CategoryButton/CategoryButton';

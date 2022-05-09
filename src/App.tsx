@@ -25,6 +25,7 @@ function App() {
             <Route path="upload" element={<VideoUploadPage />} />
             <Route path="chats" element={<ChatListPage />} />
             <Route path="profile" element={<ProfilePage />} />
+            <Route path="/video/:videoId" element={<MainPage />} />
           </Route>
           <Route path="/chat/:id" element={<ChatRoomPage />} />
           {/* <Route path="/login" element={} /> */}

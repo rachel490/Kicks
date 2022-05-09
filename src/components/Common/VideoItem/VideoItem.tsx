@@ -1,13 +1,16 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import * as S from './styles';
 
 interface Props {
+  id: number,
   url: string;
   currentVideoRef: any;
   setCurrentVideoRef: Function;
 }
 
 export const VideoItem = ({
+  id,
   url,
   setCurrentVideoRef,
   currentVideoRef
@@ -24,7 +27,9 @@ export const VideoItem = ({
 
   return (
     <S.Wrap>
-      <video onMouseOver={playMovie} src={url} muted loop ref={videoRef} />
+      <Link to={`/video/${id}`}>
+        <video onMouseOver={playMovie} src={url} muted loop ref={videoRef} />
+      </Link>
     </S.Wrap>
   );
 };

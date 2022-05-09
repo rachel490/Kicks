@@ -28,8 +28,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "api": "json-server --watch server/db.json --routes server/routes.json --port 8080 --no-cors=false ",
-    "start": "react-scripts start",
+    "start": "node server",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

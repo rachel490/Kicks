@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import * as S from './styles';
 import { IoPlayCircle, IoPauseCircle } from 'react-icons/io5';
 
-export const VideoPlayer = () => {
+export const VideoPlayer = ({ video_url }: { video_url: string }) => {
   const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef<any>(null);
 
@@ -30,7 +30,7 @@ export const VideoPlayer = () => {
         muted
         onClick={controlVideo}
         ref={videoRef}
-        src="https://player.vimeo.com/progressive_redirect/playback/672684920/rendition/540p/540p.mp4?loc=external&oauth2_token_id=57447761&signature=32cb6b2e5e97333e35129877a0a35748af0bec5798a5066753d36999a017a31a"
+        src={video_url}
       />
       {isPlaying ? (
         <S.ControlButton onClick={controlVideo}>

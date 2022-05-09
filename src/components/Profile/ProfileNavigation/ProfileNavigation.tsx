@@ -42,6 +42,7 @@ export const ProfileNavigation = () => {
               <VideoItem
                 key={id}
                 url={video_url}
+                id={id}
                 setCurrentVideoRef={setCurrentVideoRef}
                 currentVideoRef={currentVideoRef}
               />
@@ -50,6 +51,7 @@ export const ProfileNavigation = () => {
               <VideoItem
                 key={id}
                 url={video_url}
+                id={id}
                 setCurrentVideoRef={setCurrentVideoRef}
                 currentVideoRef={currentVideoRef}
               />

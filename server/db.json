@@ -63,5 +63,156 @@
         }
       ]
     }
+  ],
+  "videos": [
+    {
+      "id": 1,
+      "category": "converse",
+      "title": "converse high black and white",
+      "description": "converse high black and white'",
+      "thumbnail_url": "https://images.pexels.com/videos/7977117/back-to-school-girls-school-break-young-7977117.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "video_url": "https://player.vimeo.com/external/553117655.hd.mp4?s=624a8e1b959fa86d89d6d71a48d420bda14ea3a5&profile_id=174&oauth2_token_id=57447761",
+      "view_count": 768
+    },
+    {
+      "id": 2,
+      "category": "converse",
+      "title": "converse high white",
+      "description": "converse high white matched with light jeans",
+      "thumbnail_url": "https://images.pexels.com/videos/7976744/back-to-school-girl-tying-the-shoe-young-7976744.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "video_url": "https://player.vimeo.com/external/553104511.hd.mp4?s=aea76cc869f94e150e3f032a96a6f23d897e8d73&profile_id=174&oauth2_token_id=57447761",
+      "view_count": 150000
+    },
+    {
+      "id": 3,
+      "category": "converse",
+      "title": "converse low black",
+      "description": "converse low black",
+      "thumbnail_url": "https://images.pexels.com/videos/5571830/pexels-photo-5571830.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      "video_url": "https://player.vimeo.com/external/466948419.sd.mp4?s=7775f0d5e1bdd0e96c0af939f2f774c40a50ddd8&profile_id=165&oauth2_token_id=57447761",
+      "view_count": 150000
+    },
+    {
+      "id": 4,
+      "category": "nike",
+      "title": "Nike Jordan 1 Retro Chicago (2015)",
+      "description": "Nike Jordan 1 Retro Chicago (2015)",
+      "thumbnail_url": "https://i.vimeocdn.com/video/1142698112-7bd117698089de21f399e8e207b5a43df93c4e24f3a7f4257beeb7fd3dc96cc2-d?mw=1100&mh=2086&q=70",
+      "video_url": "https://player.vimeo.com/external/417383180.hd.mp4?s=23603149bca63c6075d7bbcd7c0515111a17d5ac&profile_id=174&oauth2_token_id=57447761",
+      "view_count": 368000
+    },
+    {
+      "id": 5,
+      "category": "nike",
+      "title": "Nike Jordan XXXII Low",
+      "description": "Jordan XXXII Low Chicago Win Like 96",
+      "thumbnail_url": "https://images.pexels.com/videos/3890371/pexels-photo-3890371.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
+      "video_url": "https://player.vimeo.com/external/396400615.sd.mp4?s=a7833efc126b420ef46df1d8c8a8ed0270ec22de&profile_id=165&oauth2_token_id=57447761",
+      "view_count": 8000
+    },
+    {
+      "id": 6,
+      "category": "vans",
+      "title": "Vans Old Skool Orange",
+      "description": "Vans Old Skool Orange",
+      "thumbnail_url": "https://i.vimeocdn.com/video/929231251-3b14421050ae19d6f7792d56ba26cda375052031238aba14dbc2d3fd4c3e9793-d?mw=1100&mh=1957&q=70",
+      "video_url": "https://player.vimeo.com/external/441235014.hd.mp4?s=10bc99ecc3bc5bcac4496bb38e30ee7d35a0bc92&profile_id=174&oauth2_token_id=57447761",
+      "view_count": 89300
+    },
+    {
+      "id": 7,
+      "category": "vans",
+      "title": "Vans Authentic Black White",
+      "description": "Vans Authentic Black White",
+      "thumbnail_url": "https://images.pexels.com/videos/5027179/pexels-photo-5027179.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "video_url": "https://vod-progressive.akamaized.net/exp=1651694390~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F3901%2F17%2F444506558%2F1947863450.mp4~hmac=6ceb75c0d3d780ad8014d9de52336e6718d7b9924e3c6d017b05ff1bfbcea95f/vimeo-prod-skyfire-std-us/01/3901/17/444506558/1947863450.mp4?filename=production+ID%3A5027179.mp4",
+      "view_count": 2300
+    }
+  ],
+  "video": [
+    {
+      "id": 3,
+      "video_url": "https://player.vimeo.com/external/466948419.sd.mp4?s=7775f0d5e1bdd0e96c0af939f2f774c40a50ddd8&profile_id=165&oauth2_token_id=57447761",
+      "thumbnail_url": "https://images.pexels.com/videos/5571830/pexels-photo-5571830.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      "category": "converse",
+      "title": "converse low black",
+      "description": "converse low black",
+      "view_count": 150000,
+      "user": {
+        "name": "ghosty",
+        "profile_image_url": "https://images.unsplash.com/photo-1636622433525-127afdf3662d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80"
+      }
+    },
+    {
+      "id": 6,
+      "video_url": "https://vod-progressive.akamaized.net/exp=1651693995~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F3247%2F17%2F441235014%2F1930197928.mp4~hmac=1fb980efc3973c87dbdeeed06e17fbef646bbc6e4804857579d37d6ccf90f4a2/vimeo-prod-skyfire-std-us/01/3247/17/441235014/1930197928.mp4?filename=production+ID%3A4941597.mp4",
+      "thumbnail_url": "https://i.vimeocdn.com/video/929231251-3b14421050ae19d6f7792d56ba26cda375052031238aba14dbc2d3fd4c3e9793-d?mw=1100&mh=1957&q=70",
+      "category": "vans",
+      "title": "Vans Old Skool Orange",
+      "description": "Vans Old Skool Orange",
+      "view_count": 89300,
+      "user": {
+        "name": "minionny",
+        "profile_image_url": "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+      }
+    }
+  ],
+  "myVideos": [
+    {
+      "id": 4,
+      "category": "nike",
+      "title": "Nike Jordan 1 Retro Chicago (2015)",
+      "description": "Nike Jordan 1 Retro Chicago (2015)",
+      "thumbnail_url": "https://i.vimeocdn.com/video/1142698112-7bd117698089de21f399e8e207b5a43df93c4e24f3a7f4257beeb7fd3dc96cc2-d?mw=1100&mh=2086&q=70",
+      "video_url": "https://player.vimeo.com/external/417383180.hd.mp4?s=23603149bca63c6075d7bbcd7c0515111a17d5ac&profile_id=174&oauth2_token_id=57447761",
+      "view_count": 368000
+    },
+    {
+      "id": 5,
+      "category": "nike",
+      "title": "Nike Jordan XXXII Low",
+      "description": "Jordan XXXII Low Chicago Win Like 96",
+      "thumbnail_url": "https://images.pexels.com/videos/3890371/pexels-photo-3890371.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
+      "video_url": "https://player.vimeo.com/external/396400615.sd.mp4?s=a7833efc126b420ef46df1d8c8a8ed0270ec22de&profile_id=165&oauth2_token_id=57447761",
+      "view_count": 8000
+    },
+    {
+      "id": 6,
+      "category": "vans",
+      "title": "Vans Old Skool Orange",
+      "description": "Vans Old Skool Orange",
+      "thumbnail_url": "https://i.vimeocdn.com/video/929231251-3b14421050ae19d6f7792d56ba26cda375052031238aba14dbc2d3fd4c3e9793-d?mw=1100&mh=1957&q=70",
+      "video_url": "https://player.vimeo.com/external/441235014.hd.mp4?s=10bc99ecc3bc5bcac4496bb38e30ee7d35a0bc92&profile_id=174&oauth2_token_id=57447761",
+      "view_count": 89300
+    }
+  ],
+  "myLikes": [
+    {
+      "id": 1,
+      "category": "converse",
+      "title": "converse high black and white",
+      "description": "converse high black and white'",
+      "thumbnail_url": "https://images.pexels.com/videos/7977117/back-to-school-girls-school-break-young-7977117.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "video_url": "https://player.vimeo.com/external/553117655.hd.mp4?s=624a8e1b959fa86d89d6d71a48d420bda14ea3a5&profile_id=174&oauth2_token_id=57447761",
+      "view_count": 768
+    },
+    {
+      "id": 2,
+      "category": "converse",
+      "title": "converse high white",
+      "description": "converse high white matched with light jeans",
+      "thumbnail_url": "https://images.pexels.com/videos/7976744/back-to-school-girl-tying-the-shoe-young-7976744.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "video_url": "https://player.vimeo.com/external/553104511.hd.mp4?s=aea76cc869f94e150e3f032a96a6f23d897e8d73&profile_id=174&oauth2_token_id=57447761",
+      "view_count": 150000
+    },
+    {
+      "id": 3,
+      "category": "converse",
+      "title": "converse low black",
+      "description": "converse low black",
+      "thumbnail_url": "https://images.pexels.com/videos/5571830/pexels-photo-5571830.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      "video_url": "https://player.vimeo.com/external/466948419.sd.mp4?s=7775f0d5e1bdd0e96c0af939f2f774c40a50ddd8&profile_id=165&oauth2_token_id=57447761",
+      "view_count": 150000
+    }
   ]
 }

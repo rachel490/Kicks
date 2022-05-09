@@ -21,3 +21,13 @@ export interface IChat {
   content: string;
   send_at: LocalDateTime;
 }
+
+export interface IVideo {
+  id: number;
+  category: string;
+  title: string;
+  description: string;
+  thumbnail_url: string;
+  video_url: string;
+  view_count: number;
+}

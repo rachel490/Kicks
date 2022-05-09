@@ -2,5 +2,7 @@
   "/v1/users/chatting": "/chatList",
   "/v1/users/chatting/:id": "/chatRoom/:id",
   "/v1/videos": "/videos",
-  "/v1/videos/:id": "/video/:id"
+  "/v1/videos/:id": "/video/:id",
+  "/v1/users/my/videos": "/myVideos",
+  "/v1/users/my/likes": "/myLikes"
 }

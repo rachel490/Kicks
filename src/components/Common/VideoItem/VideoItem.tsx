@@ -2,14 +2,12 @@ import React, { useRef } from 'react';
 import * as S from './styles';
 
 interface Props {
-  title: string;
   url: string;
   currentVideoRef: any;
   setCurrentVideoRef: Function;
 }
 
 export const VideoItem = ({
-  title,
   url,
   setCurrentVideoRef,
   currentVideoRef
@@ -27,7 +25,6 @@ export const VideoItem = ({
   return (
     <S.Wrap>
       <video onMouseOver={playMovie} src={url} muted loop ref={videoRef} />
-      <span>{title}</span>
     </S.Wrap>
   );
 };

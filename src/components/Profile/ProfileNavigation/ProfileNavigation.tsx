@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { VideoItem } from '../VideoItem/VideoItem';
+import { VideoItem } from '../../Common/VideoItem/VideoItem';
 import * as S from './styles';
 import useSWR from 'swr';
 import { MY_LIKES_API, MY_VIDEOS_API } from 'utils/api';
@@ -38,19 +38,17 @@ export const ProfileNavigation = () => {
       </S.ProfileNav>
       <S.VideoContent>
         {selectedMenu === 'uploaded'
-          ? uploadedVideoData?.map(({ id, title, video_url }) => (
+          ? uploadedVideoData?.map(({ id, video_url }) => (
               <VideoItem
                 key={id}
-                title={title}
                 url={video_url}
                 setCurrentVideoRef={setCurrentVideoRef}
                 currentVideoRef={currentVideoRef}
               />
             ))
-          : likedVideoData?.map(({ id, title, video_url }) => (
+          : likedVideoData?.map(({ id, video_url }) => (
               <VideoItem
                 key={id}
-                title={title}
                 url={video_url}
                 setCurrentVideoRef={setCurrentVideoRef}
                 currentVideoRef={currentVideoRef}

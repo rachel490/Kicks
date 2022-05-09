@@ -5,6 +5,7 @@ export { AppContainer } from './AppLayout/styles';
 export { PageHeader } from './Common/PageHeader/PageHeader';
 export { Loading } from './Common/Loading/Loading';
 export { AdBanner } from './Common/AdBanner/AdBanner';
+export { VideoItem } from './Common/VideoItem/VideoItem';
 
 // Profile
 export { ProfileHeader } from './Profile/ProfileHeader/ProfileHeader';
@@ -28,4 +29,3 @@ export { MainHeader } from './Main/MainHeader/MainHeader';
 
 // Search
 export { SearchBar } from './Search/SearchBar/SearchBar';
-

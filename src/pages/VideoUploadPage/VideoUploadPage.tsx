@@ -14,7 +14,7 @@ export const VideoUploadPage = () => {
 
   return (
     <S.Wrap>
-      <PageHeader title="Upload" />
+      <PageHeader title="Upload" backTo="/"/>
       <S.Form onSubmit={e => e.preventDefault()}>
         <S.FileInputContainer>
           <input

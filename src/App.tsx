@@ -3,6 +3,7 @@ import GlobalStyle from 'styles/GlobalStyle';
 import { Routes, Route } from 'react-router-dom';
 import { AppLayout } from 'components';
 import {
+  AdminPage,
   ChatListPage,
   ChatRoomPage,
   MainPage,
@@ -28,6 +29,8 @@ function App() {
             <Route path="/video/:videoId" element={<MainPage />} />
           </Route>
           <Route path="/chat/:id" element={<ChatRoomPage />} />
+          <Route path="/admin" element={<AdminPage />}>
+          </Route>
           {/* <Route path="/login" element={} /> */}
         </Routes>
       </ThemeProvider>

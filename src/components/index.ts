@@ -29,3 +29,6 @@ export { MainHeader } from './Main/MainHeader/MainHeader';
 
 // Search
 export { SearchBar } from './Search/SearchBar/SearchBar';
+
+// Admin
+export { AdminNav } from './Admin/AdminNav/AdminNav';

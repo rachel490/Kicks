@@ -1,5 +1,7 @@
 import { PageHeader } from 'components';
 import * as S from './styles';
+import { FaPlus } from 'react-icons/fa';
+import React, { useState } from 'react';
 
 export const VideoUploadPage = () => {
   const validateVideo = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,9 +14,14 @@ export const VideoUploadPage = () => {
     }
   };
 
+  const [isNew, setIsNew] = useState(true);
+  const toggleIsNew = () => {
+    setIsNew(!isNew);
+  };
+
   return (
     <S.Wrap>
-      <PageHeader title="Upload" backTo="/"/>
+      <PageHeader title="상품 등록" backTo="/" />
       <S.Form onSubmit={e => e.preventDefault()}>
         <S.FileInputContainer>
           <input
@@ -24,31 +31,50 @@ export const VideoUploadPage = () => {
             onChange={validateVideo}
           />
           <label htmlFor="videoUpload">
-            <img
-              src="https://lf16-tiktok-common.ttwstatic.com/obj/tiktok-web-common-sg/ies/creator_center/svgs/cloud-icon1.ecf0bf2b.svg"
-              alt="upload"
-            />
-            <h2>업로드할 동영상 선택</h2>
-            <span>or 파일 드래그 & 드롭</span>
-            <button>비디오 선택</button>
+            <FaPlus />
           </label>
         </S.FileInputContainer>
         <S.InputContainer>
-          <input type="text" id="title" placeholder="제목" />
-          <div className="priceContainer">
-            <input type="number" id="price" placeholder="가격" />
-            <input type="checkbox" id="second-hand" />
-            <label htmlFor="second-hand">중고</label>
-          </div>
-          <textarea id="description" placeholder="상세 설명" />
+          <S.InputBox>
+            <S.Label htmlFor="title">상품명</S.Label>
+            <input type="text" id="title" placeholder="상품명을 입력해주세요" />
+          </S.InputBox>
+          <S.InputBox>
+            <S.Label htmlFor="category">카테고리</S.Label>
+            <select name="categories" id="category">
+              <option value="">카테고리를 선택해주세요.</option>
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+              <option value="hamster">Hamster</option>
+              <option value="parrot">Parrot</option>
+              <option value="spider">Spider</option>
+              <option value="goldfish">Goldfish</option>
+            </select>
+          </S.InputBox>
+          <S.InputBox>
+            <S.Label>상품 상태</S.Label>
+            <S.Buttons>
+              <S.Button type="button" selected={isNew} onClick={toggleIsNew}>
+                새상품
+              </S.Button>
+              <S.Button type="button" selected={!isNew} onClick={toggleIsNew}>
+                중고
+              </S.Button>
+            </S.Buttons>
+          </S.InputBox>
+          <S.InputBox>
+            <S.Label htmlFor="price">가격</S.Label>
+            <input type="number" id="price" placeholder="가격을 입력해주세요" />
+          </S.InputBox>
+
+          <S.InputBox>
+            <S.Label id="description">상품 설명</S.Label>
+            <textarea
+              id="description"
+              placeholder="상품 설명을 작성해주세요."
+            />
+          </S.InputBox>
         </S.InputContainer>
-        <S.ThumbnailInputContainer>
-          <input type="file" accept="image/*" id="thumbnail" />
-          <label htmlFor="thumbnail">
-            <span>썸네일 지정</span>
-            <div>이미지 선택</div>
-          </label>
-        </S.ThumbnailInputContainer>
       </S.Form>
     </S.Wrap>
   );

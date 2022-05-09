@@ -1,3 +1,4 @@
+import { AdminUser } from 'components';
 export { AppLayout } from './AppLayout/AppLayout';
 export { AppContainer } from './AppLayout/styles';
 
@@ -32,3 +33,5 @@ export { SearchBar } from './Search/SearchBar/SearchBar';
 
 // Admin
 export { AdminNav } from './Admin/AdminNav/AdminNav';
+export { AdminContents } from './Admin/AdminContents/AdminContents';
+export { AdminUser } from './Admin/AdminUser/AdminUser';

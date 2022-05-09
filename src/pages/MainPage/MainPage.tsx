@@ -13,7 +13,7 @@ import { IVideoWithUser } from 'data/types';
 import { Loading } from 'components';
 
 export const MainPage = () => {
-  const { videoId } = useParams();
+  const { videoId = 6 } = useParams();
   const { data: videoData } = useSWR<IVideoWithUser>(
     VIDEO_ITEM_API(Number(videoId)),
     fetcher

@@ -8,7 +8,8 @@ import {
   MainPage,
   ProfilePage,
   SearchPage,
-  VideoUploadPage
+  VideoUploadPage,
+  OnBoardingPage
 } from 'pages';
 import { ThemeProvider } from 'styled-components';
 import defaultTheme from 'styles/DefaultTheme';
@@ -26,6 +27,7 @@ function App() {
             <Route path="chats" element={<ChatListPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="/video/:videoId" element={<MainPage />} />
+            <Route path="onboard" element={<OnBoardingPage />} />
           </Route>
           <Route path="/chat/:id" element={<ChatRoomPage />} />
           {/* <Route path="/login" element={} /> */}

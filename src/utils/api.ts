@@ -4,3 +4,8 @@ const BASE_URL = 'http://localhost:8080';
 export const CHAT_LIST_API = `${BASE_URL}/v1/users/chatting`;
 export const CHAT_ROOM_API = (chat_room_id: number) =>
   `${BASE_URL}/v1/users/chatting/${chat_room_id}`;
+
+// Profile Page 
+// my -> :userId로 대체 
+export const MY_VIDEOS_API = `${BASE_URL}/v1/users/my/videos`;
+export const MY_LIKES_API = `${BASE_URL}/v1/users/my/likes`;

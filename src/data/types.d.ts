@@ -31,3 +31,17 @@ export interface IVideo {
   video_url: string;
   view_count: number;
 }
+
+export interface IVideoWithUser {
+  id: number;
+  category: string;
+  title: string;
+  description: string;
+  thumbnail_url: string;
+  video_url: string;
+  view_count: number;
+  user: {
+    name: string;
+    profile_image_url: string;
+  };
+}

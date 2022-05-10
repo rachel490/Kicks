@@ -28,7 +28,6 @@ export const SearchPage = () => {
 
   useEffect(() => {
     localStorage.setItem('search-history', JSON.stringify(history));
-    console.log(history, '검색어');
   }, [history]);
 
   return (

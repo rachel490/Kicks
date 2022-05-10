@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import * as S from './styles';
+import { VscClose } from 'react-icons/vsc';
+import { GoSearch } from 'react-icons/go';
 
 interface Props {
   addHistory: (keyword: string) => void;
@@ -35,13 +37,14 @@ export const SearchBar = ({ addHistory, setShowHistory }: Props) => {
             if (e.key === 'Enter') handleSearch();
           }}
         />
-        {input && <S.ResetButton onClick={handleReset}>x</S.ResetButton>}
+        {input && (
+          <S.ResetButton onClick={handleReset}>
+            <VscClose />
+          </S.ResetButton>
+        )}
       </S.InputArea>
       <S.SearchButton onClick={() => handleSearch()}>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/500px-Search_Icon.svg.png"
-          alt="search-icon"
-        />
+        <GoSearch />
       </S.SearchButton>
     </S.SearchBarContainer>
   );

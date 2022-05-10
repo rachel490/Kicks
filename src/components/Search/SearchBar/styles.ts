@@ -29,18 +29,21 @@ export const Input = styled.input`
 `;
 
 export const SearchButton = styled.button`
-  img {
+  svg {
     display: block;
-    width: 30px;
+    width: 20px;
+    height: 20px;
   }
 `;
 
 export const ResetButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 18px;
   height: 18px;
   border-radius: 50%;
   color: #aaa;
-  font-size: 13px;
   background: #ddd;
   cursor: pointer;
 `;

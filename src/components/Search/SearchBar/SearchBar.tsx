@@ -3,9 +3,10 @@ import * as S from './styles';
 
 interface Props {
   addHistory: (keyword: string) => void;
+  setShowHistory: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const SearchBar = ({ addHistory }: Props) => {
+export const SearchBar = ({ addHistory, setShowHistory }: Props) => {
   const [input, setInput] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +30,7 @@ export const SearchBar = ({ addHistory }: Props) => {
           placeholder="검색어를 입력해주세요."
           value={input}
           onChange={handleChange}
+          onClick={() => setShowHistory(true)}
           onKeyDown={e => {
             if (e.key === 'Enter') handleSearch();
           }}

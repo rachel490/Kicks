@@ -13,3 +13,4 @@ export const MY_LIKES_API = `${BASE_URL}/v1/users/my/likes`;
 // Main Page (영상 재생)
 export const VIDEO_ITEM_API = (video_id: number) =>
   `${BASE_URL}/v1/videos/${video_id}`;
+export const VIDEO_LIST_API = `${BASE_URL}/v1/videos`;

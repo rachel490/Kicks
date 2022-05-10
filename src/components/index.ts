@@ -1,3 +1,4 @@
+import { AdminUser } from 'components';
 export { AppLayout } from './AppLayout/AppLayout';
 export { AppContainer } from './AppLayout/styles';
 
@@ -29,6 +30,11 @@ export { MainHeader } from './Main/MainHeader/MainHeader';
 
 // Search
 export { SearchBar } from './Search/SearchBar/SearchBar';
+
+// Admin
+export { AdminNav } from './Admin/AdminNav/AdminNav';
+export { AdminContents } from './Admin/AdminContents/AdminContents';
+export { AdminUser } from './Admin/AdminUser/AdminUser';
 
 // OnBoard
 export { CategoryButton } from './OnBoard/CategoryButton/CategoryButton';

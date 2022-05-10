@@ -1,8 +1,9 @@
 import React from 'react';
 import GlobalStyle from 'styles/GlobalStyle';
 import { Routes, Route } from 'react-router-dom';
-import { AppLayout } from 'components';
+import { AdminContents, AdminUser, AppLayout } from 'components';
 import {
+  AdminPage,
   ChatListPage,
   ChatRoomPage,
   MainPage,
@@ -30,6 +31,10 @@ function App() {
           </Route>
           <Route path="onboard" element={<OnBoardingPage />} />
           <Route path="/chat/:id" element={<ChatRoomPage />} />
+          <Route path="/admin" element={<AdminPage />}>
+            <Route path="contents" element={<AdminContents />} />
+            <Route path="user" element={<AdminUser />} />
+          </Route>
           {/* <Route path="/login" element={} /> */}
         </Routes>
       </ThemeProvider>

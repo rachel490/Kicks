@@ -32,6 +32,7 @@ export const AdminContents = () => {
             <>
               <ContentsItem
                 key={item.id}
+                id={item.id}
                 thumbnail_url={item.thumbnail_url}
                 title={item.title}
                 nickname="Rachel"

@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as S from './styles';
 
 interface Prop {
+  id: number;
   thumbnail_url: string;
   title: string;
   nickname: string;
@@ -9,6 +11,7 @@ interface Prop {
 }
 
 export const ContentsItem = ({
+  id,
   thumbnail_url,
   title,
   nickname,
@@ -20,7 +23,9 @@ export const ContentsItem = ({
       <span className="title">{title}</span>
       <span className="nickname">{nickname}</span>
       <S.Buttons>
-        <button className="editBtn">수정</button>
+        <Link to={`/admin/contents/edit/${id}`}>
+          <button className="editBtn">수정</button>
+        </Link>
         <button className="deleteBtn">삭제</button>
       </S.Buttons>
     </S.Wrap>

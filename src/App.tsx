@@ -1,7 +1,7 @@
 import React from 'react';
 import GlobalStyle from 'styles/GlobalStyle';
 import { Routes, Route } from 'react-router-dom';
-import { AdminContents, AdminUser, AppLayout } from 'components';
+import { AdminContents, AdminUser, AppLayout, ContentsEdit } from 'components';
 import {
   AdminPage,
   ChatListPage,
@@ -31,6 +31,7 @@ function App() {
           <Route path="/chat/:id" element={<ChatRoomPage />} />
           <Route path="/admin" element={<AdminPage />}>
             <Route path="contents" element={<AdminContents />} />
+            <Route path="contents/edit/:videoId" element={<ContentsEdit />} />
             <Route path="user" element={<AdminUser />} />
           </Route>
           {/* <Route path="/login" element={} /> */}

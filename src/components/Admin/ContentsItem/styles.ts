@@ -8,8 +8,8 @@ export const Wrap = styled.div`
 
   img {
     width: 100%;
-    height: 160px;
     object-fit: cover;
+    aspect-ratio: 1/1;
   }
 
   .title {

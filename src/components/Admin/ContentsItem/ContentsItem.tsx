@@ -5,11 +5,17 @@ interface Prop {
   thumbnail_url: string;
   title: string;
   nickname: string;
+  column: string;
 }
 
-export const ContentsItem = ({ thumbnail_url, title, nickname }: Prop) => {
+export const ContentsItem = ({
+  thumbnail_url,
+  title,
+  nickname,
+  column
+}: Prop) => {
   return (
-    <S.Wrap>
+    <S.Wrap className={`${column}`}>
       <img src={thumbnail_url} alt={title} />
       <span className="title">{title}</span>
       <span className="nickname">{nickname}</span>

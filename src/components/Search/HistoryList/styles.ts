@@ -5,7 +5,7 @@ export const Overlay = styled.div`
   top: ${({ theme }) => theme.style.header_height};
   width: 100%;
   height: calc(100% - ${({ theme }) => theme.style.header_height});
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(213, 213, 213, 0.85);
   z-index: 10;
 `;
 

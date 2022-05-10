@@ -31,6 +31,7 @@ export { MainHeader } from './Main/MainHeader/MainHeader';
 // Search
 export { SearchBar } from './Search/SearchBar/SearchBar';
 export { HistoryList } from './Search/HistoryList/HistoryList';
+export { HorizonVideoList } from './Search/HorizonVideoList/HorizonVideoList';
 
 // Admin
 export { AdminNav } from './Admin/AdminNav/AdminNav';

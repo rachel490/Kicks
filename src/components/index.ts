@@ -30,6 +30,7 @@ export { MainHeader } from './Main/MainHeader/MainHeader';
 
 // Search
 export { SearchBar } from './Search/SearchBar/SearchBar';
+export { HistoryList } from './Search/HistoryList/HistoryList';
 
 // Admin
 export { AdminNav } from './Admin/AdminNav/AdminNav';

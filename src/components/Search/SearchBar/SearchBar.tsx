@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import * as S from './styles';
 
-export const SearchBar = () => {
-  const [input, setInput] = useState('');
+interface Props {
+  addHistory: (keyword: string) => void;
+}
+
+export const SearchBar = ({ addHistory }: Props) => {
+  const [input, setInput] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -10,7 +14,7 @@ export const SearchBar = () => {
 
   const handleSearch = () => {
     if (input) {
-      console.log(input);
+      addHistory(input);
       setInput('');
     }
   };

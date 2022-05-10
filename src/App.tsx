@@ -9,7 +9,8 @@ import {
   MainPage,
   ProfilePage,
   SearchPage,
-  VideoUploadPage
+  VideoUploadPage,
+  OnBoardingPage
 } from 'pages';
 import { ThemeProvider } from 'styled-components';
 import defaultTheme from 'styles/DefaultTheme';
@@ -28,6 +29,7 @@ function App() {
             <Route path="profile" element={<ProfilePage />} />
             <Route path="/video/:videoId" element={<MainPage />} />
           </Route>
+          <Route path="onboard" element={<OnBoardingPage />} />
           <Route path="/chat/:id" element={<ChatRoomPage />} />
           <Route path="/admin" element={<AdminPage />}>
             <Route path="contents" element={<AdminContents />} />

@@ -14,6 +14,8 @@ export const MY_LIKES_API = `${BASE_URL}/v1/users/my/likes`;
 export const VIDEO_ITEM_API = (video_id: number) =>
   `${BASE_URL}/v1/videos/${video_id}`;
 
+export const VIDEO_LIST_API = `${BASE_URL}/v1/videos`;
+
 // Search Page
 export const RECOMMENDED_VIDEO_API = `${BASE_URL}/v1/videos`;
 export const POPULAR_VIDEO_API = `${BASE_URL}/v1/videos`;

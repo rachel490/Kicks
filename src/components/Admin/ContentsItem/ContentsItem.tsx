@@ -17,6 +17,10 @@ export const ContentsItem = ({
   nickname,
   column
 }: Prop) => {
+  const handleDelete = () => {
+    alert('정말 삭제하시겠습니까?');
+  };
+
   return (
     <S.Wrap className={`${column}`}>
       <img src={thumbnail_url} alt={title} />
@@ -26,7 +30,9 @@ export const ContentsItem = ({
         <Link to={`/admin/contents/edit/${id}`}>
           <button className="editBtn">수정</button>
         </Link>
-        <button className="deleteBtn">삭제</button>
+        <button className="deleteBtn" onClick={handleDelete}>
+          삭제
+        </button>
       </S.Buttons>
     </S.Wrap>
   );

@@ -34,6 +34,8 @@ export { SearchBar } from './Search/SearchBar/SearchBar';
 // Admin
 export { AdminNav } from './Admin/AdminNav/AdminNav';
 export { AdminContents } from './Admin/AdminContents/AdminContents';
+export { ContentsItem } from './Admin/ContentsItem/ContentsItem';
+export { ContentsEdit } from './Admin/ContentsEdit/ContentsEdit';
 export { AdminUser } from './Admin/AdminUser/AdminUser';
 
 // OnBoard

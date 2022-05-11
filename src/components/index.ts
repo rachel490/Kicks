@@ -8,6 +8,7 @@ export { AdBanner } from './Common/AdBanner/AdBanner';
 export { VideoList } from './Common/VideoList/VideoList';
 export { VideoItem } from './Common/VideoItem/VideoItem';
 export { LoginButton } from './Common/LoginButton/LoginButton';
+export { LoginModal } from './Common/LoginModal/LoginModal';
 
 // Profile
 export { ProfileHeader } from './Profile/ProfileHeader/ProfileHeader';

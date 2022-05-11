@@ -3,7 +3,10 @@ import styled from 'styled-components';
 export const Wrap = styled.div`
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
 `;
 
 export const ProfileNav = styled.div`
@@ -11,7 +14,6 @@ export const ProfileNav = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
 
   button {
     font-size: 17px;
@@ -28,12 +30,4 @@ export const ProfileNav = styled.div`
     color: ${({ theme }) => theme.color.text};
     border-bottom: 2px solid ${({ theme }) => theme.color.text};
   }
-`;
-
-export const VideoContent = styled.ul`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3px;
-  padding: 3px;
 `;

@@ -7,6 +7,7 @@ export { Loading } from './Common/Loading/Loading';
 export { AdBanner } from './Common/AdBanner/AdBanner';
 export { VideoList } from './Common/VideoList/VideoList';
 export { VideoItem } from './Common/VideoItem/VideoItem';
+export { LoginButton } from './Common/LoginButton/LoginButton';
 
 // Profile
 export { ProfileHeader } from './Profile/ProfileHeader/ProfileHeader';

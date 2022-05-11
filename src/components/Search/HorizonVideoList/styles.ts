@@ -19,17 +19,3 @@ export const VideoSection = styled.div`
 export const SectionTitle = styled.h3`
   padding: 10px ${({ theme }) => theme.style.edge_padding};
 `;
-
-export const NoUser = styled.div`
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  a {
-    font-size: 13px;
-    padding: 8px 13px;
-    background-color: ${({ theme }) => theme.color.main};
-    color: ${({ theme }) => theme.color.text_white};
-    border-radius: 20px;
-  }
-`;

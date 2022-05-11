@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const VideoContent = styled.ul`
-  height: 100%;
+  flex: 1;
   & > div > div:first-child {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

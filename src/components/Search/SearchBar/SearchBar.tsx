@@ -6,10 +6,10 @@ import { useNavigate } from 'react-router-dom';
 
 interface Props {
   addHistory: (keyword: string) => void;
-  setShowHistory: React.Dispatch<React.SetStateAction<boolean>>;
+  showHistory: () => void;
 }
 
-export const SearchBar = ({ addHistory, setShowHistory }: Props) => {
+export const SearchBar = ({ addHistory, showHistory }: Props) => {
   const [input, setInput] = useState<string>('');
   const navigate = useNavigate();
 
@@ -17,9 +17,9 @@ export const SearchBar = ({ addHistory, setShowHistory }: Props) => {
     setInput(e.target.value);
   };
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (input) {
-      addHistory(input);
+      await addHistory(input);
       navigate('/searched', { state: input });
       setInput('');
     }
@@ -35,7 +35,7 @@ export const SearchBar = ({ addHistory, setShowHistory }: Props) => {
           placeholder="검색어를 입력해주세요."
           value={input}
           onChange={handleChange}
-          onClick={() => setShowHistory(true)}
+          onClick={showHistory}
           onKeyDown={e => {
             if (e.key === 'Enter') handleSearch();
           }}

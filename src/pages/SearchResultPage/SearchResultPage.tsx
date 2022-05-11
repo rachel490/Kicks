@@ -4,7 +4,7 @@ import useSWR from 'swr';
 import { fetcher } from 'utils/swr';
 import { IVideo } from 'data/types';
 import { POPULAR_VIDEO_API } from 'utils/api';
-import { AdBanner, AppContainer, PageHeader } from 'components';
+import { AdBanner, AppContainer, PageHeader, VideoList } from 'components';
 import { useLocation } from 'react-router-dom';
 
 export const SearchResultPage = () => {
@@ -12,6 +12,7 @@ export const SearchResultPage = () => {
   const location = useLocation();
   const searchedText = (location.state as string) || '';
 
+  const { data: latestVideos } = useSWR<IVideo[]>(POPULAR_VIDEO_API, fetcher);
   const { data: popularVideos } = useSWR<IVideo[]>(POPULAR_VIDEO_API, fetcher);
 
   return (
@@ -29,6 +30,11 @@ export const SearchResultPage = () => {
           </li>
         ))}
       </S.SortByList>
+      {activeIdx ? (
+        <VideoList videos={latestVideos} />
+      ) : (
+        <VideoList videos={popularVideos} />
+      )}
     </AppContainer>
   );
 };

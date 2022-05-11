@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as S from './styles';
 import { VscClose } from 'react-icons/vsc';
 import { GoSearch } from 'react-icons/go';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   addHistory: (keyword: string) => void;
@@ -10,6 +11,7 @@ interface Props {
 
 export const SearchBar = ({ addHistory, setShowHistory }: Props) => {
   const [input, setInput] = useState<string>('');
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -18,6 +20,7 @@ export const SearchBar = ({ addHistory, setShowHistory }: Props) => {
   const handleSearch = () => {
     if (input) {
       addHistory(input);
+      navigate('/searched', { state: input });
       setInput('');
     }
   };

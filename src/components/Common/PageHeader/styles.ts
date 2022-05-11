@@ -24,4 +24,11 @@ export const PageTitle = styled.h2`
   width: 100%;
   text-align: center;
   font-weight: 600;
+  padding-left: 45px;
+  padding-right: 30px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
 `;

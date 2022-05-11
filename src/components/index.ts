@@ -1,4 +1,3 @@
-import { AdminUser } from 'components';
 export { AppLayout } from './AppLayout/AppLayout';
 export { AppContainer } from './AppLayout/styles';
 
@@ -6,6 +5,7 @@ export { AppContainer } from './AppLayout/styles';
 export { PageHeader } from './Common/PageHeader/PageHeader';
 export { Loading } from './Common/Loading/Loading';
 export { AdBanner } from './Common/AdBanner/AdBanner';
+export { VideoList } from './Common/VideoList/VideoList';
 export { VideoItem } from './Common/VideoItem/VideoItem';
 
 // Profile

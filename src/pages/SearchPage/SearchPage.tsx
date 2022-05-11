@@ -5,11 +5,7 @@ import useSWR from 'swr';
 import * as S from './styles';
 import { IVideo } from 'data/types';
 import { POPULAR_VIDEO_API, RECOMMENDED_VIDEO_API } from 'utils/api';
-
-interface HistoryType {
-  id: number;
-  text: string;
-}
+import { HistoryType } from './types';
 
 export const SearchPage = () => {
   const { data: popularVideos } = useSWR<IVideo[]>(POPULAR_VIDEO_API, fetcher);
@@ -18,7 +14,7 @@ export const SearchPage = () => {
     fetcher
   );
 
-  const [showHistory, setShowHistory] = useState(false);
+  const [isOpened, setIsOpend] = useState(false);
   const [history, setHistory] = useState<HistoryType[]>(
     JSON.parse(localStorage.getItem('search-history') || '[]')
   );
@@ -35,6 +31,8 @@ export const SearchPage = () => {
   };
 
   const handleReset = () => setHistory([]);
+  const showHistory = () => setIsOpend(true);
+  const hideHistory = () => setIsOpend(false);
 
   useEffect(() => {
     localStorage.setItem('search-history', JSON.stringify(history));
@@ -42,16 +40,13 @@ export const SearchPage = () => {
 
   return (
     <S.Wrap>
-      <SearchBar
-        addHistory={handleAddHistory}
-        setShowHistory={setShowHistory}
-      />
-      {showHistory && (
+      <SearchBar showHistory={showHistory} addHistory={handleAddHistory} />
+      {isOpened && (
         <HistoryList
           history={history}
+          hideHistory={hideHistory}
           removeHistory={handleRemoveHistory}
           resetHistory={handleReset}
-          setShowHistory={setShowHistory}
         />
       )}
       <AdBanner height="110px" />

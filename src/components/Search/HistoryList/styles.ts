@@ -9,14 +9,10 @@ export const Overlay = styled.div`
   z-index: 10;
 `;
 
-export const HistoryListContainer = styled.ul`
+export const HistoryListContainer = styled.div`
   width: 100%;
-  min-height: 130px;
+  min-height: 170px;
   background: #fff;
-  li {
-    padding: 15px ${({ theme }) => theme.style.edge_padding};
-    border-top: 1px solid #eaeaea;
-  }
 `;
 
 export const Title = styled.h3`
@@ -35,18 +31,36 @@ export const Reset = styled.button`
 `;
 
 export const EmptyHistory = styled.p`
-  line-height: 100px;
+  line-height: 120px;
   font-size: 13px;
   color: #999;
   text-align: center;
 `;
 
-export const HistoryItem = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  border-bottom: 1px solid #eaeaea;
+export const HistoryContent = styled.ul`
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    border-bottom: 1px solid #eaeaea;
+  }
+`;
+
+export const Keyword = styled.span`
+  display: inline-block;
+  flex: 1;
+  padding: 15px ${({ theme }) => theme.style.edge_padding};
+  padding-right: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
   cursor: pointer;
 `;
 
-export const RemoveButton = styled.button``;
+export const RemoveButton = styled.button`
+  padding: 0 15px;
+  svg {
+    display: block;
+  }
+`;

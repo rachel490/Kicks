@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 375px;
   margin: 0 auto;
   height: 100%;

@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import * as S from './styles';
+import { VscClose } from 'react-icons/vsc';
+import { GoSearch } from 'react-icons/go';
 
-export const SearchBar = () => {
-  const [input, setInput] = useState('');
+interface Props {
+  addHistory: (keyword: string) => void;
+  setShowHistory: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const SearchBar = ({ addHistory, setShowHistory }: Props) => {
+  const [input, setInput] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -10,7 +17,7 @@ export const SearchBar = () => {
 
   const handleSearch = () => {
     if (input) {
-      console.log(input);
+      addHistory(input);
       setInput('');
     }
   };
@@ -25,17 +32,19 @@ export const SearchBar = () => {
           placeholder="검색어를 입력해주세요."
           value={input}
           onChange={handleChange}
+          onClick={() => setShowHistory(true)}
           onKeyDown={e => {
             if (e.key === 'Enter') handleSearch();
           }}
         />
-        {input && <S.ResetButton onClick={handleReset}>x</S.ResetButton>}
+        {input && (
+          <S.ResetButton onClick={handleReset}>
+            <VscClose />
+          </S.ResetButton>
+        )}
       </S.InputArea>
       <S.SearchButton onClick={() => handleSearch()}>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/500px-Search_Icon.svg.png"
-          alt="search-icon"
-        />
+        <GoSearch />
       </S.SearchButton>
     </S.SearchBarContainer>
   );

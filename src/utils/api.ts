@@ -1,5 +1,8 @@
 const BASE_URL = 'http://localhost:8080';
 
+// Login Page
+export const KAKAO_LOGIN_API = `https://kauth.kakao.com/oauth/authorize?client_id=d5920e912464567168de709625674543&redirect_uri=http://13.209.18.253:8080/oauth/callback&response_type=code&state=kakao`;
+
 // Chat Page
 export const CHAT_LIST_API = `${BASE_URL}/v1/users/chatting`;
 export const CHAT_ROOM_API = (chat_room_id: number) =>

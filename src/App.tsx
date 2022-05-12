@@ -12,7 +12,8 @@ import {
   SearchPage,
   VideoUploadPage,
   OnBoardingPage,
-  SearchResultPage
+  SearchResultPage,
+  LoginPage
 } from 'pages';
 import { ThemeProvider } from 'styled-components';
 import defaultTheme from 'styles/DefaultTheme';
@@ -30,6 +31,7 @@ function App() {
             <Route path="chats" element={<ChatListPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="/video/:videoId" element={<MainPage />} />
+            <Route path="/login" element={<LoginPage />} />
           </Route>
           <Route path="/onboard" element={<OnBoardingPage />} />
           <Route path="/searched" element={<SearchResultPage />} />
@@ -39,7 +41,6 @@ function App() {
             <Route path="contents/edit/:videoId" element={<ContentsEdit />} />
             <Route path="user" element={<AdminUserPage />} />
           </Route>
-          {/* <Route path="/login" element={} /> */}
         </Routes>
       </ThemeProvider>
     </>

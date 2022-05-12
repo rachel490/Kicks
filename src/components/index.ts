@@ -45,3 +45,7 @@ export { UserDataTable } from './Admin/UserDataTable/UserDataTable';
 
 // OnBoard
 export { CategoryButton } from './OnBoard/CategoryButton/CategoryButton';
+
+// Login
+export { KakaoLogin } from './Login/KakaoLogin/KakaoLogin';
+export { Auth } from './Login/KakaoLogin/Auth';

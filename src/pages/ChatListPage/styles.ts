@@ -5,6 +5,7 @@ export const Wrap = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 export const PageTitle = styled.h3`

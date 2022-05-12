@@ -1,6 +1,7 @@
 import React from 'react';
 import GlobalStyle from 'styles/GlobalStyle';
 import { Routes, Route } from 'react-router-dom';
+
 import {
   AdminContents,
   AdminUser,
@@ -8,8 +9,10 @@ import {
   ContentsEdit,
   Auth
 } from 'components';
+
 import {
-  AdminPage,
+  AdminUserPage,
+  AdminContentPage,
   ChatListPage,
   ChatRoomPage,
   MainPage,
@@ -41,10 +44,10 @@ function App() {
           <Route path="/onboard" element={<OnBoardingPage />} />
           <Route path="/searched" element={<SearchResultPage />} />
           <Route path="/chat/:id" element={<ChatRoomPage />} />
-          <Route path="/admin" element={<AdminPage />}>
-            <Route path="contents" element={<AdminContents />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="contents" element={<AdminContentPage />} />
             <Route path="contents/edit/:videoId" element={<ContentsEdit />} />
-            <Route path="user" element={<AdminUser />} />
+            <Route path="user" element={<AdminUserPage />} />
           </Route>
           {/* <Route
             path="http://13.209.18.253:8080/auth/kakao/callback"

@@ -45,3 +45,11 @@ export interface IVideoWithUser {
     profile_image_url: string;
   };
 }
+
+export interface IUserAdmin {
+  id: number;
+  email: string;
+  nickname: string;
+  data_joined: string;
+  last_login: string;
+}

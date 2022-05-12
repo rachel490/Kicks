@@ -1,15 +1,7 @@
 import React from 'react';
 import GlobalStyle from 'styles/GlobalStyle';
 import { Routes, Route } from 'react-router-dom';
-
-import {
-  AdminContents,
-  AdminUser,
-  AppLayout,
-  ContentsEdit,
-  Auth
-} from 'components';
-
+import { AdminLayout, AppLayout, ContentsEdit } from 'components';
 import {
   AdminUserPage,
   AdminContentPage,
@@ -20,8 +12,7 @@ import {
   SearchPage,
   VideoUploadPage,
   OnBoardingPage,
-  SearchResultPage,
-  LoginPage
+  SearchResultPage
 } from 'pages';
 import { ThemeProvider } from 'styled-components';
 import defaultTheme from 'styles/DefaultTheme';
@@ -34,7 +25,6 @@ function App() {
         <Routes>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<MainPage />} />
-            <Route path="/login" element={<LoginPage />} />
             <Route path="search" element={<SearchPage />} />
             <Route path="upload" element={<VideoUploadPage />} />
             <Route path="chats" element={<ChatListPage />} />
@@ -49,14 +39,7 @@ function App() {
             <Route path="contents/edit/:videoId" element={<ContentsEdit />} />
             <Route path="user" element={<AdminUserPage />} />
           </Route>
-          {/* <Route
-            path="http://13.209.18.253:8080/auth/kakao/callback"
-            element={<Auth />}
-          /> */}
-          <Route
-            path="http://13.209.18.253:8080/oauth/callback"
-            element={<Auth />}
-          ></Route>
+          {/* <Route path="/login" element={} /> */}
         </Routes>
       </ThemeProvider>
     </>

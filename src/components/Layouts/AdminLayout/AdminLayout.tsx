@@ -3,15 +3,13 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import * as S from './styles';
 
-export const AdminPage = () => {
+export const AdminLayout = () => {
   return (
     <S.Wrap>
-      <S.Header>
-				{/* Logo */}
-			</S.Header>
+      <S.Header>{/* Logo */}</S.Header>
       <S.Main>
         <AdminNav />
-				<Outlet />
+        <Outlet />
       </S.Main>
     </S.Wrap>
   );

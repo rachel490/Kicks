@@ -7,7 +7,7 @@ import { IVideo } from 'data/types';
 import { Loading } from 'components';
 import * as S from './styles';
 
-export const AdminContents = () => {
+export const AdminContentPage = () => {
   const { data: videoListData } = useSWR<IVideo[]>(VIDEO_LIST_API, fetcher);
   const [column, setColumn] = useState('five');
 

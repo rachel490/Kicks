@@ -11,6 +11,8 @@ export const Header = styled.div`
 `;
 
 export const Main = styled.div`
+  position: fixed;
   display: flex;
-  height: 100%;
+  width: 100%;
+  height: calc(100vh - 115px);
 `;

@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div`
-  width: 70%;
+  width: 75%;
   height: 100%;
-  padding-left: 20px;
-  padding-bottom: 20px;
+  margin: 0 auto;
 `;
 
 export const PageOption = styled.div`

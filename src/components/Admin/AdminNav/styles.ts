@@ -11,13 +11,11 @@ export const NavTitle = styled.h2`
   text-align: center;
   padding: 25px 0;
   font-weight: bold;
-  a {
-    color: white;
-  }
+  color: white;
 `;
 
 export const MenuItem = styled.p`
-  font-size: 15px;
+  font-size: 16px;
   text-align: right;
   padding-right: 37px;
   margin-bottom: 11px;

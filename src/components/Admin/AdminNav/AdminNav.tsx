@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import * as S from './styles';
 
 export const AdminNav = () => {
@@ -10,9 +10,7 @@ export const AdminNav = () => {
 
   return (
     <S.Nav>
-      <S.NavTitle>
-        <Link to="/admin">Admin</Link>
-      </S.NavTitle>
+      <S.NavTitle>Admin</S.NavTitle>
       {menuList.map((menu, i) => (
         <S.MenuItem key={i}>
           <NavLink

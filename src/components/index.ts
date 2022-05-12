@@ -1,5 +1,7 @@
-export { AppLayout } from './AppLayout/AppLayout';
-export { AppContainer } from './AppLayout/styles';
+// Layouts
+export { AppLayout } from './Layouts/AppLayout/AppLayout';
+export { AppContainer } from './Layouts/AppLayout/styles';
+export { AdminLayout } from './Layouts/AdminLayout/AdminLayout';
 
 // Common
 export { PageHeader } from './Common/PageHeader/PageHeader';
@@ -37,10 +39,9 @@ export { HorizonVideoList } from './Search/HorizonVideoList/HorizonVideoList';
 
 // Admin
 export { AdminNav } from './Admin/AdminNav/AdminNav';
-export { AdminContents } from './Admin/AdminContents/AdminContents';
 export { ContentsItem } from './Admin/ContentsItem/ContentsItem';
 export { ContentsEdit } from './Admin/ContentsEdit/ContentsEdit';
-export { AdminUser } from './Admin/AdminUser/AdminUser';
+export { UserDataTable } from './Admin/UserDataTable/UserDataTable';
 
 // OnBoard
 export { CategoryButton } from './OnBoard/CategoryButton/CategoryButton';

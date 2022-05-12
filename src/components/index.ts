@@ -41,6 +41,7 @@ export { HorizonVideoList } from './Search/HorizonVideoList/HorizonVideoList';
 export { AdminNav } from './Admin/AdminNav/AdminNav';
 export { ContentsItem } from './Admin/ContentsItem/ContentsItem';
 export { ContentsEdit } from './Admin/ContentsEdit/ContentsEdit';
+export { UserDataTable } from './Admin/UserDataTable/UserDataTable';
 
 // OnBoard
 export { CategoryButton } from './OnBoard/CategoryButton/CategoryButton';

@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "email": "dbalchen0@craigslist.org",
+    "nickname": "Dallis",
+    "data_joined": "2022-04-30T09:10:00.000000000",
+    "last_login": "2022-05-12T09:10:00.000000000"
+  },
+  {
+    "id": 2,
+    "email": "jlias1@statcounter.com",
+    "nickname": "Jarred",
+    "data_joined": "2022-05-30T09:10:00.000000000",
+    "last_login": "2022-05-12T09:10:00.000000000"
+  },
+  {
+    "id": 3,
+    "email": "dmcgarrahan2@fema.gov",
+    "nickname": "Doralynne",
+    "data_joined": "2022-02-30T09:10:00.000000000",
+    "last_login": "2022-05-12T09:10:00.000000000"
+  },
+  {
+    "id": 4,
+    "email": "tbelk3@ycombinator.com",
+    "nickname": "Thatch",
+    "data_joined": "2022-04-30T09:10:00.000000000",
+    "last_login": "2022-05-12T09:10:00.000000000"
+  },
+  {
+    "id": 5,
+    "email": "dledwitch4@paginegialle.it",
+    "nickname": "Dwain",
+    "data_joined": "2022-04-30T09:10:00.000000000",
+    "last_login": "2022-05-12T09:10:00.000000000"
+  },
+  {
+    "id": 1,
+    "email": "dbalchen0@craigslist.org",
+    "nickname": "Dallis",
+    "data_joined": "2022-04-30T09:10:00.000000000",
+    "last_login": "2022-05-12T09:10:00.000000000"
+  },
+  {
+    "id": 2,
+    "email": "jlias1@statcounter.com",
+    "nickname": "Jarred",
+    "data_joined": "2022-05-30T09:10:00.000000000",
+    "last_login": "2022-05-12T09:10:00.000000000"
+  },
+  {
+    "id": 3,
+    "email": "dmcgarrahan2@fema.gov",
+    "nickname": "Doralynne",
+    "data_joined": "2022-02-30T09:10:00.000000000",
+    "last_login": "2022-05-12T09:10:00.000000000"
+  },
+  {
+    "id": 4,
+    "email": "tbelk3@ycombinator.com",
+    "nickname": "Thatch",
+    "data_joined": "2022-04-30T09:10:00.000000000",
+    "last_login": "2022-05-12T09:10:00.000000000"
+  },
+  {
+    "id": 5,
+    "email": "dledwitch4@paginegialle.it",
+    "nickname": "Dwain",
+    "data_joined": "2022-04-30T09:10:00.000000000",
+    "last_login": "2022-05-12T09:10:00.000000000"
+  }
+]

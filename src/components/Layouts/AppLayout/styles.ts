@@ -10,31 +10,30 @@ export const AppContainer = styled.div`
 `;
 
 export const MainNavigation = styled.ul`
+  min-height: 70px;
   display: flex;
   justify-content: space-around;
+  border-top: 1px solid #86878b;
 `;
 
 export const MenuItem = styled.li`
   width: 100%;
-  & + & {
-    border-left: ${({ theme }) => theme.style.border_light};
-  }
+  height: 100%;
 
   a {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
-    height: 70px;
-    line-height: 70px;
-    font-size: 16px;
-    color: ${({ theme }) => theme.color.text};
+    font-size: 11px;
     text-align: center;
-    background-color: ${({ theme }) => theme.color.nav_bg};
-    &.active {
-      background-color: ${({ theme }) => theme.color.nav_active_bg};
-    }
-    &:focus {
-      color: ${({ theme }) => theme.color.text};
+
+    .icon {
+      width: 22px;
+      height: 22px;
+      margin-bottom: 8px;
     }
   }
 `;

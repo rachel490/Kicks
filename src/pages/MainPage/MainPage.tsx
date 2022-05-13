@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   PlayerMenu,
   VideoPlayer,
@@ -19,16 +20,20 @@ export const MainPage = () => {
     fetcher
   );
 
+  const [isShown, setIsShown] = useState(true);
+
   return (
     <S.Wrap>
       {videoData ? (
         <>
-          <MainHeader />
+          <MainHeader isShown={isShown} />
           <VideoPlayer video_url={videoData.video_url} />
-          <PlayerMenu profile_image_url={videoData.user.profile_image_url} />
+          <PlayerMenu profile_image_url={videoData.user.profile_image_url} isShown={isShown}/>
           <DescriptionBox
             title={videoData.title}
             description={videoData.description}
+            isShown={isShown}
+            setIsShown={setIsShown}
           />
         </>
       ) : (

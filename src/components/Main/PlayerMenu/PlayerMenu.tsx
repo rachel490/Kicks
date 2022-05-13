@@ -6,12 +6,14 @@ import { ReactComponent as ChatIcon } from 'assets/svg/chat.svg';
 import { ReactComponent as MoreIcon } from 'assets/svg/more.svg';
 
 export const PlayerMenu = ({
-  profile_image_url
+  profile_image_url,
+  isShown
 }: {
   profile_image_url: string;
+  isShown: boolean;
 }) => {
   return (
-    <S.Wrap>
+    <S.Wrap isShown={isShown}>
       <S.Nav>
         <S.Button>
           <img src={profile_image_url} alt="profile" />

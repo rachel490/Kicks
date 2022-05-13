@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const Header = styled.div`
+export const Header = styled.div<{ isShown: boolean }>`
   position: relative;
+  display: ${props => (props.isShown ? 'block' : 'none')};
 `;
 
 export const Category = styled.div`

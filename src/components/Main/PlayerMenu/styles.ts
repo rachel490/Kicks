@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const Wrap = styled.div`
-  display: flex;
+export const Wrap = styled.div<{ isShown: boolean }>`
+  display: ${props => (props.isShown ? 'flex' : 'none')};
   justify-content: flex-end;
   width: 100%;
-`
+`;
 
 export const Nav = styled.nav`
   position: absolute;

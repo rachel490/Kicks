@@ -17,7 +17,7 @@ export const Category = styled.div`
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 0 5px;
 
   button {

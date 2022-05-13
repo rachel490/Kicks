@@ -48,7 +48,7 @@ export const UserDataTable = ({ userData }: Props) => {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell: any) => {
-                const currentRow = row.original.id;
+                const userId = row.original.id;
                 const isStatus = cell.column.id === 'status';
                 const isDate =
                   cell.column.id === 'data_joined' ||
@@ -62,7 +62,10 @@ export const UserDataTable = ({ userData }: Props) => {
                     {isStatus && (
                       <S.StatusButton>
                         <button>
-                          <Link to={`/admin/users/dashboard/${currentRow}`}>
+                          <Link
+                            to={`/admin/users/dashboard/${userId}`}
+                            state={[row.original]}
+                          >
                             대쉬보드
                           </Link>
                         </button>

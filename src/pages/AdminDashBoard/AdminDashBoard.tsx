@@ -6,6 +6,7 @@ import { COLUMNS } from 'components/Admin/UserDataTable/columns';
 import { Wrap } from 'pages/AdminUserPage/styles';
 import { TableHead, TableBody } from 'components/Admin/UserDataTable/styles';
 import { IUserAdmin, IVideo } from 'data/types';
+import { VideoDataTable } from 'components';
 import { VIDEO_LIST_API } from 'utils/api';
 import useSWR from 'swr';
 import { fetcher } from 'utils/swr';
@@ -58,6 +59,7 @@ export const AdminDashBoard = () => {
       </S.UserTable>
 
       <S.ContentTitle>{data[0].nickname}님이 업로드한 영상</S.ContentTitle>
+      <VideoDataTable videoData={videoData ? videoData : []} />
     </Wrap>
   );
 };

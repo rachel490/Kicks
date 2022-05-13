@@ -42,6 +42,7 @@ export { AdminNav } from './Admin/AdminNav/AdminNav';
 export { ContentsItem } from './Admin/ContentsItem/ContentsItem';
 export { ContentsEdit } from './Admin/ContentsEdit/ContentsEdit';
 export { UserDataTable } from './Admin/UserDataTable/UserDataTable';
+export { UserDashBoard } from './Admin/UserDashBoard/UserDashBoard';
 
 // OnBoard
 export { CategoryButton } from './OnBoard/CategoryButton/CategoryButton';

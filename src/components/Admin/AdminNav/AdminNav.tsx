@@ -4,7 +4,7 @@ import * as S from './styles';
 
 export const AdminNav = () => {
   const menuList = [
-    { name: '유저', linkTo: '/admin/user' },
+    { name: '유저', linkTo: '/admin/users' },
     { name: '메인 콘텐츠', linkTo: '/admin/contents' }
   ];
 

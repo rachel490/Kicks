@@ -6,6 +6,7 @@ import {
   AppLayout,
   ContentsEdit,
   KakaoRedirectHandler
+  UserDashBoard
 } from 'components';
 import {
   AdminUserPage,
@@ -45,7 +46,8 @@ function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="contents" element={<AdminContentPage />} />
             <Route path="contents/edit/:videoId" element={<ContentsEdit />} />
-            <Route path="user" element={<AdminUserPage />} />
+            <Route path="users" element={<AdminUserPage />} />
+            <Route path="users/dashboard/:userId" element={<UserDashBoard />} />
           </Route>
         </Routes>
       </ThemeProvider>

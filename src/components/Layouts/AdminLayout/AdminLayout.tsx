@@ -9,7 +9,7 @@ export const AdminLayout = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === '/admin') navigate('/admin/user');
+    if (location.pathname === '/admin') navigate('/admin/users');
   }, [location, navigate]);
 
   return (

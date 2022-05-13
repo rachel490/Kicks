@@ -27,6 +27,30 @@ export const TableBody = styled.tbody`
     }
   }
   td {
+    vertical-align: middle;
     padding: 20px 5px;
+  }
+`;
+
+export const StatusButton = styled.div`
+  button {
+    display: block;
+    margin: 0 auto;
+    padding: 2px 20px;
+    font-size: 12px;
+    & + button {
+      margin-top: 4px;
+    }
+    &:first-of-type {
+      background-color: #000b72;
+    }
+    &:last-of-type {
+      background-color: #690000;
+    }
+  }
+  button,
+  a,
+  a:focus {
+    color: ${({ theme }) => theme.color.text_white};
   }
 `;

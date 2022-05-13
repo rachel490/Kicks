@@ -27,8 +27,11 @@ export const MainPage = () => {
       {videoData ? (
         <>
           <MainHeader isShown={isShown} />
-          <VideoPlayer video_url={videoData.video_url} />
-          <PlayerMenu profile_image_url={videoData.user.profile_image_url} isShown={isShown}/>
+          <VideoPlayer video_url={videoData.video_url} isShown={isShown} setIsShown={setIsShown} />
+          <PlayerMenu
+            profile_image_url={videoData.user.profile_image_url}
+            isShown={isShown}
+          />
           <DescriptionBox
             title={videoData.title}
             description={videoData.description}

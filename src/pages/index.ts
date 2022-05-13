@@ -8,4 +8,5 @@ export { ProfilePage } from './ProfilePage/ProfilePage';
 export { OnBoardingPage } from './OnBoardingPage/OnBoardingPage';
 export { AdminUserPage } from './AdminUserPage/AdminUserPage';
 export { AdminContentPage } from './AdminContentPage/AdminContentPage';
+export { AdminDashBoard } from './AdminDashBoard/AdminDashBoard';
 export { LoginPage } from './LoginPage/LoginPage';

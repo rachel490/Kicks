@@ -10,6 +10,7 @@ import {
 import {
   AdminUserPage,
   AdminContentPage,
+  AdminDashBoard,
   ChatListPage,
   ChatRoomPage,
   MainPage,
@@ -45,7 +46,11 @@ function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="contents" element={<AdminContentPage />} />
             <Route path="contents/edit/:videoId" element={<ContentsEdit />} />
-            <Route path="user" element={<AdminUserPage />} />
+            <Route path="users" element={<AdminUserPage />} />
+            <Route
+              path="users/dashboard/:userId"
+              element={<AdminDashBoard />}
+            />
           </Route>
         </Routes>
       </ThemeProvider>

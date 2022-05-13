@@ -48,4 +48,4 @@ export { CategoryButton } from './OnBoard/CategoryButton/CategoryButton';
 
 // Login
 export { KakaoLogin } from './Login/KakaoLogin/KakaoLogin';
-export { Auth } from './Login/KakaoLogin/Auth';
+export { KakaoRedirectHandler } from './Login/KakaoLogin/KakaoRedirectHandler';

@@ -1,7 +1,12 @@
 import React from 'react';
 import GlobalStyle from 'styles/GlobalStyle';
 import { Routes, Route } from 'react-router-dom';
-import { AdminLayout, AppLayout, ContentsEdit } from 'components';
+import {
+  AdminLayout,
+  AppLayout,
+  ContentsEdit,
+  KakaoRedirectHandler
+} from 'components';
 import {
   AdminUserPage,
   AdminContentPage,
@@ -32,6 +37,7 @@ function App() {
             <Route path="profile" element={<ProfilePage />} />
             <Route path="/video/:videoId" element={<MainPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/oauth/callback" element={<KakaoRedirectHandler />} />
           </Route>
           <Route path="/onboard" element={<OnBoardingPage />} />
           <Route path="/searched" element={<SearchResultPage />} />

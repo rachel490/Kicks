@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const Header = styled.div`
+export const Header = styled.div<{ isShown: boolean }>`
   position: relative;
+  display: ${props => (props.isShown ? 'block' : 'none')};
 `;
 
 export const Category = styled.div`
@@ -17,7 +18,7 @@ export const Category = styled.div`
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 0 5px;
 
   button {

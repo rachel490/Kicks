@@ -2,7 +2,13 @@ import React, { useState, useRef } from 'react';
 import * as S from './styles';
 import { IoPlayCircle, IoPauseCircle } from 'react-icons/io5';
 
-export const VideoPlayer = ({ video_url }: { video_url: string }) => {
+interface Prop {
+  video_url: string;
+  isShown: boolean;
+  setIsShown: Function;
+}
+
+export const VideoPlayer = ({ video_url, isShown, setIsShown }: Prop) => {
   const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef<any>(null);
 
@@ -22,8 +28,14 @@ export const VideoPlayer = ({ video_url }: { video_url: string }) => {
     }
   };
 
+  const handleClick = () => {
+    if (isShown === false) {
+      setIsShown(true);
+    }
+  };
+
   return (
-    <S.Wrap>
+    <S.Wrap onClick={handleClick}>
       <S.Video
         loop
         autoPlay

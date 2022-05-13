@@ -28,12 +28,18 @@ export const MenuItem = styled.li`
     width: 100%;
     height: 100%;
     font-size: 11px;
+    font-weight: 600;
     text-align: center;
+    opacity: 0.6;
 
     .icon {
       width: 22px;
       height: 22px;
       margin-bottom: 8px;
+    }
+
+    &.active {
+      opacity: 1;
     }
   }
 `;

@@ -26,7 +26,7 @@ export const AppLayout = () => {
               to={menu.linkTo}
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
-              <div className={`icon ${menu.name}`}>{menu.component}</div>
+              <div className="icon">{menu.component}</div>
               <span>{menu.name}</span>
             </NavLink>
           </S.MenuItem>

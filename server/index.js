@@ -19,7 +19,9 @@ server.use(
     '/v1/videos': '/videos',
     '/v1/videos/:id': '/video/:id',
     '/v1/users/my/videos': '/myVideos',
-    '/v1/users/my/likes': '/myLikes'
+    '/v1/users/my/likes': '/myLikes',
+    '/v1/users/following/from': '/following',
+    '/v1/users/following/to': '/follower'
   })
 );
 

@@ -1,5 +1,5 @@
 import { Loading } from 'components';
-import { IVideoWithUser } from 'data/types';
+import { IVideoItem } from 'data/types';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
@@ -9,7 +9,7 @@ import * as S from './styles';
 
 export const ContentsEdit = () => {
   const { videoId } = useParams();
-  const { data: videoData } = useSWR<IVideoWithUser>(
+  const { data: videoData } = useSWR<IVideoItem>(
     VIDEO_ITEM_API(Number(videoId)),
     fetcher
   );

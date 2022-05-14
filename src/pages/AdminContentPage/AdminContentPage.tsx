@@ -3,13 +3,16 @@ import { ContentsItem } from 'components';
 import useSWR from 'swr';
 import { fetcher } from 'utils/swr';
 import { VIDEO_LIST_API } from 'utils/api';
-import { IVideo } from 'data/types';
+import { IVideoListItem } from 'data/types';
 import { Loading } from 'components';
 import * as S from './styles';
 import { Wrap, PageOption } from 'pages/AdminUserPage/styles';
 
 export const AdminContentPage = () => {
-  const { data: videoListData } = useSWR<IVideo[]>(VIDEO_LIST_API, fetcher);
+  const { data: videoListData } = useSWR<IVideoListItem[]>(
+    VIDEO_LIST_API,
+    fetcher
+  );
   const [column, setColumn] = useState('five');
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -36,7 +39,7 @@ export const AdminContentPage = () => {
               key={item.id}
               id={item.id}
               thumbnail_url={item.thumbnail_url}
-              title={item.title}
+              title="sneakers"
               nickname="Rachel"
               column={column}
             />

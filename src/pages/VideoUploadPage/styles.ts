@@ -12,7 +12,16 @@ export const Form = styled.form`
 `;
 
 export const FileInputContainer = styled.div`
-  margin-bottom: 34px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 13px;
+  margin-bottom: 20px;
+`;
+
+export const FileInputBox = styled.div`
+  text-align: center;
+  font-size: 12px;
 
   input {
     display: none;
@@ -20,20 +29,21 @@ export const FileInputContainer = styled.div`
 
   label {
     cursor: pointer;
-    width: 90px;
-    height: 90px;
-    border: 1px dashed black;
-    border-radius: 8px;
+    width: 132px;
+    height: 132px;
+    border: 2px dashed #d1d1d1;
+    border-radius: 2px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 30px 0;
+    margin-bottom: 6px;
 
     &:hover {
-      border-color: #fe2c55;
-      background-color: rgba(0, 0, 0, 0.03);
+      border-color: #c13128;
+      background-color: rgba(0, 0, 0, 0.02);
     }
   }
 `;

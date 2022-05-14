@@ -2,6 +2,8 @@ import { PageHeader } from 'components';
 import * as S from './styles';
 import { FaPlus } from 'react-icons/fa';
 import React, { useState } from 'react';
+import {ReactComponent as VideoUploadIcon} from 'assets/svg/video.svg';
+import {ReactComponent as ThumbnailUploadIcon} from 'assets/svg/thumbnail.svg';
 
 export const VideoUploadPage = () => {
   const validateVideo = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,15 +26,25 @@ export const VideoUploadPage = () => {
       <PageHeader title="상품 등록" backTo="/" />
       <S.Form onSubmit={e => e.preventDefault()}>
         <S.FileInputContainer>
-          <input
-            type="file"
-            accept="video/*"
-            id="videoUpload"
-            onChange={validateVideo}
-          />
-          <label htmlFor="videoUpload">
-            <FaPlus />
-          </label>
+          <S.FileInputBox>
+            <input
+              type="file"
+              accept="video/*"
+              id="videoUpload"
+              onChange={validateVideo}
+            />
+            <label htmlFor="videoUpload">
+              <VideoUploadIcon />
+            </label>
+            <p>영상</p>
+          </S.FileInputBox>
+          <S.FileInputBox>
+            <input type="file" accept="img/*" id="thumbnailUpload" />
+            <label htmlFor="thumbnailUpload">
+              <ThumbnailUploadIcon />
+            </label>
+            <p>썸네일</p>
+          </S.FileInputBox>
         </S.FileInputContainer>
         <S.InputContainer>
           <S.InputBox>

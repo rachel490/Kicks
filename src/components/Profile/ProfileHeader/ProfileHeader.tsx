@@ -1,9 +1,11 @@
 import React from 'react';
 import * as S from './styles';
 import { profileStatData } from '../../../data';
+import { Link } from 'react-router-dom';
 
 export const ProfileHeader = () => {
   const { videos, following, followers } = profileStatData;
+  const userName = 'rachel_the_it';
 
   return (
     <S.ProfileHeader>
@@ -13,7 +15,7 @@ export const ProfileHeader = () => {
         className="profile-img"
       />
       <div className="profile-username">
-        <span>@rachel_the_it</span>
+        <span>@{userName}</span>
       </div>
       <S.ProfileStats>
         <li>
@@ -21,12 +23,16 @@ export const ProfileHeader = () => {
           <span className="profile-stat-name">Videos</span>
         </li>
         <li>
-          <strong className="profile-stat-value">{following}</strong>
-          <span className="profile-stat-name">Following</span>
+          <Link to="following" state={{ user: userName }}>
+            <strong className="profile-stat-value">{following}</strong>
+            <span className="profile-stat-name">Following</span>
+          </Link>
         </li>
         <li>
-          <strong className="profile-stat-value">{followers}</strong>
-          <span className="profile-stat-name">Followers</span>
+          <Link to="follower" state={{ user: userName }}>
+            <strong className="profile-stat-value">{followers}</strong>
+            <span className="profile-stat-name">Followers</span>
+          </Link>
         </li>
       </S.ProfileStats>
       <button className="profile-edit-btn">Edit Profile</button>

@@ -22,25 +22,23 @@ export interface IChat {
   send_at: LocalDateTime;
 }
 
-export interface IVideo {
+export interface IVideoListItem {
   id: number;
-  category: string;
-  title: string;
-  description: string;
   thumbnail_url: string;
-  video_url: string;
-  view_count: number;
 }
 
-export interface IVideoWithUser {
+export interface IVideoItem {
   id: number;
+  video_url: string;
+  thumbnail_url: string;
   category: string;
   title: string;
   description: string;
-  thumbnail_url: string;
-  video_url: string;
+  price: number;
+  usedStatus: boolean;
   view_count: number;
   user: {
+    id: number;
     name: string;
     profile_image_url: string;
   };

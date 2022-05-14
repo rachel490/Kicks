@@ -9,6 +9,8 @@ import {
   Category,
   Condition
 } from 'components';
+import { UPLOAD_VIDEO_API } from 'utils/api';
+import axios from 'axios';
 
 export const VideoUploadPage = () => {
   const [video, setVideo] = useState<any>();
@@ -33,7 +35,7 @@ export const VideoUploadPage = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     const formData = new FormData();
     formData.append('video', video);
     formData.append('thumbnail', img);
@@ -47,6 +49,16 @@ export const VideoUploadPage = () => {
     // for (let key of formData.keys()) {
     //   console.log(key);
     // }
+
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
+      }
+    };
+
+    axios.post(UPLOAD_VIDEO_API, formData, config);
+
   };
 
   return (

@@ -21,3 +21,6 @@ export const VIDEO_LIST_API = `${BASE_URL}/v1/videos`;
 // Search Page
 export const RECOMMENDED_VIDEO_API = `${BASE_URL}/v1/videos`;
 export const POPULAR_VIDEO_API = `${BASE_URL}/v1/videos`;
+
+// Upload Page
+export const UPLOAD_VIDEO_API = `${BASE_URL}/v1/videos`;

@@ -10,12 +10,12 @@ import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 import { VIDEO_ITEM_API } from 'utils/api';
 import { fetcher } from 'utils/swr';
-import { IVideoWithUser } from 'data/types';
+import { IVideoItem } from 'data/types';
 import { Loading } from 'components';
 
 export const MainPage = () => {
   const { videoId = 6 } = useParams();
-  const { data: videoData } = useSWR<IVideoWithUser>(
+  const { data: videoData } = useSWR<IVideoItem>(
     VIDEO_ITEM_API(Number(videoId)),
     fetcher
   );

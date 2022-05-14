@@ -2,11 +2,11 @@ import React, { useMemo } from 'react';
 import { usePagination, useTable } from 'react-table';
 import * as S from './styles';
 import { TableHead, TableBody } from 'components/Admin/UserDataTable/styles';
-import { IVideo } from 'data/types';
+import { IVideoItem } from 'data/types';
 import { VIDEO_COLUMNS } from './columns';
 
 interface Props {
-  videoData: IVideo[];
+  videoData: IVideoItem[];
 }
 
 export const VideoDataTable = ({ videoData }: Props) => {

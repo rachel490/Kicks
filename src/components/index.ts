@@ -31,6 +31,7 @@ export { VideoPlayer } from './Main/VideoPlayer/VideoPlayer';
 export { PlayerMenu } from './Main/PlayerMenu/PlayerMenu';
 export { DescriptionBox } from './Main/DescriptionBox/DescriptionBox';
 export { MainHeader } from './Main/MainHeader/MainHeader';
+export { ContentsWrap } from './Main/ContentsWrap/ContentsWrap';
 
 // Search
 export { SearchBar } from './Search/SearchBar/SearchBar';

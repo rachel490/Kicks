@@ -22,6 +22,11 @@ export interface IChat {
   send_at: LocalDateTime;
 }
 
+export interface IVideoList {
+  id: number;
+  thumbnail_url: string;
+}
+
 export interface IVideo {
   id: number;
   category: string;

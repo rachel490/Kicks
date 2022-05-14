@@ -23,13 +23,13 @@ export const ProfileHeader = () => {
           <span className="profile-stat-name">Videos</span>
         </li>
         <li>
-          <Link to="following" state={{ user: userName }}>
+          <Link to={following ? 'following' : '#'} state={{ user: userName }}>
             <strong className="profile-stat-value">{following}</strong>
             <span className="profile-stat-name">Following</span>
           </Link>
         </li>
         <li>
-          <Link to="follower" state={{ user: userName }}>
+          <Link to={followers ? 'follower' : '#'} state={{ user: userName }}>
             <strong className="profile-stat-value">{followers}</strong>
             <span className="profile-stat-name">Followers</span>
           </Link>

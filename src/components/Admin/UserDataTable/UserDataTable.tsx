@@ -4,6 +4,7 @@ import { usePagination, useTable } from 'react-table';
 import dayjs from 'dayjs';
 import * as S from './styles';
 import { IUserAdmin } from 'data/types';
+import { Link } from 'react-router-dom';
 
 interface Props {
   userData: IUserAdmin[];
@@ -23,6 +24,12 @@ export const UserDataTable = ({ userData }: Props) => {
       usePagination
     );
 
+  const handleDeleteUser = () => {
+    if (window.confirm('정말 탈퇴처리 하시겠습니까?')) {
+      alert('탈퇴 처리 되었습니다.');
+    }
+  };
+
   return (
     <S.Table {...getTableProps()}>
       <S.TableHead>
@@ -41,14 +48,30 @@ export const UserDataTable = ({ userData }: Props) => {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell: any) => {
+                const userId = row.original.id;
+                const isStatus = cell.column.id === 'status';
                 const isDate =
-                  cell.getCellProps().key.includes('data_joined') ||
-                  cell.getCellProps().key.includes('last_login');
+                  cell.column.id === 'data_joined' ||
+                  cell.column.id === 'last_login';
+
                 return (
                   <td {...cell.getCellProps()}>
                     {isDate
                       ? dayjs(cell.value).format('YYYY-MM-DD HH:mm:ss')
                       : cell.value}
+                    {isStatus && (
+                      <S.StatusButton>
+                        <button>
+                          <Link
+                            to={`/admin/users/dashboard/${userId}`}
+                            state={[row.original]}
+                          >
+                            대쉬보드
+                          </Link>
+                        </button>
+                        <button onClick={handleDeleteUser}>탈퇴하기</button>
+                      </S.StatusButton>
+                    )}
                   </td>
                 );
               })}

@@ -18,5 +18,9 @@ export const COLUMNS = [
   {
     Header: 'Last Log-in',
     accessor: 'last_login'
+  },
+  {
+    Header: 'Status',
+    accessor: 'status'
   }
 ];

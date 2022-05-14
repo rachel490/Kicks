@@ -52,9 +52,9 @@ export const SearchPage = () => {
           resetHistory={handleReset}
         />
       )}
-      <AdBanner height="110px" />
-      <HorizonVideoList title="추천" videos={recommendedVideos} />
-      <HorizonVideoList title="인기" videos={popularVideos} />
+      <AdBanner height="140px" />
+      <HorizonVideoList title="조회수 Best10" videos={recommendedVideos} />
+      <HorizonVideoList title="좋아요 Best10" videos={popularVideos} />
     </S.Wrap>
   );
 };

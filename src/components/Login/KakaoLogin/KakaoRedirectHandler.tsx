@@ -1,37 +1,54 @@
 import React, { useEffect } from 'react';
-import { Loading } from 'components';
 import axios from 'axios';
+import { Loading } from 'components';
+import { TOKEN_API } from 'utils/api';
+import { useNavigate } from 'react-router-dom';
 
 export const KakaoRedirectHandler = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const loginWithKakao = async () => {
+      const geJWTToken = async (authorizationCode: string) => {
+        await axios
+          //서버에 인가코드 전송
+          .post(TOKEN_API, {
+            code: authorizationCode
+          })
+          // 서버에서 발행한 자체 JWT 토큰 받기
+          .then(res => {
+            // console.log(res.data);
+
+            if (res.data.message !== '로그인 성공') {
+              alert('로그인에 성공하지 못했습니다.');
+            }
+
+            const { name, email, token } = res.data.data;
+            const accessToken = token.accessToken;
+            const refreshToken = token.refreshToken;
+            // let refreshToken = res.headers['refresh-token'];
+            localStorage.setItem('name', name);
+            localStorage.setItem('email', email);
+            localStorage.setItem('AC_Token', accessToken);
+            localStorage.setItem('RF_Token', refreshToken);
+
+            alert('로그인에 성공하였습니다.');
+            navigate('/');
+          });
+      };
+
       //리다이렉트 페이지에서 인가코드 분리
       const url = new URL(window.location.href);
       const authorizationCode = url.searchParams.get('code');
       // console.log('인증 코드', authorizationCode);
+
       if (authorizationCode) {
         await geJWTToken(authorizationCode);
       }
     };
 
     loginWithKakao();
+  }, [navigate]);
 
-    const geJWTToken = async (authorizationCode: any) => {
-      let tokenData = await axios
-        //서버에 인가코드 전송
-        .post('http://localhost:4000/users/kakao', {
-          authorizationCode
-        })
-        // 서버에서 발행한 자체 JWT 토큰 받기
-        .then(res => {
-          // console.log(res.data);
-          let accessToken = res.data.accessToken;
-          let refreshToken = res.headers['refresh-token'];
-          localStorage.setItem('CC_Token', accessToken);
-          localStorage.setItem('RF_Token', refreshToken);
-        });
-    };
-  }, []);
-  
   return <Loading />;
 };

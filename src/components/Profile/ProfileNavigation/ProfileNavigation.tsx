@@ -3,12 +3,18 @@ import * as S from './styles';
 import useSWR from 'swr';
 import { MY_LIKES_API, MY_VIDEOS_API } from 'utils/api';
 import { fetcher } from 'utils/swr';
-import { IVideo } from 'data/types';
+import { IVideoListItem } from 'data/types';
 import { VideoList } from 'components';
 
 export const ProfileNavigation = () => {
-  const { data: likedVideoData } = useSWR<IVideo[]>(MY_LIKES_API, fetcher);
-  const { data: uploadedVideoData } = useSWR<IVideo[]>(MY_VIDEOS_API, fetcher);
+  const { data: likedVideoData } = useSWR<IVideoListItem[]>(
+    MY_LIKES_API,
+    fetcher
+  );
+  const { data: uploadedVideoData } = useSWR<IVideoListItem[]>(
+    MY_VIDEOS_API,
+    fetcher
+  );
 
   const [selectedMenu, setSelectedMenu] = useState<String>('uploaded');
 

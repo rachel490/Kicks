@@ -7,11 +7,13 @@ export const VideoSection = styled.div`
   .video-container {
     display: flex;
     padding-left: 10px;
-    li + li {
+  
+    a {
       padding-left: 3px;
     }
-    video {
-      width: 115px;
+
+    a:last-child {
+      padding-right: 10px;
     }
   }
 `;

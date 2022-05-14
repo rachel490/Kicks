@@ -50,3 +50,10 @@ export { CategoryButton } from './OnBoard/CategoryButton/CategoryButton';
 // Login
 export { KakaoLogin } from './Login/KakaoLogin/KakaoLogin';
 export { KakaoRedirectHandler } from './Login/KakaoLogin/KakaoRedirectHandler';
+
+// Upload
+export { InputBox } from './Upload/InputBox/InputBox';
+export { Category } from './Upload/Input/Category';
+export { Condition } from './Upload/Input/Condition';
+export { ImageInput } from './Upload/FileInput/ImageInput';
+export { VideoInput } from './Upload/FileInput/VideoInput';

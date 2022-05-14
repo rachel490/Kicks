@@ -4,6 +4,7 @@ export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: scroll;
 `;
 
 export const Form = styled.form`
@@ -58,6 +59,7 @@ export const InputBox = styled.div`
 
   input[type='text'],
   input[type='number'],
+  select,
   textarea {
     height: 44px;
     border: 1px solid #dddddd;
@@ -67,6 +69,18 @@ export const InputBox = styled.div`
     &::placeholder {
       color: #dddddd;
       font-size: 14px;
+    }
+  }
+
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+
+    &:invalid {
+      color: #dddddd;
     }
   }
 

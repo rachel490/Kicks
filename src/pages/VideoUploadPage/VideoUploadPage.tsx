@@ -1,6 +1,5 @@
 import { PageHeader } from 'components';
 import * as S from './styles';
-import { FaPlus } from 'react-icons/fa';
 import React, { useState } from 'react';
 import {ReactComponent as VideoUploadIcon} from 'assets/svg/video.svg';
 import {ReactComponent as ThumbnailUploadIcon} from 'assets/svg/thumbnail.svg';
@@ -53,14 +52,13 @@ export const VideoUploadPage = () => {
           </S.InputBox>
           <S.InputBox>
             <S.Label htmlFor="category">카테고리</S.Label>
-            <select name="categories" id="category">
-              <option value="">카테고리를 선택해주세요.</option>
-              <option value="dog">Dog</option>
-              <option value="cat">Cat</option>
-              <option value="hamster">Hamster</option>
-              <option value="parrot">Parrot</option>
-              <option value="spider">Spider</option>
-              <option value="goldfish">Goldfish</option>
+            <select id="category" defaultValue="" required>
+              <option value="" disabled>카테고리를 선택해주세요.</option>
+              <option value="구두,로퍼">구두 / 로퍼</option>
+              <option value="워커/부츠">워커 / 부츠</option>
+              <option value="샌들/슬리퍼">샌들 / 슬리퍼</option>
+              <option value="스니커즈">스니커즈</option>
+              <option value="spider">기타</option>
             </select>
           </S.InputBox>
           <S.InputBox>

@@ -1,17 +1,30 @@
 import React from 'react';
 import * as S from './styles';
-import { IoIosNotificationsOutline } from 'react-icons/io';
+import { ReactComponent as AlertIcon } from 'assets/svg/alert.svg';
 
-export const MainHeader = ({ isShown }: { isShown: boolean }) => {
+interface Props {
+  active: boolean;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const MainHeader = ({ active, setActive }: Props) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const btn = e.target as HTMLElement;
+    setActive(btn.innerText === '추천');
+  };
+
   return (
-    <S.Header isShown={isShown}>
+    <S.Header>
       <S.Category>
-        <button>팔로잉</button>
-        <span>|</span>
-        <button>추천</button>
+        <button onClick={handleClick} className={active ? '' : 'active'}>
+          팔로잉
+        </button>
+        <button onClick={handleClick} className={active ? 'active' : ''}>
+          추천
+        </button>
       </S.Category>
       <S.Notification>
-        <IoIosNotificationsOutline className="icon" />
+        <AlertIcon className="icon" />
       </S.Notification>
     </S.Header>
   );

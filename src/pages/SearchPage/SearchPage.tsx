@@ -3,13 +3,16 @@ import { fetcher } from 'utils/swr';
 import { AdBanner, HistoryList, HorizonVideoList, SearchBar } from 'components';
 import useSWR from 'swr';
 import * as S from './styles';
-import { IVideo } from 'data/types';
+import { IVideoListItem } from 'data/types';
 import { POPULAR_VIDEO_API, RECOMMENDED_VIDEO_API } from 'utils/api';
 import { HistoryType } from './types';
 
 export const SearchPage = () => {
-  const { data: popularVideos } = useSWR<IVideo[]>(POPULAR_VIDEO_API, fetcher);
-  const { data: recommendedVideos } = useSWR<IVideo[]>(
+  const { data: popularVideos } = useSWR<IVideoListItem[]>(
+    POPULAR_VIDEO_API,
+    fetcher
+  );
+  const { data: recommendedVideos } = useSWR<IVideoListItem[]>(
     RECOMMENDED_VIDEO_API,
     fetcher
   );

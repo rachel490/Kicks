@@ -3,7 +3,7 @@ import * as S from './styles';
 import useSWR from 'swr';
 import { VIDEO_ITEM_API } from 'utils/api';
 import { fetcher } from 'utils/swr';
-import { IVideoWithUser } from 'data/types';
+import { IVideoItem } from 'data/types';
 import { MainHeader } from '../MainHeader/MainHeader';
 import { VideoPlayer } from '../VideoPlayer/VideoPlayer';
 import { PlayerMenu } from '../PlayerMenu/PlayerMenu';
@@ -12,20 +12,19 @@ import { Loading } from 'components/Common/Loading/Loading';
 
 interface Props {
   id: number;
+  active: boolean;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const ContentsWrap = ({ id }: Props) => {
+export const ContentsWrap = ({ id, active, setActive }: Props) => {
   const [isShown, setIsShown] = useState(true);
-  const { data: videoData } = useSWR<IVideoWithUser>(
-    VIDEO_ITEM_API(id),
-    fetcher
-  );
+  const { data: videoData } = useSWR<IVideoItem>(VIDEO_ITEM_API(id), fetcher);
 
   if (!videoData) return <Loading />;
 
   return (
     <S.Wrap>
-      <MainHeader isShown={isShown} />
+      <MainHeader active={active} setActive={setActive} />
       <VideoPlayer
         video_url={videoData.video_url}
         isShown={isShown}

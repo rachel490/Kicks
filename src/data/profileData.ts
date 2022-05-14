@@ -13,6 +13,6 @@
 
 export const profileStatData = {
   videos: 3,
-  following: 14,
-  followers: 38,
+  following: 4,
+  followers: 0
 };

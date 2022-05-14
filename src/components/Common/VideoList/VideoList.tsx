@@ -1,15 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import * as S from './styles';
-import { VideoItem } from 'components';
-import { IVideo } from 'data/types';
+import { IVideoListItem } from 'data/types';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 interface Props {
-  videos: IVideo[] | undefined;
+  videos: IVideoListItem[] | undefined;
 }
 
 export const VideoList = ({ videos }: Props) => {
-  const [currentVideoRef, setCurrentVideoRef] = useState(null);
   const scrollbarRef = useRef(null);
 
   const handleScroll = () => {
@@ -19,14 +17,10 @@ export const VideoList = ({ videos }: Props) => {
   return (
     <S.VideoContent>
       <Scrollbars autoHide ref={scrollbarRef} onScrollFrame={handleScroll}>
-        {videos?.map(({ id, video_url }) => (
-          <VideoItem
-            key={id}
-            url={video_url}
-            id={id}
-            setCurrentVideoRef={setCurrentVideoRef}
-            currentVideoRef={currentVideoRef}
-          />
+        {videos?.map(({ id, thumbnail_url }) => (
+          <S.VideoLink to={`/video/${id}`}>
+            <img src={thumbnail_url} alt={thumbnail_url} />
+          </S.VideoLink>
         ))}
       </Scrollbars>
     </S.VideoContent>

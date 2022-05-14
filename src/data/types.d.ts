@@ -22,30 +22,23 @@ export interface IChat {
   send_at: LocalDateTime;
 }
 
-export interface IVideoList {
+export interface IVideoListItem {
   id: number;
   thumbnail_url: string;
 }
 
-export interface IVideo {
+export interface IVideoItem {
   id: number;
+  video_url: string;
+  thumbnail_url: string;
   category: string;
   title: string;
   description: string;
-  thumbnail_url: string;
-  video_url: string;
-  view_count: number;
-}
-
-export interface IVideoWithUser {
-  id: number;
-  category: string;
-  title: string;
-  description: string;
-  thumbnail_url: string;
-  video_url: string;
+  price: number;
+  usedStatus: boolean;
   view_count: number;
   user: {
+    id: number;
     name: string;
     profile_image_url: string;
   };
@@ -57,4 +50,13 @@ export interface IUserAdmin {
   nickname: string;
   data_joined: string;
   last_login: string;
+}
+
+export interface IFollow {
+  id: number;
+  member: {
+    id: number;
+    name: string;
+    profile_image_url: string;
+  };
 }

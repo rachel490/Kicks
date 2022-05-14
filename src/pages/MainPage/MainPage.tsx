@@ -7,7 +7,7 @@ import { Loading, ContentsWrap } from 'components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export const MainPage = () => {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
   const { data: videoList } = useSWR<IVideoListItem[]>(
     'http://localhost:8080/videoList',
     fetcher

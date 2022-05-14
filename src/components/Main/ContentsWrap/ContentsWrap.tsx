@@ -25,11 +25,7 @@ export const ContentsWrap = ({ id, active, setActive }: Props) => {
   return (
     <S.Wrap>
       <MainHeader active={active} setActive={setActive} />
-      <VideoPlayer
-        video_url={videoData.video_url}
-        isShown={isShown}
-        setIsShown={setIsShown}
-      />
+      <VideoPlayer video_url={videoData.video_url} />
       <PlayerMenu
         profile_image_url={videoData.user.profile_image_url}
         isShown={isShown}

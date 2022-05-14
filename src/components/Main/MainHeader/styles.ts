@@ -4,15 +4,14 @@ export const Header = styled.div`
   width: 100%;
   position: absolute;
   top: 20px;
-  padding: 0 ${({ theme }) => theme.style.edge_padding};
-  text-align: center;
   z-index: 1000;
 `;
 
 export const Category = styled.div`
   display: inline-block;
   padding: 0 5px;
-  margin-right: -25px;
+  left: 33%;
+  position: absolute;
 
   button {
     font-size: 15px;
@@ -43,7 +42,8 @@ export const Category = styled.div`
 
 export const Notification = styled.div`
   cursor: pointer;
-  float: right;
+  position: absolute;
+  right: 20px;
   .icon {
     width: 30px;
     height: 30px;

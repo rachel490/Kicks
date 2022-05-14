@@ -1,20 +1,23 @@
-import { useState } from 'react';
 import { InputBox } from 'components';
 import * as S from './styles';
 
-export const Condition = () => {
-  const [isNew, setIsNew] = useState(true);
+interface Prop {
+  setCondition: Function;
+  condition: boolean;
+}
+
+export const Condition = ({ setCondition, condition }: Prop) => {
   const toggleIsNew = () => {
-    setIsNew(!isNew);
+    setCondition(!condition);
   };
 
   return (
     <InputBox name="condition" title="상품 상태">
       <S.Buttons>
-        <S.Button type="button" selected={isNew} onClick={toggleIsNew}>
+        <S.Button type="button" selected={condition} onClick={toggleIsNew}>
           새상품
         </S.Button>
-        <S.Button type="button" selected={!isNew} onClick={toggleIsNew}>
+        <S.Button type="button" selected={!condition} onClick={toggleIsNew}>
           중고
         </S.Button>
       </S.Buttons>

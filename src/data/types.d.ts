@@ -53,3 +53,12 @@ export interface IUserAdmin {
   data_joined: string;
   last_login: string;
 }
+
+export interface IFollow {
+  id: number;
+  member: {
+    id: number;
+    name: string;
+    profile_image_url: string;
+  };
+}

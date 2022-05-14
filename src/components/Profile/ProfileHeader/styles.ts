@@ -37,7 +37,8 @@ export const ProfileStats = styled.ul`
   align-items: center;
   justify-content: space-between;
 
-  li {
+  li,
+  a {
     width: 55px;
     height: 100%;
     display: flex;

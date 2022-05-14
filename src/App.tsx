@@ -19,7 +19,8 @@ import {
   VideoUploadPage,
   OnBoardingPage,
   SearchResultPage,
-  LoginPage
+  LoginPage,
+  FollowPage
 } from 'pages';
 import { ThemeProvider } from 'styled-components';
 import defaultTheme from 'styles/DefaultTheme';
@@ -36,6 +37,7 @@ function App() {
             <Route path="upload" element={<VideoUploadPage />} />
             <Route path="chats" element={<ChatListPage />} />
             <Route path="profile" element={<ProfilePage />} />
+            <Route path="profile/:follow" element={<FollowPage />} />
             <Route path="/video/:videoId" element={<MainPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/oauth/callback" element={<KakaoRedirectHandler />} />

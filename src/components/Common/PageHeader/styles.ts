@@ -22,6 +22,7 @@ export const BackIcon = styled(Link)`
 
 export const PageTitle = styled.h2`
   width: 100%;
+  line-height: 1.5;
   text-align: center;
   font-weight: 600;
   padding-left: 45px;

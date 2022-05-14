@@ -214,5 +214,40 @@
       "video_url": "https://player.vimeo.com/external/466948419.sd.mp4?s=7775f0d5e1bdd0e96c0af939f2f774c40a50ddd8&profile_id=165&oauth2_token_id=57447761",
       "view_count": 150000
     }
-  ]
+  ],
+  "following": [
+    {
+      "id": 1,
+      "member": {
+        "id": 1,
+        "name": "jennierubyjane",
+        "profile_image_url": "https://blog.kakaocdn.net/dn/lYCoR/btqK6CabBCD/nQS8gsbHEdwDhujIvNe5Qk/img.jpg"
+      }
+    },
+    {
+      "id": 2,
+      "member": {
+        "id": 2,
+        "name": "lalalalisa_m",
+        "profile_image_url": "http://sports.hankooki.com/news/photo/202111/img_6751836_0.jpg"
+      }
+    },
+    {
+      "id": 3,
+      "member": {
+        "id": 3,
+        "name": "sooyaaa__",
+        "profile_image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhC--XYbrUhmgKh68dlh4LhMq1Gv7pWYS0EUfHcV-lrx8z5qwDlj8f47C-gAUIKxU_Gd8&usqp=CAU"
+      }
+    },
+    {
+      "id": 4,
+      "member": {
+        "id": 4,
+        "name": "roses_are_rosie",
+        "profile_image_url": "https://www.youthdaily.co.kr/data/photos/201904/11462_11376_136.jpg"
+      }
+    }
+  ],
+  "follower": []
 }

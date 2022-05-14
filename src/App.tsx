@@ -34,7 +34,6 @@ function App() {
           <Route path="/" element={<AppLayout />}>
             <Route index element={<MainPage />} />
             <Route path="search" element={<SearchPage />} />
-            <Route path="upload" element={<VideoUploadPage />} />
             <Route path="chats" element={<ChatListPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="profile/:follow" element={<FollowPage />} />
@@ -42,6 +41,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/oauth/callback" element={<KakaoRedirectHandler />} />
           </Route>
+          <Route path="upload" element={<VideoUploadPage />} />
           <Route path="/onboard" element={<OnBoardingPage />} />
           <Route path="/searched" element={<SearchResultPage />} />
           <Route path="/chat/:id" element={<ChatRoomPage />} />

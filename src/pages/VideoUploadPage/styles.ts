@@ -4,11 +4,18 @@ export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: scroll;
+  position: relative;
+  height: 100%;
 `;
 
 export const Form = styled.form`
   width: 100%;
+  height: 100%;
+`;
+
+export const MainContainer = styled.div`
+  height: 675px;
+  overflow: scroll;
   padding: 20px;
 `;
 
@@ -95,7 +102,7 @@ export const InputBox = styled.div`
   textarea {
     resize: none;
     font-family: inherit;
-    height: 100px;
+    height: 120px;
     margin-bottom: 10px;
   }
 `;
@@ -120,4 +127,16 @@ export const Button = styled.button<{ selected: boolean }>`
   border-radius: 4px;
   background-color: ${({ selected }) => (selected ? 'black' : 'white')};
   color: ${({ selected }) => (selected ? 'white' : '#ddd')};
+`;
+
+export const SubmitButton = styled.button`
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  z-index: 200;
+  bottom: 0;
+  left: 0;
+  background-color: #c13128;
+  color: white;
+  font-size: 16px;
 `;

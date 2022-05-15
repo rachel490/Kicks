@@ -14,6 +14,7 @@ declare module 'styled-components' {
       border_light: string;
       edge_padding: string;
       header_height: string;
+      nav_height: string;
     };
   }
 }

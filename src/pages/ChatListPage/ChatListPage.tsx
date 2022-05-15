@@ -5,20 +5,15 @@ import * as StompJS from '@stomp/stompjs';
 import { AdBanner, ChatList, LoginModal } from 'components';
 import { CHAT_LIST_API, WS_CONNECT_API } from 'utils/api';
 import { fetcherWithToken } from 'utils/swr';
-import { IChatList } from 'data/types';
 import { useEffect } from 'react';
 
 var client: StompJS.Client | null = null;
 
 export const ChatListPage = () => {
-  const token = localStorage.getItem('AC_Token');
   const isLoggedIn =
     !!localStorage.getItem('name') && !!localStorage.getItem('email');
 
-  const { data: chatData } = useSWR<IChatList[]>(
-    [CHAT_LIST_API, token],
-    fetcherWithToken
-  );
+  const { data: chatData } = useSWR(CHAT_LIST_API, fetcherWithToken);
 
   const connect = () => {
     client = new StompJS.Client({
@@ -59,7 +54,7 @@ export const ChatListPage = () => {
       <S.PageTitle>채팅</S.PageTitle>
       <AdBanner height="100px" />
       {isLoggedIn ? (
-        chatData && <ChatList chatList={chatData} />
+        chatData && <ChatList chatList={chatData.data} />
       ) : (
         <LoginModal />
       )}

@@ -22,6 +22,9 @@ export const VIDEO_LIST_API = `${BASE_URL}/v1/videos`;
 export const RECOMMENDED_VIDEO_API = `${BASE_URL}/v1/videos`;
 export const POPULAR_VIDEO_API = `${BASE_URL}/v1/videos`;
 
+// Upload Page
+export const UPLOAD_VIDEO_API = `${BASE_URL}/v1/videos`;
+
 // Login Page
 export const API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
 export const KAKAO_REDIRECT_URI = 'http://localhost:3000/oauth/callback';

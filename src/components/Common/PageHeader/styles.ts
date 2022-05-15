@@ -6,7 +6,7 @@ export const PageHeaderContainer = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  height: ${({ theme }) => theme.style.header_height};
+  min-height: ${({ theme }) => theme.style.header_height};
   padding: 0 ${({ theme }) => theme.style.edge_padding};
   border-bottom: 1px solid #dadada;
 `;

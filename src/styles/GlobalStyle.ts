@@ -33,6 +33,8 @@ const GlobalStyle = createGlobalStyle`
   ul,li{
     list-style: none;
   }
+  
+  ::-webkit-scrollbar { display: none; }
 `;
 
 export default GlobalStyle;

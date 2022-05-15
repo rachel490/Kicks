@@ -20,7 +20,8 @@ import {
   OnBoardingPage,
   SearchResultPage,
   LoginPage,
-  FollowPage
+  FollowPage,
+  PlayPage
 } from 'pages';
 import { ThemeProvider } from 'styled-components';
 import defaultTheme from 'styles/DefaultTheme';
@@ -37,7 +38,7 @@ function App() {
             <Route path="chats" element={<ChatListPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="profile/:follow" element={<FollowPage />} />
-            <Route path="/video/:videoId" element={<MainPage />} />
+            <Route path="/video/:videoId" element={<PlayPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/oauth/callback" element={<KakaoRedirectHandler />} />
           </Route>

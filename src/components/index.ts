@@ -10,7 +10,8 @@ export { AdBanner } from './Common/AdBanner/AdBanner';
 export { VideoList } from './Common/VideoList/VideoList';
 export { VideoLink } from './Common/VideoList/styles';
 export { LoginButton } from './Common/LoginButton/LoginButton';
-export { LoginModal } from './Common/LoginModal/LoginModal';
+export { LoginModal } from './Common/Modal/LoginModal';
+export { DeleteModal } from './Common/Modal/DeleteModal';
 
 // Profile
 export { ProfileHeader } from './Profile/ProfileHeader/ProfileHeader';
@@ -28,7 +29,8 @@ export { MessageBox } from './ChatRoom/MessageBox/MessageBox';
 
 // Main
 export { VideoPlayer } from './Main/VideoPlayer/VideoPlayer';
-export { PlayerMenu } from './Main/PlayerMenu/PlayerMenu';
+export { PlayerMenu } from './Main/NavMenu/PlayerMenu';
+export { ControlMenu } from './Main/NavMenu/ControlMenu';
 export { DescriptionBox } from './Main/DescriptionBox/DescriptionBox';
 export { MainHeader } from './Main/MainHeader/MainHeader';
 export { ContentsWrap } from './Main/ContentsWrap/ContentsWrap';

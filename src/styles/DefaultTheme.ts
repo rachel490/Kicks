@@ -12,7 +12,8 @@ const defaultTheme: DefaultTheme = {
   style: {
     border_light: '1px solid #eaeaea',
     edge_padding: '15px',
-    header_height: '50px'
+    header_height: '50px',
+    nav_height: '70px'
   }
 };
 

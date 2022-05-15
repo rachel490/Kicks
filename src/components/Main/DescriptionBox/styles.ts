@@ -1,35 +1,45 @@
 import styled from 'styled-components';
 
-export const ContentBox = styled.div<{ isShown: boolean }>`
-  padding: 16px;
-  width: 300px;
-  max-height: 160px;
-  background-color: rgba(0, 0, 0, 0.5);
+export const Wrap = styled.div`
+  left: ${({ theme }) => theme.style.edge_padding};
   position: absolute;
+  bottom: 25px;
+  width: 290px;
   z-index: 1000;
-  bottom: 0;
-  border-radius: 10px;
-  margin: 0 0 90px 10px;
-  color: white;
-  display: ${props => (props.isShown ? 'block' : 'none')};
+`;
 
+export const ContentBox = styled.div<{ isShown: boolean }>`
+  display: ${props => (props.isShown ? 'block' : 'none')};
+  width: 100%;
+  max-height: 150px;
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  color: white;
   .price {
-    font-size: 18px;
-    line-height: 27px;
+    font-size: 16px;
+    span {
+      font-size: 18px;
+    }
   }
 
   .name {
     font-size: 14px;
-    line-height: 21px;
+    margin: 5px 0 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
   }
 
-  .seconhand,
+  .secondhand,
   .desc {
     font-size: 12px;
+    opacity: 0.8;
   }
 
   .desc {
-    margin: 25px 0 5px;
+    margin-top: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -41,13 +51,12 @@ export const ContentBox = styled.div<{ isShown: boolean }>`
 `;
 
 export const HideBtn = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #c4c4c4;
-  width: 55px;
-  height: 20px;
-  font-size: 13px;
-  color: black;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2px 5px;
+  font-size: 12px;
+  color: #f1f1f1;
   border-radius: 6px;
+  margin: 4px 3px;
+  margin-left: auto;
+  display: block;
 `;

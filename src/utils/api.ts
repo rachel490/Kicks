@@ -30,4 +30,3 @@ export const API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
 export const KAKAO_REDIRECT_URI = 'http://localhost:3000/oauth/callback';
 export const KAKAO_LOGIN_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`;
 export const TOKEN_API = `${BASE_URL}/login/oauth2/code/kakao`;
-

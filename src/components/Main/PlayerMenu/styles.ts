@@ -2,39 +2,48 @@ import styled from 'styled-components';
 
 export const Wrap = styled.div<{ isShown: boolean }>`
   display: ${props => (props.isShown ? 'flex' : 'none')};
-  justify-content: flex-end;
-  width: 100%;
-`;
-
-export const Nav = styled.nav`
   position: absolute;
-  bottom: 70px;
-  padding-bottom: 20px;
-  display: flex;
+  right: ${({ theme }) => theme.style.edge_padding};
+  bottom: 35px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 60px;
-  height: 300px;
+  z-index: 1000;
 `;
 
 export const Button = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-
-  .icon {
-    width: 32px;
-    height: 32px;
-    color: white;
+  position: relative;
+  width: 100%;
+  & + & {
+    margin-top: 45px;
   }
-
+  &:nth-of-type(even) {
+    margin-top: 38px;
+  }
   img {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
     border-radius: 50%;
+  }
+  .follow {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    bottom: -4px;
+    left: 15px;
+    opacity: 0.8;
+  }
+  .icon {
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 0 auto;
+    color: white;
+    filter: drop-shadow(2px 3px 1px rgb(0 0 0 / 0.3));
+  }
+  &:nth-of-type(2) .icon {
+    width: 27px;
+    height: 27px;
   }
 `;

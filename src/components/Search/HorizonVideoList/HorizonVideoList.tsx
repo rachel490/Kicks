@@ -1,7 +1,9 @@
 import * as S from './styles';
 import { IVideoListItem } from 'data/types';
-import { LoginButton, VideoLink } from 'components';
-import ScrollContainer from 'react-indiana-drag-scroll';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { VideoLink } from 'components';
+import { GrOverview } from 'react-icons/gr';
+import { FaRegThumbsUp } from 'react-icons/fa';
 
 interface Props {
   title: string;
@@ -9,22 +11,25 @@ interface Props {
 }
 
 export const HorizonVideoList = ({ title, videos }: Props) => {
-  const userData = '';
-
   return (
     <S.VideoSection>
-      <S.SectionTitle>{title}</S.SectionTitle>
-      {!userData && title === '추천' ? (
-        <LoginButton padding={15} />
-      ) : (
-        <ScrollContainer horizontal={true} className="video-container">
-          {videos?.map(({ id, thumbnail_url}) => (
+      <S.SectionTitle>
+        {title.includes('조회') ? <GrOverview /> : <FaRegThumbsUp />}
+        <span>{title}</span>
+      </S.SectionTitle>
+      <Swiper
+        spaceBetween={8}
+        slidesPerView={2}
+        scrollbar={{ draggable: true }}
+      >
+        {videos?.map(({ id, thumbnail_url }) => (
+          <SwiperSlide tag="li" key={id}>
             <VideoLink to={`/video/${id}`}>
               <img src={thumbnail_url} alt={thumbnail_url} />
             </VideoLink>
-          ))}
-        </ScrollContainer>
-      )}
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </S.VideoSection>
   );
 };

@@ -22,7 +22,13 @@ export const VIDEO_LIST_API = `${BASE_URL}/v1/videos`;
 
 // Search Page
 export const TOP10_VIDEO_API = (sortBy: 'hits' | 'likes') =>
-  `${BASE_URL}/v1/videos/status-condition?sortBy=${sortBy}`;
+  `http://13.209.18.253:8080/v1/videos/status-condition?sortBy=${sortBy}`;
+export const SEARCHED_VIDEO_API = (keyword: string, sortBy: 'hits' | null) =>
+  `http://13.209.18.253:8080/v1/videos/keyword-condition?keyword=${keyword}&sortBy=${sortBy}`;
+// export const TOP10_VIDEO_API = (sortBy: 'hits' | 'likes') =>
+//   `${BASE_URL}/v1/videos/status-condition?sortBy=${sortBy}`;
+// export const SEARCHED_VIDEO_API = (keyword: string, sortBy: 'hits' | null) =>
+//   `${BASE_URL}/v1/videos/keyword-condition?keyword=${keyword}&sortBy=${sortBy}`;
 
 // Upload Page
 export const UPLOAD_VIDEO_API = `${BASE_URL}/v1/videos`;

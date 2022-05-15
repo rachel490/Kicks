@@ -35,6 +35,7 @@ function App() {
           <Route path="/" element={<AppLayout />}>
             <Route index element={<MainPage />} />
             <Route path="search" element={<SearchPage />} />
+            <Route path="search_result" element={<SearchResultPage />} />
             <Route path="chats" element={<ChatListPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="profile/:follow" element={<FollowPage />} />
@@ -44,7 +45,6 @@ function App() {
           </Route>
           <Route path="upload" element={<VideoUploadPage />} />
           <Route path="/onboard" element={<OnBoardingPage />} />
-          <Route path="/searched" element={<SearchResultPage />} />
           <Route path="/chat/:id" element={<ChatRoomPage />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="contents" element={<AdminContentPage />} />

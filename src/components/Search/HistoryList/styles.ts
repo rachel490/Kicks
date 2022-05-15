@@ -11,7 +11,7 @@ export const Overlay = styled.div`
 
 export const HistoryListContainer = styled.div`
   width: 100%;
-  min-height: 170px;
+  min-height: 260px;
   background: #fff;
 `;
 
@@ -31,7 +31,7 @@ export const Reset = styled.button`
 `;
 
 export const EmptyHistory = styled.p`
-  line-height: 120px;
+  line-height: 215px;
   font-size: 13px;
   color: #999;
   text-align: center;

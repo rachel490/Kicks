@@ -17,8 +17,6 @@ export const HorizonVideoList = ({ title }: Props) => {
 
   const { data: videos } = useSWR(TOP10_VIDEO_API(current), fetcher);
 
-  console.log(videos);
-
   return (
     <S.VideoSection>
       <S.SectionTitle>

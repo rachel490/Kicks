@@ -9,6 +9,10 @@ export const Wrap = styled.div<{ isShown: boolean }>`
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
+
+  &.controller{
+    bottom: 200px;
+  }
 `;
 
 export const Button = styled.button`
@@ -45,5 +49,13 @@ export const Button = styled.button`
   &:nth-of-type(2) .icon {
     width: 27px;
     height: 27px;
+  }
+
+  &.control {
+    width: 50px;
+    height: 50px;
+    background-color: #545454;
+    color: white;
+    border-radius: 50%;
   }
 `;

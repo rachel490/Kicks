@@ -6,10 +6,9 @@ import { FileUpload } from 'components';
 
 interface Props {
   sendMessage: (message: IChat) => void;
-  setToBottom: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const InputForm = ({ sendMessage, setToBottom }: Props) => {
+export const InputForm = ({ sendMessage }: Props) => {
   const [input, setInput] = useState('');
   const [upload, setUpload] = useState(false);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -27,7 +26,6 @@ export const InputForm = ({ sendMessage, setToBottom }: Props) => {
         content: input,
         send_at: new Date()
       });
-      setToBottom(true);
       setInput('');
     }
   };

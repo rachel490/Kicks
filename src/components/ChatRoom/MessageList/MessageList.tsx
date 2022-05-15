@@ -4,47 +4,39 @@ import { MessageItem } from 'components';
 import { dividedByDate } from 'utils/dividedByDate';
 import { Scrollbars } from 'react-custom-scrollbars';
 import * as S from './styles';
+import { CHAT_ROOM_API } from 'utils/api';
+import { fetcher } from 'utils/swr';
+import { useParams } from 'react-router-dom';
+import useSWR from 'swr';
 
 interface Prop {
-  messages: IChat[];
   profile: string;
-  toBottom: boolean;
 }
 
 type SectionType = { [key: string]: IChat[] };
 
-export const MessageList = ({ messages, profile, toBottom }: Prop) => {
+export const MessageList = ({ profile }: Prop) => {
   const [sections, setSections] = useState<SectionType>({});
-  const scrollbarRef = useRef(null);
-  const listRef = useRef<HTMLUListElement>(null);
+  const scrollbarRef = useRef<Scrollbars>(null);
+
+  const { id } = useParams();
+  const { data: chatData } = useSWR(CHAT_ROOM_API(Number(id)), fetcher);
 
   useEffect(() => {
-    setSections(dividedByDate(messages));
-  }, [messages]);
+    if (chatData) setSections(dividedByDate(chatData.chats));
+  }, [chatData]);
 
   useEffect(() => {
-    if (listRef.current && Object.keys(sections).length) {
-      const msg = listRef.current?.children[0].children[0].children;
-      if (toBottom) {
-        msg[msg.length - 1].scrollIntoView({
-          behavior: 'smooth'
-        });
-        console.log('smooth');
-      } else {
-        msg[msg.length - 1].scrollIntoView({
-          behavior: 'auto'
-        });
-      }
-    }
-  });
+    scrollbarRef.current?.scrollToBottom();
+  }, [sections]);
 
   return (
-    <S.MessageListContainer ref={listRef}>
+    <S.MessageListContainer>
       <Scrollbars autoHide ref={scrollbarRef}>
-        {Object.entries(sections).map(([date, messages]) => (
+        {Object.entries(sections).map(([date, chatData]) => (
           <S.DateSection key={date}>
             <S.Date>{date}</S.Date>
-            {messages.map((message, i) => (
+            {chatData.map((message, i) => (
               <MessageItem key={i} message={message} profile={profile} />
             ))}
           </S.DateSection>

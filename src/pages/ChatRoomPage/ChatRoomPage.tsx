@@ -18,13 +18,10 @@ export const ChatRoomPage = () => {
   const name = data?.with_user?.name || '';
   const profile = data?.with_user?.profile_image_url || '';
 
-  const [toBottom, setToBottom] = useState(false);
   const [messages, setMessages] = useState<IChat[]>([]);
 
   useEffect(() => {
-    if (data) {
-      setMessages(data.chats);
-    }
+    if (data) setMessages(data.chats);
   }, [data]);
 
   const sendMessage = (message: IChat) => {
@@ -34,16 +31,8 @@ export const ChatRoomPage = () => {
   return (
     <AppContainer>
       <PageHeader title={name} backTo="/chats" />
-      {data ? (
-        <MessageList
-          messages={messages}
-          profile={profile}
-          toBottom={toBottom}
-        />
-      ) : (
-        <Loading />
-      )}
-      <InputForm sendMessage={sendMessage} setToBottom={setToBottom} />
+      {data ? <MessageList profile={profile} /> : <Loading />}
+      <InputForm sendMessage={sendMessage} />
     </AppContainer>
   );
 };

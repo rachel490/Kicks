@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import {
   AppContainer,
   Loading,
-  MessageBox,
+  InputForm,
   MessageList,
   PageHeader
 } from 'components';
@@ -43,7 +43,7 @@ export const ChatRoomPage = () => {
       ) : (
         <Loading />
       )}
-      <MessageBox sendMessage={sendMessage} setToBottom={setToBottom} />
+      <InputForm sendMessage={sendMessage} setToBottom={setToBottom} />
     </AppContainer>
   );
 };

@@ -6,7 +6,7 @@ export const ChatItemContainer = styled.li`
   border-bottom: ${({ theme }) => theme.style.border_light};
   cursor: pointer;
   &:hover {
-    background-color: ${({ theme }) => theme.color.nav_active_bg};
+    background-color: #fafafa;
   }
   img {
     width: 50px;

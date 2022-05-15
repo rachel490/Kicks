@@ -7,7 +7,7 @@ import { IChatList } from 'data/types';
 
 export const ChatListPage = () => {
   const { data: chatData, error } = useSWR<IChatList[]>(CHAT_LIST_API, fetcher);
-  const userData = '';
+  const userData = 'aa';
 
   return (
     <S.Wrap>

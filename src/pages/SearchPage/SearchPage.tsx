@@ -1,22 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { fetcher } from 'utils/swr';
 import { AdBanner, HistoryList, HorizonVideoList, SearchBar } from 'components';
-import useSWR from 'swr';
 import * as S from './styles';
-import { IVideoListItem } from 'data/types';
-import { POPULAR_VIDEO_API, RECOMMENDED_VIDEO_API } from 'utils/api';
 import { HistoryType } from './types';
 
 export const SearchPage = () => {
-  const { data: popularVideos } = useSWR<IVideoListItem[]>(
-    POPULAR_VIDEO_API,
-    fetcher
-  );
-  const { data: recommendedVideos } = useSWR<IVideoListItem[]>(
-    RECOMMENDED_VIDEO_API,
-    fetcher
-  );
-
   const [isOpened, setIsOpend] = useState(false);
   const [history, setHistory] = useState<HistoryType[]>(
     JSON.parse(localStorage.getItem('search-history') || '[]')
@@ -53,8 +40,8 @@ export const SearchPage = () => {
         />
       )}
       <AdBanner height="140px" />
-      <HorizonVideoList title="조회수 Best10" videos={recommendedVideos} />
-      <HorizonVideoList title="좋아요 Best10" videos={popularVideos} />
+      <HorizonVideoList title="조회수 Best10" />
+      <HorizonVideoList title="좋아요 Best10" />
     </S.Wrap>
   );
 };

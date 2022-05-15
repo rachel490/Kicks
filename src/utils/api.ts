@@ -21,8 +21,8 @@ export const VIDEO_ITEM_API = (video_id: number) =>
 export const VIDEO_LIST_API = `${BASE_URL}/v1/videos`;
 
 // Search Page
-export const RECOMMENDED_VIDEO_API = `${BASE_URL}/v1/videos`;
-export const POPULAR_VIDEO_API = `${BASE_URL}/v1/videos`;
+export const TOP10_VIDEO_API = (sortBy: 'hits' | 'likes') =>
+  `${BASE_URL}/v1/videos/status-condition?sortBy=${sortBy}`;
 
 // Upload Page
 export const UPLOAD_VIDEO_API = `${BASE_URL}/v1/videos`;

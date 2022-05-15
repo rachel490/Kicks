@@ -4,17 +4,25 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { VideoLink } from 'components';
 import { GrOverview } from 'react-icons/gr';
 import { FaRegThumbsUp } from 'react-icons/fa';
+import { fetcher } from 'utils/swr';
+import useSWR from 'swr';
+import { TOP10_VIDEO_API } from 'utils/api';
 
 interface Props {
   title: string;
-  videos: IVideoListItem[] | undefined;
 }
 
-export const HorizonVideoList = ({ title, videos }: Props) => {
+export const HorizonVideoList = ({ title }: Props) => {
+  const current = title.includes('조회') ? 'hits' : 'likes';
+
+  const { data: videos } = useSWR(TOP10_VIDEO_API(current), fetcher);
+
+  console.log(videos);
+
   return (
     <S.VideoSection>
       <S.SectionTitle>
-        {title.includes('조회') ? <GrOverview /> : <FaRegThumbsUp />}
+        {current === 'hits' ? <GrOverview /> : <FaRegThumbsUp />}
         <span>{title}</span>
       </S.SectionTitle>
       <Swiper
@@ -22,13 +30,14 @@ export const HorizonVideoList = ({ title, videos }: Props) => {
         slidesPerView={2}
         scrollbar={{ draggable: true }}
       >
-        {videos?.map(({ id, thumbnail_url }) => (
-          <SwiperSlide tag="li" key={id}>
-            <VideoLink to={`/video/${id}`}>
-              <img src={thumbnail_url} alt={thumbnail_url} />
-            </VideoLink>
-          </SwiperSlide>
-        ))}
+        {videos &&
+          videos?.data.map(({ id, thumbnail_url }: IVideoListItem) => (
+            <SwiperSlide tag="li" key={id}>
+              <VideoLink to={`/video/${id}`}>
+                <img src={thumbnail_url} alt={thumbnail_url} />
+              </VideoLink>
+            </SwiperSlide>
+          ))}
       </Swiper>
     </S.VideoSection>
   );

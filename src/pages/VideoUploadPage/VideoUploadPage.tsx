@@ -9,7 +9,7 @@ import {
   Category,
   Condition
 } from 'components';
-import { UPLOAD_VIDEO_API } from 'utils/api';
+import { VIDEO_LIST_API } from 'utils/api';
 import axios from 'axios';
 
 export const VideoUploadPage = () => {
@@ -57,7 +57,7 @@ export const VideoUploadPage = () => {
       }
     };
 
-    axios.post(UPLOAD_VIDEO_API, formData, config);
+    axios.post(VIDEO_LIST_API, formData, config);
 
   };
 

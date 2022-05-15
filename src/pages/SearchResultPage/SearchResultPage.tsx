@@ -3,7 +3,7 @@ import * as S from './styles';
 import useSWR from 'swr';
 import { fetcher } from 'utils/swr';
 import { IVideoListItem } from 'data/types';
-import { POPULAR_VIDEO_API } from 'utils/api';
+import { VIDEO_SEARCH_API } from 'utils/api';
 import { AdBanner, AppContainer, PageHeader, VideoList } from 'components';
 import { useLocation } from 'react-router-dom';
 
@@ -13,11 +13,11 @@ export const SearchResultPage = () => {
   const searchedText = (location.state as string) || '';
 
   const { data: latestVideos } = useSWR<IVideoListItem[]>(
-    POPULAR_VIDEO_API,
+    VIDEO_SEARCH_API(),
     fetcher
   );
   const { data: popularVideos } = useSWR<IVideoListItem[]>(
-    POPULAR_VIDEO_API,
+    VIDEO_SEARCH_API('hits'),
     fetcher
   );
 

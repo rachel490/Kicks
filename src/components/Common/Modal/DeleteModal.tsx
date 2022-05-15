@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { DELETE_VIDEO_API } from 'utils/api';
+import { VIDEO_ITEM_API } from 'utils/api';
 import * as S from './styles';
 
 export const DeleteModal = ({
@@ -12,7 +12,7 @@ export const DeleteModal = ({
 }) => {
   const navigate = useNavigate();
   const handlDelete = () => {
-    // axios.delete(DELETE_VIDEO_API(id), {
+    // axios.delete(VIDEO_ITEM_API(id), {
     //   headers: {
     //     Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
     //   }

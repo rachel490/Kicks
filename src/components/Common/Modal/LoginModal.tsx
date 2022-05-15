@@ -12,7 +12,7 @@ export const LoginModal = () => {
           로그인 하시겠습니까?
         </S.Message>
         <S.ButtonContainer>
-          <button className="yes" onClick={() => navigate('/')}>
+          <button className="yes" onClick={() => navigate('/login')}>
             예
           </button>
           <button className="no" onClick={() => navigate('/')}>

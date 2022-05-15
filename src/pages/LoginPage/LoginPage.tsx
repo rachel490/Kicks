@@ -1,9 +1,13 @@
-import { KakaoLogin } from 'components';
+import { KakaoLogin, PageHeader } from 'components';
+import * as S from './styles';
 
 export const LoginPage = () => {
   return (
-    <div>
-      <KakaoLogin />
-    </div>
+    <>
+      <PageHeader backTo="/" title="카카오 로그인" />
+      <S.Wrap>
+        <KakaoLogin />
+      </S.Wrap>
+    </>
   );
 };

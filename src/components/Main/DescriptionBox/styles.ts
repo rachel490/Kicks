@@ -5,7 +5,7 @@ export const Wrap = styled.div`
   position: absolute;
   bottom: 25px;
   width: 290px;
-  z-index: 1000;
+  z-index: 100;
 `;
 
 export const ContentBox = styled.div<{ isShown: boolean }>`

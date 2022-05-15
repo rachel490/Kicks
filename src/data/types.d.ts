@@ -3,6 +3,19 @@ export interface IUser {
   profile_image_url: string;
 }
 
+export interface IUserData {
+  create_at: string;
+  email: string;
+  email_verified: boolean;
+  followers: number;
+  followings: number;
+  id: number;
+  last_login_date: string;
+  name: string;
+  profile_image_url: any;
+  videos: number;
+}
+
 export interface IChatList {
   id: number;
   with_user: IUser;

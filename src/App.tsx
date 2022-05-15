@@ -38,7 +38,7 @@ function App() {
             <Route path="search_result" element={<SearchResultPage />} />
             <Route path="chats" element={<ChatListPage />} />
             <Route path="profile" element={<ProfilePage />} />
-            <Route path="profile/:follow" element={<FollowPage />} />
+            <Route path="profile/:userId/:follow/" element={<FollowPage />} />
             <Route path="/video/:videoId" element={<PlayPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/oauth/callback" element={<KakaoRedirectHandler />} />

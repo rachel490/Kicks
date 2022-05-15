@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import * as S from './styles';
 import useSWR from 'swr';
 import { fetcher } from 'utils/swr';
-import { IVideoListItem } from 'data/types';
-import { SEARCHED_VIDEO_API, VIDEO_LIST_API } from 'utils/api';
-import { AdBanner, AppContainer, PageHeader, VideoList } from 'components';
+import { SEARCHED_VIDEO_API } from 'utils/api';
+import { AdBanner, PageHeader, VideoList } from 'components';
 import { useLocation } from 'react-router-dom';
 
 export const SearchResultPage = () => {

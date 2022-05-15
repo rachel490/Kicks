@@ -12,8 +12,12 @@ export const LoginModal = () => {
           로그인 하시겠습니까?
         </S.Message>
         <S.ButtonContainer>
-          <button onClick={() => navigate('/')}>예</button>
-          <button onClick={() => navigate('/')}>아니오</button>
+          <button className="yes" onClick={() => navigate('/')}>
+            예
+          </button>
+          <button className="no" onClick={() => navigate('/')}>
+            아니오
+          </button>
         </S.ButtonContainer>
       </S.Modal>
     </S.Overlay>

@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const VideoContent = styled.ul`
+export const VideoContent = styled.div`
   flex: 1;
   & > div > div:first-child {
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: min-content;

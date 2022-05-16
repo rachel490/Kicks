@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import * as S from './styles';
 import useSWR from 'swr';
 import { fetcher } from 'utils/swr';
-import { IVideoListItem } from 'data/types';
-import { POPULAR_VIDEO_API } from 'utils/api';
-import { AdBanner, AppContainer, PageHeader, VideoList } from 'components';
+import { SEARCHED_VIDEO_API } from 'utils/api';
+import { AdBanner, PageHeader, VideoList } from 'components';
 import { useLocation } from 'react-router-dom';
 
 export const SearchResultPage = () => {
@@ -12,17 +11,17 @@ export const SearchResultPage = () => {
   const location = useLocation();
   const searchedText = (location.state as string) || '';
 
-  const { data: latestVideos } = useSWR<IVideoListItem[]>(
-    POPULAR_VIDEO_API,
+  const { data: latestVideos } = useSWR(
+    SEARCHED_VIDEO_API(searchedText, null),
     fetcher
   );
-  const { data: popularVideos } = useSWR<IVideoListItem[]>(
-    POPULAR_VIDEO_API,
+  const { data: popularVideos } = useSWR(
+    SEARCHED_VIDEO_API(searchedText, 'hits'),
     fetcher
   );
 
   return (
-    <AppContainer>
+    <S.Wrap>
       <PageHeader title={searchedText} backTo="/search" />
       <AdBanner height="110px" />
       <S.SortByList>
@@ -37,10 +36,10 @@ export const SearchResultPage = () => {
         ))}
       </S.SortByList>
       {activeIdx ? (
-        <VideoList videos={latestVideos} />
+        <VideoList videos={latestVideos?.data} />
       ) : (
-        <VideoList videos={popularVideos} />
+        <VideoList videos={popularVideos?.data} />
       )}
-    </AppContainer>
+    </S.Wrap>
   );
 };

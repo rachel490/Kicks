@@ -9,7 +9,7 @@ export const VideoSection = styled.section`
     padding-left: 10px;
   }
   .swiper-container {
-    width: 200px !important;
+    width: 210px !important;
   }
   .swiper-slide {
     width: 115px !important;

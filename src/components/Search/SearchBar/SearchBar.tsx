@@ -20,7 +20,7 @@ export const SearchBar = ({ addHistory, showHistory }: Props) => {
   const handleSearch = async () => {
     if (input) {
       await addHistory(input);
-      navigate('/searched', { state: input });
+      navigate('/search_result', { state: input });
       setInput('');
     }
   };

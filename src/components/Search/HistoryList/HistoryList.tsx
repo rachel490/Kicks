@@ -19,7 +19,7 @@ export const HistoryList = ({
 }: Props) => {
   const navigate = useNavigate();
   const handleNavigate = (text: string) =>
-    navigate('/searched', { state: text });
+    navigate('/search_result', { state: text });
 
   return (
     <S.Overlay onClick={hideHistory}>

@@ -14,5 +14,5 @@
 export const profileStatData = {
   videos: 3,
   following: 4,
-  followers: 0
+  followers: 10
 };

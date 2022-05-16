@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 export const ProfileHeader = () => {
   const { videos, following, followers } = profileStatData;
+  const userId = 2;
   const userName = 'rachel_the_it';
 
   return (
@@ -23,13 +24,13 @@ export const ProfileHeader = () => {
           <span className="profile-stat-name">Videos</span>
         </li>
         <li>
-          <Link to={following ? 'following' : '#'} state={{ user: userName }}>
+          <Link to={following ? `${userId}/following` : '#'}>
             <strong className="profile-stat-value">{following}</strong>
             <span className="profile-stat-name">Following</span>
           </Link>
         </li>
         <li>
-          <Link to={followers ? 'follower' : '#'} state={{ user: userName }}>
+          <Link to={followers ? `${userId}/follower` : '#'}>
             <strong className="profile-stat-value">{followers}</strong>
             <span className="profile-stat-name">Followers</span>
           </Link>

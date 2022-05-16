@@ -6,13 +6,17 @@ export const VideoContent = styled.ul`
   & > div > div:first-child {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: min-content;
     gap: 3px;
     padding: 3px 10px;
   }
 `;
 
 export const VideoLink = styled(Link)`
+  display: block;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
   img {
+    display: block;
     min-width: 115px;
     width: 100%;
     height: 157px;

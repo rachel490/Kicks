@@ -2,6 +2,11 @@ const BASE_URL = 'http://localhost:8080';
 // const BASE_URL = 'https://numble-kicks.shop";
 // const BASE_URL = 'http://13.209.18.253:8080';
 
+export const USER_DATA_API = (user_id: number) =>
+  `http://13.209.18.253:8080/v1/users/${user_id}`;
+// export const USER_DATA_API = (user_id: number) =>
+//   `${BASE_URL}/v1/users/${user_id}`;
+
 // Chat Page
 export const CHAT_LIST_API = `${BASE_URL}/v1/users/chatting`;
 export const CHAT_ROOM_API = (chat_room_id: number) =>
@@ -11,8 +16,14 @@ export const CHAT_ROOM_API = (chat_room_id: number) =>
 // my -> :userId로 대체
 export const MY_VIDEOS_API = `${BASE_URL}/v1/users/my/videos`;
 export const MY_LIKES_API = `${BASE_URL}/v1/users/my/likes`;
-export const FOLLOWING_API = `${BASE_URL}/v1/users/following/from`;
-export const FOLLOWER_API = `${BASE_URL}/v1/users/following/to`;
+export const FOLLOWING_API = (user_id: number) =>
+  `http://13.209.18.253:8080/v1/users/following/from?from_member=${user_id}`;
+export const FOLLOWER_API = (user_id: number) =>
+  `http://13.209.18.253:8080/v1/users/following/to?to_member=${user_id}`;
+// export const FOLLOWING_API = (user_id: number) =>
+//   `${BASE_URL}/v1/users/following/from?from_member=${user_id}`;
+// export const FOLLOWER_API = (user_id: number) =>
+//   `${BASE_URL}/v1/users/following/to?to_member=${user_id}`;
 
 // Main Page (영상 재생)
 export const VIDEO_ITEM_API = (video_id: number) =>
@@ -21,8 +32,14 @@ export const VIDEO_ITEM_API = (video_id: number) =>
 export const VIDEO_LIST_API = `${BASE_URL}/v1/videos`;
 
 // Search Page
-export const RECOMMENDED_VIDEO_API = `${BASE_URL}/v1/videos`;
-export const POPULAR_VIDEO_API = `${BASE_URL}/v1/videos`;
+export const TOP10_VIDEO_API = (sortBy: 'hits' | 'likes') =>
+  `http://13.209.18.253:8080/v1/videos/status-condition?sortBy=${sortBy}`;
+export const SEARCHED_VIDEO_API = (keyword: string, sortBy: 'hits' | null) =>
+  `http://13.209.18.253:8080/v1/videos/keyword-condition?keyword=${keyword}&sortBy=${sortBy}`;
+// export const TOP10_VIDEO_API = (sortBy: 'hits' | 'likes') =>
+//   `${BASE_URL}/v1/videos/status-condition?sortBy=${sortBy}`;
+// export const SEARCHED_VIDEO_API = (keyword: string, sortBy: 'hits' | null) =>
+//   `${BASE_URL}/v1/videos/keyword-condition?keyword=${keyword}&sortBy=${sortBy}`;
 
 // Upload Page
 export const UPLOAD_VIDEO_API = `${BASE_URL}/v1/videos`;

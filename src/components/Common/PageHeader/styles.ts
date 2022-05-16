@@ -25,7 +25,7 @@ export const PageTitle = styled.h2`
   line-height: 1.5;
   text-align: center;
   font-weight: 600;
-  padding-left: 45px;
+  padding-left: 38px;
   padding-right: 30px;
   display: inline-block;
   white-space: nowrap;

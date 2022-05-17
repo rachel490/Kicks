@@ -50,6 +50,7 @@ export const ContentsWrap = ({
           }
           isShown={isShown}
           like_count={videoData.like_count}
+          id={id}
         />
       )}
       <DescriptionBox

@@ -1,20 +1,75 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import * as S from './styles';
 import { ReactComponent as FollowIcon } from 'assets/svg/follow.svg';
 import { ReactComponent as SaveIcon } from 'assets/svg/save.svg';
 import { ReactComponent as UnSaveIcon } from 'assets/svg/unSave.svg';
 import { ReactComponent as ChatIcon } from 'assets/svg/chat.svg';
 import { ReactComponent as MoreIcon } from 'assets/svg/more.svg';
-import { useEffect } from 'react';
+import { LIKE_API, UNLIKE_API } from 'utils/api';
+
+interface Prop {
+  profile_image_url: string;
+  isShown: boolean;
+  like_count: number;
+  id: number;
+}
 
 export const PlayerMenu = ({
   profile_image_url,
   isShown,
-  like_count
-}: {
-  profile_image_url: string;
-  isShown: boolean;
-  like_count: number;
-}) => {
+  like_count,
+  id
+}: Prop) => {
+
+  const [isLiked, setIsLiked] = useState(false);
+
+  useEffect(() => {
+    const checkLike = async () => {
+      const response = await axios.get(LIKE_API(id), {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
+        }
+      });
+      const data = await response.data;
+      if (!(data.message === '동영상 좋아요 등록 여부 조회 성공')) {
+        return;
+      }
+      setIsLiked(data.data.exist_like_video);
+    };
+    checkLike();
+  }, []);
+
+  const handleLike = () => {
+    if (!isLiked) {
+      const config = {
+        method: 'post',
+        url: LIKE_API(id),
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
+        }
+      };
+
+      axios(config)
+        .then(response => {
+          if (response.data.message === '동영상에 좋아요 등록 성공') {
+            setIsLiked(true);
+          }
+        })
+        .catch(error => console.log(error));
+    } else {
+      // axios
+      //   .delete(UNLIKE_API(id), {
+      //     headers: {
+      //       Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
+      //     }
+      //   })
+      //   .then(response => {
+      //     console.log(response.data);
+      //     setIsLiked(false);
+      //   });
+    }
+  };
   return (
     <S.Wrap isShown={isShown}>
       <S.Button>
@@ -22,7 +77,11 @@ export const PlayerMenu = ({
         <FollowIcon className="follow" />
       </S.Button>
       <S.Button>
-        <UnSaveIcon className="icon" />
+        {isLiked ? (
+          <SaveIcon className="icon" onClick={handleLike} />
+        ) : (
+          <UnSaveIcon className="icon" onClick={handleLike} />
+        )}
         <p>{like_count}</p>
       </S.Button>
       <S.Button>

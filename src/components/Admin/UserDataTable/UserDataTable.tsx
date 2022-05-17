@@ -51,8 +51,8 @@ export const UserDataTable = ({ userData }: Props) => {
                 const userId = row.original.id;
                 const isStatus = cell.column.id === 'status';
                 const isDate =
-                  cell.column.id === 'data_joined' ||
-                  cell.column.id === 'last_login';
+                  cell.column.id === 'createAt' ||
+                  cell.column.id === 'lastLoginDate';
 
                 return (
                   <td {...cell.getCellProps()}>

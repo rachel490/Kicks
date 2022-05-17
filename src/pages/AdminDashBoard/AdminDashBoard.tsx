@@ -7,18 +7,20 @@ import { Wrap } from 'pages/AdminUserPage/styles';
 import { TableHead, TableBody } from 'components/Admin/UserDataTable/styles';
 import { IUserAdmin, IVideoItem } from 'data/types';
 import { VideoDataTable } from 'components';
-import { VIDEO_LIST_API } from 'utils/api';
+import { ADMIN_CONTENT_API } from 'utils/api';
 import useSWR from 'swr';
-import { fetcher } from 'utils/swr';
+import { fetcherWithToken } from 'utils/swr';
 
 export const AdminDashBoard = () => {
-  const { data: videoData } = useSWR<IVideoItem[]>(VIDEO_LIST_API, fetcher);
-  const { userId } = useParams();
+  const { userId } = useParams() as { userId: string };
+  const { data: videos } = useSWR(
+    ADMIN_CONTENT_API(0, 0, userId),
+    fetcherWithToken
+  );
   const location = useLocation();
   const data = (location.state as IUserAdmin[]) || [];
   const columns = useMemo(() => COLUMNS.slice(0, 5), []);
-
-  console.log(videoData);
+  const videoData = videos?.data as IVideoItem[];
 
   const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
     useTable(
@@ -58,7 +60,7 @@ export const AdminDashBoard = () => {
         </TableBody>
       </S.UserTable>
 
-      <S.ContentTitle>{data[0].nickname}님이 업로드한 영상</S.ContentTitle>
+      <S.ContentTitle>{data[0].name}님이 업로드한 영상</S.ContentTitle>
       <VideoDataTable videoData={videoData ? videoData : []} />
     </Wrap>
   );

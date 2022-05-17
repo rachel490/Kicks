@@ -47,5 +47,7 @@ export const DELETE_VIDEO_API = (video_id: number) =>
   `${BASE_URL}/v1/videos/${video_id}`;
 
 // Admin Page
-export const ADMIN_USER_API = (keyword: string, page: number, size: number) =>
-  `http://13.209.18.253:8080/v1/users?keyword=${keyword}&page=${page}&size=${size}`;
+export const ADMIN_USER_API = (keyword: string) =>
+  `http://13.209.18.253:8080/v1/users?keyword=${keyword}`;
+export const ADMIN_CONTENT_API = (page: number, size: number, id: string) =>
+  `http://13.209.18.253:8080/v1/admin/videos?page=${page}&size=${size}&user_id=${id}`;

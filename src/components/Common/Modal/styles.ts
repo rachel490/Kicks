@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const Overlay = styled.div`
-  display: flex;
+export const Overlay = styled.div<{ isOpen?: boolean }>`
+  display: ${props => (props.isOpen ? 'flex' : 'none')};
   justify-content: center;
   align-items: center;
   position: fixed;

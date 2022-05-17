@@ -24,29 +24,38 @@ export const ContentsWrap = ({
   id,
   active,
   setActive,
-  type = 'play'
+  type = 'delete'
 }: Props) => {
   const [isShown, setIsShown] = useState(true);
-  const { data: videoData } = useSWR<IVideoItem>(VIDEO_ITEM_API(id), fetcher);
+  const { data } = useSWR(VIDEO_ITEM_API(id), fetcher);
 
-  if (!videoData) return <Loading />;
+  if (!data) return <Loading />;
+
+  const videoData = data?.data as IVideoItem;
+  console.log(videoData);
 
   return (
     <S.Wrap>
       <MainHeader active={active} setActive={setActive} />
       <VideoPlayer video_url={videoData.video_url} />
-      {/* videoData.user.name === localStorage.getItem('name') */}
-      {type === 'delete' ? (
+      {type === 'delete' &&
+      videoData.user.name === localStorage.getItem('name') ? (
         <ControlMenu id={id} />
       ) : (
         <PlayerMenu
-          profile_image_url={videoData.user.profile_image_url}
+          profile_image_url={
+            videoData.user.profile_image_url
+              ? videoData.user.profile_image_url
+              : 'https://user-images.githubusercontent.com/68415905/166093018-2819a713-a7df-4703-bcd5-29b60507bdbf.jpg'
+          }
           isShown={isShown}
         />
       )}
       <DescriptionBox
         title={videoData.title}
         description={videoData.description}
+        price={videoData.price}
+        used_status={videoData.used_status}
         isShown={isShown}
         setIsShown={setIsShown}
       />

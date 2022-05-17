@@ -8,10 +8,12 @@ import { useEffect } from 'react';
 
 export const PlayerMenu = ({
   profile_image_url,
-  isShown
+  isShown,
+  like_count
 }: {
   profile_image_url: string;
   isShown: boolean;
+  like_count: number;
 }) => {
   return (
     <S.Wrap isShown={isShown}>
@@ -21,6 +23,7 @@ export const PlayerMenu = ({
       </S.Button>
       <S.Button>
         <UnSaveIcon className="icon" />
+        <p>{like_count}</p>
       </S.Button>
       <S.Button>
         <ChatIcon className="icon" />

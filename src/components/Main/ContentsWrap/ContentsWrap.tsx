@@ -24,7 +24,7 @@ export const ContentsWrap = ({
   id,
   active,
   setActive,
-  type = 'delete'
+  type = 'play'
 }: Props) => {
   const [isShown, setIsShown] = useState(true);
   const { data } = useSWR(VIDEO_ITEM_API(id), fetcher);
@@ -49,6 +49,7 @@ export const ContentsWrap = ({
               : 'https://user-images.githubusercontent.com/68415905/166093018-2819a713-a7df-4703-bcd5-29b60507bdbf.jpg'
           }
           isShown={isShown}
+          like_count={videoData.like_count}
         />
       )}
       <DescriptionBox

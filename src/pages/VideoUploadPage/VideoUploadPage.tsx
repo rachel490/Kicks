@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import * as S from './styles';
 import {
   AppContainer,
@@ -9,8 +10,8 @@ import {
   Category,
   Condition
 } from 'components';
-import { UPLOAD_VIDEO_API } from 'utils/api';
-import axios from 'axios';
+import { VIDEO_LIST_API } from 'utils/api';
+
 
 export const VideoUploadPage = () => {
   const [video, setVideo] = useState<any>();
@@ -41,24 +42,31 @@ export const VideoUploadPage = () => {
     formData.append('thumbnail', img);
     formData.append('title', title);
     formData.append('category', category);
-    formData.append('used_status', String(condition));
+    formData.append('usedStatus', String(condition));
     formData.append('price', price);
     formData.append('description', desc);
 
-    // console.log('formData', formData);
-    // for (let key of formData.keys()) {
-    //   console.log(key);
-    // }
-
-    const config = {
+    axios({
+      method: 'post',
+      url: VIDEO_LIST_API,
+      data: formData,
       headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
+        "Content-Type": "multipart/form-data",
+        "Authorization": `Bearer ${localStorage.getItem('AC_Token')}`
       }
-    };
-
-    axios.post(UPLOAD_VIDEO_API, formData, config);
-
+    })
+      .then(res => {
+        console.log(res);
+        if (res.data.message === '영상 업로드 성공') {
+          alert('영상 업로드에 성공하였습니다!');
+        } else {
+          alert('영상 업로드에 실패하였습니다.');
+        }
+      })
+      .catch(error => {
+        console.log(error.response);
+        alert('영상 업로드에 실패하였습니다.');
+      });
   };
 
   return (

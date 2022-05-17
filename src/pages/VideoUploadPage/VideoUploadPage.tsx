@@ -8,12 +8,15 @@ import {
   VideoInput,
   ImageInput,
   Category,
-  Condition
+  Condition,
+  MessageModal
 } from 'components';
 import { VIDEO_LIST_API } from 'utils/api';
 
-
 export const VideoUploadPage = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(true);
+
   const [video, setVideo] = useState<any>();
   const [img, setImg] = useState<any>();
   const [title, setTitle] = useState('');
@@ -51,27 +54,35 @@ export const VideoUploadPage = () => {
       url: VIDEO_LIST_API,
       data: formData,
       headers: {
-        "Content-Type": "multipart/form-data",
-        "Authorization": `Bearer ${localStorage.getItem('AC_Token')}`
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
       }
     })
       .then(res => {
         console.log(res);
         if (res.data.message === '영상 업로드 성공') {
-          alert('영상 업로드에 성공하였습니다!');
+          setModalOpen(true);
         } else {
-          alert('영상 업로드에 실패하였습니다.');
+          setIsSuccess(false);
+          setModalOpen(true);
         }
       })
       .catch(error => {
-        console.log(error.response);
-        alert('영상 업로드에 실패하였습니다.');
+        setIsSuccess(false);
+        setModalOpen(true);
       });
   };
 
   return (
     <AppContainer>
       <S.Wrap>
+        <MessageModal
+          message={
+            isSuccess ? '업로드에 성공하였습니다!' : '업로드에 실패하였습니다.'
+          }
+          redirectTo={isSuccess ? '/profile' : '/'}
+          isOpen={modalOpen}
+        />
         <PageHeader title="상품 등록" backTo="/" />
         <S.Form onSubmit={handleSubmit}>
           <S.MainContainer>

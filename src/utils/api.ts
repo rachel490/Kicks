@@ -50,4 +50,9 @@ export const KAKAO_LOGIN_URL = `https://kauth.kakao.com/oauth/authorize?client_i
 // export const TOKEN_API = `${BASE_URL}/login/oauth2/code/kakao`;
 export const TOKEN_API = `http://13.209.18.253:8080/login/oauth2/code/kakao`;
 
-
+// Liked
+// export const LIKE_API = `${BASE_URL}/v1/videos/:video_id/likes`;
+export const LIKE_API = (video_id: number) =>
+  `http://13.209.18.253:8080/v1/videos/${video_id}/likes`;
+export const UNLIKE_API = (video_id: number) =>
+  `http://13.209.18.253:8080/v1/videos/likes/${video_id}`;

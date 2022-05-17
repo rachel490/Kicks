@@ -25,11 +25,11 @@ export const FOLLOWER_API = (user_id: number) =>
 // export const FOLLOWER_API = (user_id: number) =>
 //   `${BASE_URL}/v1/users/following/to?to_member=${user_id}`;
 
-// Main Page (영상 재생)
+// Video
 export const VIDEO_ITEM_API = (video_id: number) =>
   `${BASE_URL}/v1/videos/${video_id}`;
-
-export const VIDEO_LIST_API = `${BASE_URL}/v1/videos`;
+// export const VIDEO_LIST_API = `${BASE_URL}/v1/videos`;
+export const VIDEO_LIST_API = 'http://13.209.18.253:8080/v1/videos';
 
 // Search Page
 export const TOP10_VIDEO_API = (sortBy: 'hits' | 'likes') =>
@@ -40,9 +40,6 @@ export const SEARCHED_VIDEO_API = (keyword: string, sortBy: 'hits' | null) =>
 //   `${BASE_URL}/v1/videos/status-condition?sortBy=${sortBy}`;
 // export const SEARCHED_VIDEO_API = (keyword: string, sortBy: 'hits' | null) =>
 //   `${BASE_URL}/v1/videos/keyword-condition?keyword=${keyword}&sortBy=${sortBy}`;
-
-// Upload Page
-export const UPLOAD_VIDEO_API = `${BASE_URL}/v1/videos`;
 
 // Login Page
 export const API_KEY = process.env.REACT_APP_KAKAO_API_KEY;

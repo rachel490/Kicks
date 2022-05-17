@@ -21,7 +21,7 @@ export const DeleteModal = ({
     navigate('/profile');
   };
   return (
-    <S.Overlay>
+    <S.Overlay isOpen={true}>
       <S.Modal>
         <S.Message>정말 삭제하시겠습니까?</S.Message>
         <S.ButtonContainer>

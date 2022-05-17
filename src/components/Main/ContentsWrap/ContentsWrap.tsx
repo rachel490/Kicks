@@ -32,7 +32,7 @@ export const ContentsWrap = ({
   if (!data) return <Loading />;
 
   const videoData = data?.data as IVideoItem;
-  console.log(videoData);
+  // console.log(videoData);
 
   return (
     <S.Wrap>

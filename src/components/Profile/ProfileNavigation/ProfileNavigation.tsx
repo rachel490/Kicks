@@ -6,7 +6,7 @@ import { fetcher } from 'utils/swr';
 import { IVideoListItem } from 'data/types';
 import { VideoList } from 'components';
 
-export const ProfileNavigation = () => {
+export const ProfileNavigation = ({userId} : {userId: number}) => {
   const { data: likedVideoData } = useSWR<IVideoListItem[]>(
     MY_LIKES_API,
     fetcher

@@ -7,6 +7,7 @@ import { ReactComponent as UnSaveIcon } from 'assets/svg/unSave.svg';
 import { ReactComponent as ChatIcon } from 'assets/svg/chat.svg';
 import { ReactComponent as MoreIcon } from 'assets/svg/more.svg';
 import { LIKE_API, UNLIKE_API } from 'utils/api';
+import { Link } from 'react-router-dom';
 
 interface Prop {
   profile_image_url: string;
@@ -70,10 +71,13 @@ export const PlayerMenu = ({
       //   });
     }
   };
+
   return (
     <S.Wrap isShown={isShown}>
       <S.Button>
-        <img src={profile_image_url} alt="profile" />
+        <Link to={`/${id}`}>
+          <img src={profile_image_url} alt="profile" />
+        </Link>
         <FollowIcon className="follow" />
       </S.Button>
       <S.Button>

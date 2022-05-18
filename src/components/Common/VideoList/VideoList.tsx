@@ -2,25 +2,22 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as S from './styles';
 import { IVideoListItem } from 'data/types';
 import { positionValues, Scrollbars } from 'react-custom-scrollbars';
-import useSWRInfinite from 'swr/infinite';
-import { fetcher } from 'utils/swr';
+import { fetcher, fetcherWithToken } from 'utils/swr';
 import useSWR from 'swr';
 
 interface Props {
-  videos: IVideoListItem[] | undefined;
+  api: string;
 }
 
-export const VideoList = ({ videos }: Props) => {
-  const [isBottom, setIsBottom] = useState(false);
+export const VideoList = ({ api }: Props) => {
+  const [_, setIsBottom] = useState(false);
   const videoRef = useRef<IVideoListItem[]>([]);
   const lastVideoId = useRef<number | string>('');
   const scrollbarRef = useRef<Scrollbars>(null);
 
   const { data } = useSWR(
-    `https://www.numble-kicks.shop/v1/videos/keyword-condition?keyword=&sortBy=hits&lastId=${
-      lastVideoId.current || ''
-    }`,
-    fetcher
+    `${api}last_id=${lastVideoId.current || 99}`,
+    fetcherWithToken
   );
 
   const videoData = data?.data as IVideoListItem[];

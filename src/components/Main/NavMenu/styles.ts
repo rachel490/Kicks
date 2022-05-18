@@ -10,7 +10,7 @@ export const Wrap = styled.div<{ isShown: boolean }>`
   align-items: center;
   z-index: 1000;
 
-  &.controller{
+  &.controller {
     bottom: 200px;
   }
 `;
@@ -21,15 +21,24 @@ export const Button = styled.button`
   & + & {
     margin-top: 45px;
   }
+
   &:nth-of-type(even) {
     margin-top: 38px;
   }
+
   img {
     width: 48px;
     height: 48px;
     object-fit: cover;
     border-radius: 50%;
   }
+
+  p {
+    font-size: 12px;
+    margin-top: 5px;
+    color: white;
+  }
+
   .follow {
     width: 18px;
     height: 18px;

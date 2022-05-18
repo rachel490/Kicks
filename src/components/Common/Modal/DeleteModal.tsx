@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { DELETE_VIDEO_API } from 'utils/api';
 import * as S from './styles';
+import { VIDEO_ITEM_API } from 'utils/api';
+import { MessageModal } from 'components';
 
 export const DeleteModal = ({
   setIsDeleteModalOpen,
@@ -10,29 +11,42 @@ export const DeleteModal = ({
   setIsDeleteModalOpen: Function;
   id: number;
 }) => {
-  const navigate = useNavigate();
+  const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   const handlDelete = () => {
-    // axios.delete(DELETE_VIDEO_API(id), {
-    //   headers: {
-    //     Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
-    //   }
-    // });
-    console.log('delete', id);
-    navigate('/profile');
+    axios.delete(VIDEO_ITEM_API(id), {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
+      }
+    });
+    // console.log('delete', id);
+    setIsMessageModalOpen(true);
   };
   return (
-    <S.Overlay isOpen={true}>
-      <S.Modal>
-        <S.Message>정말 삭제하시겠습니까?</S.Message>
-        <S.ButtonContainer>
-          <button className="yes" onClick={handlDelete}>
-            예
-          </button>
-          <button className="no" onClick={() => setIsDeleteModalOpen(false)}>
-            아니오
-          </button>
-        </S.ButtonContainer>
-      </S.Modal>
-    </S.Overlay>
+    <>
+      {isMessageModalOpen ? (
+        <MessageModal
+          message="삭제되었습니다"
+          redirectTo="/profile"
+          isOpen={isMessageModalOpen}
+        />
+      ) : (
+        <S.Overlay isOpen={true}>
+          <S.Modal>
+            <S.Message>정말 삭제하시겠습니까?</S.Message>
+            <S.ButtonContainer>
+              <button className="yes" onClick={handlDelete}>
+                예
+              </button>
+              <button
+                className="no"
+                onClick={() => setIsDeleteModalOpen(false)}
+              >
+                아니오
+              </button>
+            </S.ButtonContainer>
+          </S.Modal>
+        </S.Overlay>
+      )}
+    </>
   );
 };

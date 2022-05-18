@@ -26,8 +26,10 @@ export const FOLLOWER_API = (user_id: number) =>
 //   `${BASE_URL}/v1/users/following/to?to_member=${user_id}`;
 
 // Video
+// export const VIDEO_ITEM_API = (video_id: number) =>
+//   `${BASE_URL}/v1/videos/${video_id}`;
 export const VIDEO_ITEM_API = (video_id: number) =>
-  `${BASE_URL}/v1/videos/${video_id}`;
+  `http://13.209.18.253:8080/v1/videos/${video_id}`;
 // export const VIDEO_LIST_API = `${BASE_URL}/v1/videos`;
 export const VIDEO_LIST_API = 'http://13.209.18.253:8080/v1/videos';
 
@@ -48,6 +50,4 @@ export const KAKAO_LOGIN_URL = `https://kauth.kakao.com/oauth/authorize?client_i
 // export const TOKEN_API = `${BASE_URL}/login/oauth2/code/kakao`;
 export const TOKEN_API = `http://13.209.18.253:8080/login/oauth2/code/kakao`;
 
-// Delete Page
-export const DELETE_VIDEO_API = (video_id: number) =>
-  `${BASE_URL}/v1/videos/${video_id}`;
+

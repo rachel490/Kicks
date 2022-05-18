@@ -48,8 +48,9 @@ export interface IVideoItem {
   title: string;
   description: string;
   price: number;
-  usedStatus: boolean;
+  used_status: boolean;
   view_count: number;
+  like_count: number;
   user: {
     id: number;
     name: string;

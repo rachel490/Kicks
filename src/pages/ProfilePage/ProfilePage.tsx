@@ -16,8 +16,8 @@ export const ProfilePage = () => {
 
   return (
     <S.Wrap>
-      <ProfileHeader userId={Number(state.userId)} />
-      {/* <ProfileNavigation userId={Number(userId)} /> */}
+      <ProfileHeader userId={state.userId} />
+      <ProfileNavigation userId={state.userId} />
     </S.Wrap>
   );
 };

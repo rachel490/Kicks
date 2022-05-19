@@ -19,7 +19,7 @@ export const VideoList = ({ videos }: Props) => {
       <Scrollbars autoHide ref={scrollbarRef} onScrollFrame={handleScroll}>
         {videos?.map(({ id, thumbnail_url }) => (
           <S.VideoLink to={`/video/${id}`} key={id}>
-            <img src={thumbnail_url} alt={thumbnail_url} />
+            <img src={thumbnail_url} alt="" />
           </S.VideoLink>
         ))}
       </Scrollbars>

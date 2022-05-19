@@ -12,8 +12,12 @@ export const USER_DATA_API = (user_id: number) =>
   `http://13.209.18.253:8080/v1/users/${user_id}`;
 // export const USER_DATA_API = (user_id: number) =>
 //   `${BASE_URL}/v1/users/${user_id}`;
-export const MY_VIDEOS_API = `${BASE_URL}/v1/users/my/videos`;
-export const MY_LIKES_API = `${BASE_URL}/v1/users/my/likes`;
+export const MY_VIDEOS_API = (user_id: number) =>
+  `http://13.209.18.253:8080/v1/users/${user_id}/videos`;
+export const MY_LIKES_API = (user_id: number) =>
+  `http://13.209.18.253:8080/v1/users/${user_id}/likes`;
+// export const MY_VIDEOS_API = (user_id : number) =>  `${BASE_URL}/v1/users/${user_id}/videos`;
+// export const MY_LIKES_API = (user_id : number) =>  `${BASE_URL}/v1/users/${user_id}/likes}`;
 export const FOLLOWING_API = (user_id: number) =>
   `http://13.209.18.253:8080/v1/users/following/from?from_member=${user_id}`;
 export const FOLLOWER_API = (user_id: number) =>

@@ -2,20 +2,22 @@ const BASE_URL = 'http://localhost:8080';
 // const BASE_URL = 'https://numble-kicks.shop";
 // const BASE_URL = 'http://13.209.18.253:8080';
 
-export const USER_DATA_API = (user_id: number) =>
-  `http://13.209.18.253:8080/v1/users/${user_id}`;
-// export const USER_DATA_API = (user_id: number) =>
-//   `${BASE_URL}/v1/users/${user_id}`;
-
 // Chat Page
 export const CHAT_LIST_API = `${BASE_URL}/v1/users/chatting`;
 export const CHAT_ROOM_API = (chat_room_id: number) =>
   `${BASE_URL}/v1/users/chatting/${chat_room_id}`;
 
 // Profile Page
-// my -> :userId로 대체
-export const MY_VIDEOS_API = `${BASE_URL}/v1/users/my/videos`;
-export const MY_LIKES_API = `${BASE_URL}/v1/users/my/likes`;
+export const USER_DATA_API = (user_id: number) =>
+  `http://13.209.18.253:8080/v1/users/${user_id}`;
+// export const USER_DATA_API = (user_id: number) =>
+//   `${BASE_URL}/v1/users/${user_id}`;
+export const MY_VIDEOS_API = (user_id: number) =>
+  `http://13.209.18.253:8080/v1/users/${user_id}/videos`;
+export const MY_LIKES_API = (user_id: number) =>
+  `http://13.209.18.253:8080/v1/users/${user_id}/likes`;
+// export const MY_VIDEOS_API = (user_id : number) =>  `${BASE_URL}/v1/users/${user_id}/videos`;
+// export const MY_LIKES_API = (user_id : number) =>  `${BASE_URL}/v1/users/${user_id}/likes}`;
 export const FOLLOWING_API = (user_id: number) =>
   `http://13.209.18.253:8080/v1/users/following/from?from_member=${user_id}`;
 export const FOLLOWER_API = (user_id: number) =>

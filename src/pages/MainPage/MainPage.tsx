@@ -20,7 +20,7 @@ export const MainPage = () => {
           {videoList?.map(video => (
             <SwiperSlide key={video.id}>
               <ContentsWrap
-                id={video.id}
+                videoId={video.id}
                 active={active}
                 setActive={setActive}
                 key={video.id}

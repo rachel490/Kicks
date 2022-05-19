@@ -9,12 +9,9 @@ import { VIDEO_LIST_API } from 'utils/api';
 
 export const MainPage = () => {
   const [active, setActive] = useState(true);
-  const { data } = useSWR(
-    VIDEO_LIST_API,
-    fetcher
-  );
+  const { data } = useSWR(VIDEO_LIST_API, fetcher);
 
-    const videoList = data?.data as IVideoListItem[];
+  const videoList = data?.data as IVideoListItem[];
 
   return (
     <S.Wrap>
@@ -26,6 +23,7 @@ export const MainPage = () => {
                 id={video.id}
                 active={active}
                 setActive={setActive}
+                key={video.id}
               />
             </SwiperSlide>
           ))}

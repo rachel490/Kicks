@@ -1,5 +1,6 @@
 import { Loading } from 'components';
 import { IVideoItem } from 'data/types';
+import { AdminContainer, PageOption } from 'pages/AdminUserPage/styles';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
@@ -9,10 +10,9 @@ import * as S from './styles';
 
 export const ContentsEdit = () => {
   const { videoId } = useParams();
-  const { data: videoData } = useSWR<IVideoItem>(
-    VIDEO_ITEM_API(Number(videoId)),
-    fetcher
-  );
+  const { data: video } = useSWR(VIDEO_ITEM_API(Number(videoId)), fetcher);
+  const videoData = video?.data as IVideoItem;
+  console.log(videoData);
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -34,10 +34,12 @@ export const ContentsEdit = () => {
   };
 
   return (
-    <>
+    <AdminContainer>
       {videoData ? (
         <S.Form onSubmit={handleEdit}>
-          <S.Button type="submit">수정완료</S.Button>
+          <PageOption>
+            <S.Button type="submit">수정완료</S.Button>
+          </PageOption>
           <S.Main>
             <img src={videoData.thumbnail_url} alt={videoData.title} />
             <S.InfoContainer>
@@ -75,31 +77,35 @@ export const ContentsEdit = () => {
             </S.InfoContainer>
           </S.Main>
           <S.Sub>
-            <S.InfoBox>
-              <S.Label>Number</S.Label>
+            <S.TableData>
+              <p className="title">Number</p>
               <span>{videoData.id}</span>
-            </S.InfoBox>
-            <S.InfoBox>
-              <S.Label>User ID</S.Label>
-              <span></span>
-            </S.InfoBox>
-            <S.InfoBox>
-              <S.Label>Nickname</S.Label>
+            </S.TableData>
+            <S.TableData>
+              <p className="title">User ID</p>
+              <span>{videoData.user.id}</span>
+            </S.TableData>
+            <S.TableData>
+              <p className="title">Nickname</p>
               <span>{videoData.user.name}</span>
-            </S.InfoBox>
-            <S.InfoBox>
-              <S.Label>Thumbnail</S.Label>
-              <span>{videoData.thumbnail_url}</span>
-            </S.InfoBox>
-            <S.InfoBox>
-              <S.Label>Video URL</S.Label>
-              <span>{videoData.video_url}</span>
-            </S.InfoBox>
+            </S.TableData>
+            <S.TableData>
+              <p className="title">Thumbnail</p>
+              <span>
+                <img src={videoData.thumbnail_url} />
+              </span>
+            </S.TableData>
+            <S.TableData>
+              <p className="title">Video URL</p>
+              <span>
+                <a href={videoData.video_url}>{videoData.video_url}</a>
+              </span>
+            </S.TableData>
           </S.Sub>
         </S.Form>
       ) : (
         <Loading />
       )}
-    </>
+    </AdminContainer>
   );
 };

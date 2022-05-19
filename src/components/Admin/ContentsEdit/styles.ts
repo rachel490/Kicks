@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 
 export const Form = styled.form`
-  margin: 170px 185px 0 20px;
-  padding: 30px 12px;
-  border-top: 1px solid black;
   justify-content: space-between;
   width: 100%;
-  position: relative;
 `;
 
 export const Button = styled.button`
@@ -14,15 +10,12 @@ export const Button = styled.button`
   font-size: 15px;
   padding: 10px 15px;
   border-radius: 5px;
-  position: absolute;
-  top: -60px;
-  right: 20px;
 `;
 
 export const Main = styled.div`
   display: flex;
-  width: 100%;
-
+  border-top: 1px solid black;
+  padding-top: 20px;
   img {
     min-width: 360px;
     height: 360px;
@@ -34,10 +27,11 @@ export const Main = styled.div`
 export const InfoContainer = styled.div`
   display: flex;
   height: 100%;
-  width: 100%;
+  width: 60%;
   flex-direction: column;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-left: 30px;
 `;
 
 export const InfoBox = styled.div`
@@ -81,19 +75,52 @@ export const StatusBox = styled.div`
 
 export const Label = styled.label`
   font-size: 15px;
+  font-weight: 600;
   margin-bottom: 10px;
 `;
 
 export const Sub = styled.div`
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   width: 100%;
+  margin-left: auto;
   justify-content: space-between;
+`;
 
-  ${InfoBox} {
-    min-width: 100px;
-    max-width: 200px;
-    overflow-wrap: break-word;
-    text-align: center;
+export const TableData = styled.div`
+  overflow-wrap: break-word;
+  text-align: center;
+  .title {
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #f1f1f1;
+    padding: 13px 0;
+    border-bottom: 2px solid #333;
+  }
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  img {
+    width: 50px;
+  }
+  a {
+    color: #2121c0;
+    text-decoration: underline;
+  }
+  &:nth-of-type(1),
+  &:nth-of-type(2) {
+    flex-basis: 12%;
+  }
+  &:nth-of-type(3) {
+    flex-basis: 20%;
+  }
+  &:nth-of-type(4),
+  &:nth-of-type(5) {
+    flex: 1;
   }
 `;

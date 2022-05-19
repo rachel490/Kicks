@@ -5,9 +5,10 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 interface Props {
   videos: IVideoListItem[] | undefined;
+  message?: string;
 }
 
-export const VideoList = ({ videos }: Props) => {
+export const VideoList = ({ videos, message }: Props) => {
   const scrollbarRef = useRef(null);
 
   const handleScroll = () => {
@@ -16,13 +17,17 @@ export const VideoList = ({ videos }: Props) => {
 
   return (
     <S.VideoContent>
-      <Scrollbars autoHide ref={scrollbarRef} onScrollFrame={handleScroll}>
-        {videos?.map(({ id, thumbnail_url }) => (
-          <S.VideoLink to={`/video/${id}`} key={id}>
-            <img src={thumbnail_url} alt="" />
-          </S.VideoLink>
-        ))}
-      </Scrollbars>
+      {videos && videos.length > 0 ? (
+        <Scrollbars autoHide ref={scrollbarRef} onScrollFrame={handleScroll}>
+          {videos.map(({ id, thumbnail_url }) => (
+            <S.VideoLink to={`/video/${id}`} key={id}>
+              <img src={thumbnail_url} alt="" />
+            </S.VideoLink>
+          ))}
+        </Scrollbars>
+      ) : (
+        <S.MessageContent>{message}</S.MessageContent>
+      )}
     </S.VideoContent>
   );
 };

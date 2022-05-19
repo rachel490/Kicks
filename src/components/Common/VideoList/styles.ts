@@ -24,3 +24,11 @@ export const VideoLink = styled(Link)`
     object-fit: cover;
   }
 `;
+
+export const MessageContent = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+`;

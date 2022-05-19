@@ -39,9 +39,9 @@ export const ProfileNavigation = ({ userId }: { userId: number }) => {
         </button>
       </S.ProfileNav>
       {selectedMenu === 'uploaded' ? (
-        <VideoList videos={uploadedVideoData} />
+        <VideoList videos={uploadedVideoData} message="No Uploaded Videos" />
       ) : (
-        <VideoList videos={likedVideoData} />
+        <VideoList videos={likedVideoData} message="No Liked Videos" />
       )}
     </S.Wrap>
   );

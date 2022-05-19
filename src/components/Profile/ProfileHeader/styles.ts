@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ProfileHeader = styled.div`
+export const Wrap = styled.div`
   width: 250px;
   display: flex;
   flex-direction: column;
@@ -20,17 +20,10 @@ export const ProfileHeader = styled.div`
       font-size: 15px;
     }
   }
-
-  .profile-edit-btn {
-    border: ${({ theme }) => theme.style.border_light};
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 10px;
-  }
 `;
 
 export const ProfileStats = styled.ul`
-  margin: 20px 0;
+  margin: 18px 0;
   width: 100%;
   height: 50px;
   display: flex;
@@ -39,7 +32,7 @@ export const ProfileStats = styled.ul`
 
   li,
   a {
-    width: 55px;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -54,6 +47,23 @@ export const ProfileStats = styled.ul`
     .profile-stat-name {
       font-size: 13px;
       margin-top: 5px;
+    }
+  }
+`;
+
+export const Buttons = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .profile-btn {
+    border: ${({ theme }) => theme.style.border_light};
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 20px;
+
+    &:first-child {
+      margin-right: 10px;
     }
   }
 `;

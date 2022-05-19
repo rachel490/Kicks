@@ -7,26 +7,30 @@ import { ReactComponent as UnSaveIcon } from 'assets/svg/unSave.svg';
 import { ReactComponent as ChatIcon } from 'assets/svg/chat.svg';
 import { ReactComponent as MoreIcon } from 'assets/svg/more.svg';
 import { LIKE_API, UNLIKE_API } from 'utils/api';
+import { Link } from 'react-router-dom';
 
 interface Prop {
   profile_image_url: string;
   isShown: boolean;
   like_count: number;
-  id: number;
+  videoId: number;
+  userId: number;
+  name: string;
 }
 
 export const PlayerMenu = ({
   profile_image_url,
   isShown,
   like_count,
-  id
+  userId,
+  videoId,
+  name
 }: Prop) => {
-
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     const checkLike = async () => {
-      const response = await axios.get(LIKE_API(id), {
+      const response = await axios.get(LIKE_API(videoId), {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
         }
@@ -44,7 +48,7 @@ export const PlayerMenu = ({
     if (!isLiked) {
       const config = {
         method: 'post',
-        url: LIKE_API(id),
+        url: LIKE_API(videoId),
         headers: {
           Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
         }
@@ -70,10 +74,13 @@ export const PlayerMenu = ({
       //   });
     }
   };
+
   return (
     <S.Wrap isShown={isShown}>
       <S.Button>
-        <img src={profile_image_url} alt="profile" />
+        <Link to={`/${name}`} state={{ userId: userId }}>
+          <img src={profile_image_url} alt="profile" />
+        </Link>
         <FollowIcon className="follow" />
       </S.Button>
       <S.Button>

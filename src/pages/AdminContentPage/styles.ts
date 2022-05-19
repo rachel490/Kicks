@@ -6,6 +6,7 @@ export const DropDown = styled.select`
 `;
 
 export const ContentsContainer = styled(DataList)`
+  height: calc(100% - 180px);
   padding: 30px 12px;
   border-top: 1px solid black;
   display: grid;

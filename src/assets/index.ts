@@ -1,1 +1,0 @@
-export { AdminLogo } from './AdminLogo';

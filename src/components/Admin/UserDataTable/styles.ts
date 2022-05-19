@@ -20,10 +20,11 @@ export const TableHead = styled.thead`
 `;
 
 export const TableBody = styled.tbody`
+  background: #fbfbfb;
   tr {
     border-bottom: 1px solid #ddd;
     &:hover {
-      background-color: #ddd;
+      background-color: #f1f1f1;
     }
   }
   td {

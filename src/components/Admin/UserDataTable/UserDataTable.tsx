@@ -4,7 +4,7 @@ import { usePagination, useTable } from 'react-table';
 import dayjs from 'dayjs';
 import * as S from './styles';
 import { IUserAdmin } from 'data/types';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface Props {
   userData: IUserAdmin[];
@@ -13,6 +13,7 @@ interface Props {
 export const UserDataTable = ({ userData }: Props) => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => userData, [userData]);
+  const { pathname } = useLocation();
 
   const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
     useTable(
@@ -51,8 +52,8 @@ export const UserDataTable = ({ userData }: Props) => {
                 const userId = row.original.id;
                 const isStatus = cell.column.id === 'status';
                 const isDate =
-                  cell.column.id === 'data_joined' ||
-                  cell.column.id === 'last_login';
+                  cell.column.id === 'createAt' ||
+                  cell.column.id === 'lastLoginDate';
 
                 return (
                   <td {...cell.getCellProps()}>
@@ -61,14 +62,16 @@ export const UserDataTable = ({ userData }: Props) => {
                       : cell.value}
                     {isStatus && (
                       <S.StatusButton>
-                        <button>
-                          <Link
-                            to={`/admin/users/dashboard/${userId}`}
-                            state={[row.original]}
-                          >
-                            대쉬보드
-                          </Link>
-                        </button>
+                        {!pathname.includes('dashboard') && (
+                          <button>
+                            <Link
+                              to={`/admin/users/dashboard/${userId}`}
+                              state={[row.original]}
+                            >
+                              대쉬보드
+                            </Link>
+                          </button>
+                        )}
                         <button onClick={handleDeleteUser}>탈퇴하기</button>
                       </S.StatusButton>
                     )}

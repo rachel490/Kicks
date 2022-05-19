@@ -8,6 +8,8 @@ export const CHAT_ROOM_API = (chat_room_id: number) =>
   `${BASE_URL}/v1/users/chatting/${chat_room_id}`;
 
 // Profile Page
+export const LOGOUT_API = 'http://13.209.18.253:8080/logout';
+// export const LOGOUT_API = `${BASE_URL}/logout`;
 export const USER_DATA_API = (user_id: number) =>
   `http://13.209.18.253:8080/v1/users/${user_id}`;
 // export const USER_DATA_API = (user_id: number) =>

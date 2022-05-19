@@ -13,21 +13,24 @@ interface Prop {
   profile_image_url: string;
   isShown: boolean;
   like_count: number;
-  id: number;
+  videoId: number;
+  userId: number;
+  name: string;
 }
 
 export const PlayerMenu = ({
   profile_image_url,
   isShown,
   like_count,
-  id
+  userId,
+  videoId,
+  name
 }: Prop) => {
-
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     const checkLike = async () => {
-      const response = await axios.get(LIKE_API(id), {
+      const response = await axios.get(LIKE_API(videoId), {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
         }
@@ -45,7 +48,7 @@ export const PlayerMenu = ({
     if (!isLiked) {
       const config = {
         method: 'post',
-        url: LIKE_API(id),
+        url: LIKE_API(videoId),
         headers: {
           Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
         }
@@ -75,7 +78,7 @@ export const PlayerMenu = ({
   return (
     <S.Wrap isShown={isShown}>
       <S.Button>
-        <Link to={`/${id}`}>
+        <Link to={`/${name}`} state={{ userId: userId }}>
           <img src={profile_image_url} alt="profile" />
         </Link>
         <FollowIcon className="follow" />

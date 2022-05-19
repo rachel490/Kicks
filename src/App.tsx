@@ -34,7 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<MainPage />} />
-            <Route path="/:userId" element={<ProfilePage />} />
+            <Route path="/:username" element={<ProfilePage />} />
             <Route path="search" element={<SearchPage />} />
             <Route path="search_result" element={<SearchResultPage />} />
             <Route path="chats" element={<ChatListPage />} />

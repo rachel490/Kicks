@@ -11,7 +11,7 @@ export const PlayPage = () => {
   return (
     <S.Wrap>
       <ContentsWrap
-        id={Number(videoId)}
+        videoId={Number(videoId)}
         active={active}
         setActive={setActive}
       />

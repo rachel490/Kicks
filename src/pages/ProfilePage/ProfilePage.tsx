@@ -1,15 +1,23 @@
 import { ProfileHeader, ProfileNavigation } from 'components';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import * as S from './styles';
 
+interface RouteState {
+  state: {
+    userId: number;
+  };
+}
+
 export const ProfilePage = () => {
-  const { userId } = useParams();
-  // console.log('profile', userId);
+  const { username } = useParams();
+  const { state } = useLocation() as RouteState;
+
+  // console.log('profile', state.userId, username, typeof username, typeof state.userId);
 
   return (
     <S.Wrap>
-      <ProfileHeader userId={Number(userId)} />
-      <ProfileNavigation userId={Number(userId)} />
+      <ProfileHeader userId={Number(state.userId)} />
+      {/* <ProfileNavigation userId={Number(userId)} /> */}
     </S.Wrap>
   );
 };

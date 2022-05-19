@@ -2,9 +2,6 @@ const BASE_URL = 'http://localhost:8080';
 // const BASE_URL = 'https://numble-kicks.shop";
 // const BASE_URL = 'http://13.209.18.253:8080';
 
-export const USER_DATA_API = (user_id: number) =>
-  `http://13.209.18.253:8080/v1/users/${user_id}`;
-
 // Chat Page
 export const CHAT_LIST_API = `${BASE_URL}/v1/users/chatting`;
 export const CHAT_ROOM_API = (chat_room_id: number) =>

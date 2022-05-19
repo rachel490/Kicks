@@ -12,8 +12,6 @@ export const ProfilePage = () => {
   const { username } = useParams();
   const { state } = useLocation() as RouteState;
 
-  // console.log('profile', state.userId, username, typeof username, typeof state.userId);
-
   return (
     <S.Wrap>
       <ProfileHeader userId={state.userId} />

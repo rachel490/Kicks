@@ -1,12 +1,9 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { usePagination, useTable } from 'react-table';
 import * as S from './styles';
-import { COLUMNS } from 'components/Admin/UserDataTable/columns';
-import { Wrap } from 'pages/AdminUserPage/styles';
-import { TableHead, TableBody } from 'components/Admin/UserDataTable/styles';
+import { AdminContainer } from 'pages/AdminUserPage/styles';
 import { IUserAdmin, IVideoItem } from 'data/types';
-import { VideoDataTable } from 'components';
+import { UserDataTable, VideoDataTable } from 'components';
 import { ADMIN_CONTENT_API } from 'utils/api';
 import useSWR from 'swr';
 import { fetcherWithToken } from 'utils/swr';
@@ -18,50 +15,16 @@ export const AdminDashBoard = () => {
     fetcherWithToken
   );
   const location = useLocation();
-  const data = (location.state as IUserAdmin[]) || [];
-  const columns = useMemo(() => COLUMNS.slice(0, 5), []);
+  const currentUser = (location.state as IUserAdmin[]) || [];
   const videoData = videos?.data as IVideoItem[];
-
-  const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
-    useTable(
-      {
-        // @ts-ignore
-        columns,
-        data
-      },
-      usePagination
-    );
+  console.log(videoData);
 
   return (
-    <Wrap>
+    <AdminContainer>
       <S.BoardTitle>User DashBoard</S.BoardTitle>
-      <S.UserTable {...getTableProps()}>
-        <TableHead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-              ))}
-            </tr>
-          ))}
-        </TableHead>
-
-        <TableBody {...getTableBodyProps()}>
-          {page.map((row: any) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell: any) => {
-                  return <td {...cell.getCellProps()}>{cell.value}</td>;
-                })}
-              </tr>
-            );
-          })}
-        </TableBody>
-      </S.UserTable>
-
-      <S.ContentTitle>{data[0].name}님이 업로드한 영상</S.ContentTitle>
+      <UserDataTable userData={currentUser} />
+      <S.ContentTitle>{currentUser[0].name}님이 업로드한 영상</S.ContentTitle>
       <VideoDataTable videoData={videoData ? videoData : []} />
-    </Wrap>
+    </AdminContainer>
   );
 };

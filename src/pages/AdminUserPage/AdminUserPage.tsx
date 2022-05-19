@@ -12,7 +12,6 @@ export const AdminUserPage = () => {
   const [input, setInput] = useState('');
 
   const { data: users } = useSWR(ADMIN_USER_API(keyword), fetcherWithToken);
-
   const userData = users?.data as IUserAdmin[];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +26,7 @@ export const AdminUserPage = () => {
   };
 
   return (
-    <S.Wrap>
+    <S.AdminContainer>
       <S.PageOption>
         <S.SearchUser>
           <input
@@ -43,6 +42,6 @@ export const AdminUserPage = () => {
       <S.TableContainer>
         {userData && <UserDataTable userData={userData} />}
       </S.TableContainer>
-    </S.Wrap>
+    </S.AdminContainer>
   );
 };

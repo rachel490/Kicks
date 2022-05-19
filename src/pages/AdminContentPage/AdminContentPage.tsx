@@ -6,7 +6,7 @@ import { ADMIN_CONTENT_API } from 'utils/api';
 import { IVideoListItem } from 'data/types';
 import { Loading } from 'components';
 import * as S from './styles';
-import { Wrap, PageOption } from 'pages/AdminUserPage/styles';
+import { AdminContainer, PageOption } from 'pages/AdminUserPage/styles';
 
 export const AdminContentPage = () => {
   const [column, setColumn] = useState('five');
@@ -21,7 +21,7 @@ export const AdminContentPage = () => {
   };
 
   return (
-    <Wrap>
+    <AdminContainer>
       <PageOption>
         <S.DropDown
           name="column"
@@ -53,6 +53,6 @@ export const AdminContentPage = () => {
           <Loading />
         )}
       </S.ContentsContainer>
-    </Wrap>
+    </AdminContainer>
   );
 };

@@ -1,7 +1,7 @@
 export const VIDEO_COLUMNS = [
   {
     Header: 'Video ID',
-    accessor: 'videoId'
+    accessor: 'id'
   },
   {
     Header: 'Title',
@@ -13,7 +13,7 @@ export const VIDEO_COLUMNS = [
   },
   {
     Header: 'Thumbnail',
-    accessor: 'thumbnail'
+    accessor: 'thumbnail_url'
   },
   {
     Header: 'Video URL',

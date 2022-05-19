@@ -11,20 +11,7 @@ interface Props {
 
 export const VideoDataTable = ({ videoData }: Props) => {
   const columns = useMemo(() => VIDEO_COLUMNS, []);
-  const data = useMemo(
-    () =>
-      videoData.map(video => {
-        return {
-          videoId: video.id,
-          title: video.title,
-          thumbnail: video.thumbnail_url,
-          video_url: video.video_url,
-          description: video.description
-        };
-      }),
-    [videoData]
-  );
-  console.log(data);
+  const data = useMemo(() => videoData, [videoData]);
 
   const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
     useTable(
@@ -61,7 +48,7 @@ export const VideoDataTable = ({ videoData }: Props) => {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell: any) => {
-                  const isThumbnail = cell.column.id === 'thumbnail';
+                  const isThumbnail = cell.column.id === 'thumbnail_url';
                   const isUrl = cell.column.id === 'video_url';
                   const isStatus = cell.column.id === 'status';
 
@@ -87,6 +74,7 @@ export const VideoDataTable = ({ videoData }: Props) => {
           })}
         </TableBody>
       </S.ContentTable>
+      {data.length === 0 && <S.EmptyVideo>No Videos</S.EmptyVideo>}
     </S.TableContainer>
   );
 };

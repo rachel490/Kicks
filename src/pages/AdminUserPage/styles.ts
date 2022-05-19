@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrap = styled.div`
+export const AdminContainer = styled.div`
   width: 75%;
   height: 100%;
   margin: 0 auto;
@@ -18,6 +18,21 @@ export const PageOption = styled.div`
 export const DataList = styled.div`
   overflow-y: scroll;
   height: calc(100% - 150px);
+  ::-webkit-scrollbar {
+    display: block;
+    width: 6px;
+    margin-top: 30px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #fff;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    background: #cacaca;
+  }
 `;
 
 export const TableContainer = styled(DataList)`

@@ -9,15 +9,15 @@ export const COLUMNS = [
   },
   {
     Header: 'Nickname',
-    accessor: 'nickname'
+    accessor: 'name'
   },
   {
-    Header: 'Data Joined',
-    accessor: 'data_joined'
+    Header: 'Joined Date',
+    accessor: 'createAt'
   },
   {
     Header: 'Last Log-in',
-    accessor: 'last_login'
+    accessor: 'lastLoginDate'
   },
   {
     Header: 'Status',

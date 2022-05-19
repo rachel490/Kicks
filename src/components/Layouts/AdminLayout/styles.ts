@@ -13,6 +13,7 @@ export const Header = styled.div`
   svg {
     margin-left: 50px;
     width: 100px;
+    height: 60px;
     cursor: pointer;
   }
 `;

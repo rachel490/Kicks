@@ -1,65 +1,30 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { usePagination, useTable } from 'react-table';
 import * as S from './styles';
-import { COLUMNS } from 'components/Admin/UserDataTable/columns';
-import { Wrap } from 'pages/AdminUserPage/styles';
-import { TableHead, TableBody } from 'components/Admin/UserDataTable/styles';
+import { AdminContainer } from 'pages/AdminUserPage/styles';
 import { IUserAdmin, IVideoItem } from 'data/types';
-import { VideoDataTable } from 'components';
-import { VIDEO_LIST_API } from 'utils/api';
+import { UserDataTable, VideoDataTable } from 'components';
+import { ADMIN_CONTENT_API } from 'utils/api';
 import useSWR from 'swr';
-import { fetcher } from 'utils/swr';
+import { fetcherWithToken } from 'utils/swr';
 
 export const AdminDashBoard = () => {
-  const { data: videoData } = useSWR<IVideoItem[]>(VIDEO_LIST_API, fetcher);
-  const { userId } = useParams();
+  const { userId } = useParams() as { userId: string };
+  const { data: videos } = useSWR(
+    ADMIN_CONTENT_API(0, 0, userId),
+    fetcherWithToken
+  );
   const location = useLocation();
-  const data = (location.state as IUserAdmin[]) || [];
-  const columns = useMemo(() => COLUMNS.slice(0, 5), []);
-
+  const currentUser = (location.state as IUserAdmin[]) || [];
+  const videoData = videos?.data as IVideoItem[];
   console.log(videoData);
 
-  const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
-    useTable(
-      {
-        // @ts-ignore
-        columns,
-        data
-      },
-      usePagination
-    );
-
   return (
-    <Wrap>
+    <AdminContainer>
       <S.BoardTitle>User DashBoard</S.BoardTitle>
-      <S.UserTable {...getTableProps()}>
-        <TableHead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-              ))}
-            </tr>
-          ))}
-        </TableHead>
-
-        <TableBody {...getTableBodyProps()}>
-          {page.map((row: any) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell: any) => {
-                  return <td {...cell.getCellProps()}>{cell.value}</td>;
-                })}
-              </tr>
-            );
-          })}
-        </TableBody>
-      </S.UserTable>
-
-      <S.ContentTitle>{data[0].nickname}님이 업로드한 영상</S.ContentTitle>
+      <UserDataTable userData={currentUser} />
+      <S.ContentTitle>{currentUser[0].name}님이 업로드한 영상</S.ContentTitle>
       <VideoDataTable videoData={videoData ? videoData : []} />
-    </Wrap>
+    </AdminContainer>
   );
 };

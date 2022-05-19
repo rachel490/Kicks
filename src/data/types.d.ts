@@ -59,11 +59,17 @@ export interface IVideoItem {
 }
 
 export interface IUserAdmin {
-  id: number;
+  createAt: string;
   email: string;
-  nickname: string;
-  data_joined: string;
-  last_login: string;
+  emailVerified: boolean;
+  id: number;
+  lastLoginDate: any;
+  modifiedAt: string;
+  name: string;
+  profileImageUrl: any;
+  provider: string;
+  role: string;
+  userId: number;
 }
 
 export interface IFollow {

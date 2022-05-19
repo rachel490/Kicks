@@ -8,18 +8,15 @@ import { Loading } from 'components/Common/Loading/Loading';
 import { useEffect, useState } from 'react';
 
 export const ProfileHeader = ({ userId }: { userId: number }) => {
-  // console.log('userId', userId)
   const { data } = useSWR(USER_DATA_API(userId), fetcherWithToken);
   const userData = data?.data as IUserData;
   const [isUser, setIsUser] = useState(false);
 
-  // console.log('userData', userData);
-
   useEffect(() => {
-    if (userData && (userData.name === localStorage.getItem('name'))) {
+    if (userData && userData.name === localStorage.getItem('name')) {
       setIsUser(true);
     }
-  }, []);
+  }, [userData]);
 
   return (
     <S.Wrap>

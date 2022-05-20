@@ -15,7 +15,7 @@ export const ProfilePage = () => {
   const { state } = useLocation() as RouteState;
 
   const isMyPage = username === localStorage.getItem('name');
-  const myId = localStorage.getItem('id') || '3';
+  const myId = localStorage.getItem('id') || '36';
   const userId = localStorage.getItem('profile-id') || state.userId + '';
 
   useEffect(() => {

@@ -1,8 +1,14 @@
+import axios from 'axios';
 import { PageHeader, ProfileImage } from 'components';
 import { useLocation } from 'react-router-dom';
 import useSWR from 'swr';
 import { IFollow } from 'types';
-import { FOLLOWER_API, FOLLOWING_API } from 'utils/api';
+import {
+  FOLLOWER_API,
+  FOLLOWING_API,
+  FOLLOW_API,
+  UNFOLLOW_API
+} from 'utils/api';
 import { fetcher } from 'utils/swr';
 import * as S from './styles';
 
@@ -18,7 +24,7 @@ export const FollowPage = () => {
   const userName = decodeURI(location.pathname.split('/')[1]);
   const page = location.pathname.split('/')[2];
 
-  const { data: follow } = useSWR(
+  const { data: follow, mutate } = useSWR(
     page === 'following'
       ? FOLLOWING_API(state.userId)
       : FOLLOWER_API(state.userId),
@@ -31,8 +37,31 @@ export const FollowPage = () => {
     page === 'following' ? '팔로잉' : '팔로워'
   }`;
 
-  const addFollowing = () => {};
-  const deleteFollowing = () => {};
+  const addFollowing = (id: number) => {
+    axios
+      .post(FOLLOW_API(id), {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
+        }
+      })
+      .then(() => {
+        mutate();
+      })
+      .catch(error => console.log(error));
+  };
+
+  const deleteFollowing = (id: number) => {
+    axios
+      .delete(UNFOLLOW_API(id), {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
+        }
+      })
+      .then(() => {
+        mutate();
+      })
+      .catch(error => console.log(error));
+  };
 
   return (
     <S.Wrap>
@@ -45,9 +74,11 @@ export const FollowPage = () => {
               <S.Name>{member.name || ''}</S.Name>
               {userName === localStorage.getItem('name') ? (
                 page === 'following' ? (
-                  <S.Button onClick={deleteFollowing}>삭제</S.Button>
+                  <S.Button onClick={() => deleteFollowing(id)}>삭제</S.Button>
                 ) : (
-                  <S.Button onClick={addFollowing}>팔로우</S.Button>
+                  <S.Button onClick={() => addFollowing(member.id)}>
+                    팔로우
+                  </S.Button>
                 )
               ) : null}
             </S.FollowItem>

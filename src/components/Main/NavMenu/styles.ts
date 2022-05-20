@@ -26,13 +26,6 @@ export const Button = styled.button`
     margin-top: 38px;
   }
 
-  img {
-    width: 48px;
-    height: 48px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-
   p {
     font-size: 12px;
     margin-top: 5px;

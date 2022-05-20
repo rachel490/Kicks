@@ -13,11 +13,7 @@ export const ChatListPage = () => {
     <S.Wrap>
       <S.PageTitle>채팅</S.PageTitle>
       <AdBanner height="100px" />
-      {!userData ? (
-        <LoginModal />
-      ) : (
-        chatData && <ChatList chatList={chatData} />
-      )}
+      {userData ? <LoginModal /> : chatData && <ChatList chatList={chatData} />}
     </S.Wrap>
   );
 };

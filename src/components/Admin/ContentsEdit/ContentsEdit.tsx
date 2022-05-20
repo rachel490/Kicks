@@ -92,7 +92,7 @@ export const ContentsEdit = () => {
             <S.TableData>
               <p className="title">Thumbnail</p>
               <span>
-                <img src={videoData.thumbnail_url} />
+                <img src={videoData.thumbnail_url} alt="" />
               </span>
             </S.TableData>
             <S.TableData>

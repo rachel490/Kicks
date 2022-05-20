@@ -8,6 +8,7 @@ import { ReactComponent as ChatIcon } from 'assets/svg/chat.svg';
 import { ReactComponent as MoreIcon } from 'assets/svg/more.svg';
 import { LIKE_API, UNLIKE_API } from 'utils/api';
 import { Link } from 'react-router-dom';
+import { ProfileImage } from 'components/Common/ProfileImage/ProfileImage';
 
 interface Prop {
   profile_image_url: string;
@@ -79,7 +80,7 @@ export const PlayerMenu = ({
     <S.Wrap isShown={isShown}>
       <S.Button>
         <Link to={`/${name}`} state={{ userId: userId }}>
-          <img src={profile_image_url} alt="profile" />
+          <ProfileImage size="48" url={profile_image_url} />
         </Link>
         <FollowIcon className="follow" />
       </S.Button>

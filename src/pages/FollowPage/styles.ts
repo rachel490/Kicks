@@ -20,13 +20,6 @@ export const FollowItem = styled.li`
   }
 `;
 
-export const ProfileImg = styled.img`
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 50%;
-`;
-
 export const Name = styled.p`
   margin-left: 10px;
   font-weight: 500;

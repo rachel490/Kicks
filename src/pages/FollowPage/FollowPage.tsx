@@ -1,4 +1,4 @@
-import { PageHeader } from 'components';
+import { PageHeader, ProfileImage } from 'components';
 import { useLocation } from 'react-router-dom';
 import useSWR from 'swr';
 import { IFollow } from 'types';
@@ -41,13 +41,7 @@ export const FollowPage = () => {
         {followData &&
           followData?.map(({ id, member }) => (
             <S.FollowItem key={id}>
-              <S.ProfileImg
-                src={
-                  member.profile_image_url ||
-                  'https://ussecuritysupply.com/wp-content/uploads/2013/05/default_avatar.png'
-                }
-                alt="profile"
-              />
+              <ProfileImage size="50" url={member.profile_image_url} />
               <S.Name>{member.name || ''}</S.Name>
               {userName === localStorage.getItem('name') ? (
                 page === 'following' ? (

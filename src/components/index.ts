@@ -13,6 +13,7 @@ export { LoginButton } from './Common/LoginButton/LoginButton';
 export { LoginModal } from './Common/Modal/LoginModal';
 export { DeleteModal } from './Common/Modal/DeleteModal';
 export { MessageModal } from './Common/Modal/MessageModal';
+export { ProfileImage } from './Common/ProfileImage/ProfileImage';
 
 // Profile
 export { ProfileHeader } from './Profile/ProfileHeader/ProfileHeader';

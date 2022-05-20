@@ -43,11 +43,7 @@ export const ContentsWrap = ({
         <ControlMenu id={videoId} />
       ) : (
         <PlayerMenu
-          profile_image_url={
-            videoData.user.profile_image_url
-              ? videoData.user.profile_image_url
-              : 'https://user-images.githubusercontent.com/68415905/166093018-2819a713-a7df-4703-bcd5-29b60507bdbf.jpg'
-          }
+          profile_image_url={videoData.user.profile_image_url || ''}
           isShown={isShown}
           like_count={videoData.like_count}
           userId={videoData.user.id}

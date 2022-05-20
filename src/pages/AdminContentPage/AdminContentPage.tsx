@@ -3,7 +3,7 @@ import { ContentsItem } from 'components';
 import useSWR from 'swr';
 import { fetcherWithToken } from 'utils/swr';
 import { ADMIN_CONTENT_API } from 'utils/api';
-import { IVideoListItem } from 'data/types';
+import { IVideoListItem } from 'types';
 import { Loading } from 'components';
 import * as S from './styles';
 import { AdminContainer, PageOption } from 'pages/AdminUserPage/styles';

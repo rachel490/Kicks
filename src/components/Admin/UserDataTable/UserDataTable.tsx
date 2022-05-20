@@ -3,7 +3,7 @@ import { COLUMNS } from './columns';
 import { usePagination, useTable } from 'react-table';
 import dayjs from 'dayjs';
 import * as S from './styles';
-import { IUserAdmin } from 'data/types';
+import { IUserAdmin } from 'types';
 import { Link, useLocation } from 'react-router-dom';
 
 interface Props {

@@ -3,7 +3,7 @@ import * as S from './styles';
 import useSWR from 'swr';
 import { VIDEO_ITEM_API } from 'utils/api';
 import { fetcher } from 'utils/swr';
-import { IVideoItem } from 'data/types';
+import { IVideoItem } from 'types';
 import {
   MainHeader,
   VideoPlayer,
@@ -20,7 +20,12 @@ interface Props {
   type?: string;
 }
 
-export const ContentsWrap = ({ videoId, active, setActive, type = 'play' }: Props) => {
+export const ContentsWrap = ({
+  videoId,
+  active,
+  setActive,
+  type = 'play'
+}: Props) => {
   const [isShown, setIsShown] = useState(true);
   const { data } = useSWR(VIDEO_ITEM_API(videoId), fetcher);
 

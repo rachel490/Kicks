@@ -1,4 +1,4 @@
-import { IChat } from 'data/types';
+import { IChat } from 'types';
 import dayjs from 'dayjs';
 
 export const dividedByDate = (messages: IChat[]) => {

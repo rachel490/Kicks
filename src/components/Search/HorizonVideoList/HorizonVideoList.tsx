@@ -1,5 +1,5 @@
 import * as S from './styles';
-import { IVideoListItem } from 'data/types';
+import { IVideoListItem } from 'types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { VideoLink } from 'components';
 import { GrOverview } from 'react-icons/gr';

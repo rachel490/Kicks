@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as S from './styles';
 import useSWR from 'swr';
 import { fetcher } from 'utils/swr';
-import { IVideoListItem } from 'data/types';
+import { IVideoListItem } from 'types';
 import { Loading, ContentsWrap } from 'components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { VIDEO_LIST_API } from 'utils/api';

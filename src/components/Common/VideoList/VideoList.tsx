@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as S from './styles';
-import { IVideoListItem } from 'data/types';
+import { IVideoListItem } from 'types';
 import { positionValues, Scrollbars } from 'react-custom-scrollbars';
 import { fetcherWithToken } from 'utils/swr';
 import useSWR from 'swr';

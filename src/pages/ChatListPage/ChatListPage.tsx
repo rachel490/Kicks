@@ -3,7 +3,7 @@ import useSWR from 'swr';
 import { AdBanner, ChatList, Loading, LoginModal } from 'components';
 import { CHAT_LIST_API } from 'utils/api';
 import { fetcher } from 'utils/swr';
-import { IChatList } from 'data/types';
+import { IChatList } from 'types';
 
 export const ChatListPage = () => {
   const { data: chatData, error } = useSWR<IChatList[]>(CHAT_LIST_API, fetcher);

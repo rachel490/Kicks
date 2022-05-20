@@ -1,7 +1,7 @@
 import { PageHeader } from 'components';
 import { useLocation, useParams } from 'react-router-dom';
 import useSWR from 'swr';
-import { IFollow, IUserData } from 'data/types';
+import { IFollow, IUserData } from 'types';
 import { USER_DATA_API, FOLLOWER_API, FOLLOWING_API } from 'utils/api';
 import { fetcher, fetcherWithToken } from 'utils/swr';
 import * as S from './styles';

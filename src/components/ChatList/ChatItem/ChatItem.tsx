@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './styles';
-import { IChatList } from 'data/types';
+import { IChatList } from 'types';
 import { dateConverter } from 'utils/dateConverter';
 
 interface Prop {

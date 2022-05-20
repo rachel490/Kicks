@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ChatItem } from 'components';
-import { IChatList } from 'data/types';
+import { IChatList } from 'types';
 import { Scrollbars } from 'react-custom-scrollbars';
 import * as S from './styles';
 import { EmptyChat } from '../EmptyChat/EmptyChat';

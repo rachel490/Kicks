@@ -3,7 +3,7 @@ import useSWR from 'swr';
 import * as S from './styles';
 import { USER_DATA_API } from 'utils/api';
 import { fetcherWithToken } from 'utils/swr';
-import { IUserData } from 'data/types';
+import { IUserData } from 'types';
 import { Loading } from 'components/Common/Loading/Loading';
 import { useEffect, useState } from 'react';
 

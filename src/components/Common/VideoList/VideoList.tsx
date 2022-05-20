@@ -15,9 +15,10 @@ export const VideoList = ({ message, api }: Props) => {
   const videoRef = useRef<IVideoListItem[]>([]);
   const lastVideoId = useRef<number | string>('');
   const scrollbarRef = useRef<Scrollbars>(null);
+  const scrollHeight = useRef(0);
 
   const { data } = useSWR(
-    `${api}last_id=${lastVideoId.current || 99}`,
+    `${api}last_id=${lastVideoId.current}`,
     fetcherWithToken
   );
 
@@ -31,31 +32,37 @@ export const VideoList = ({ message, api }: Props) => {
   }
 
   const handleScroll = (values: positionValues) => {
+    const scrollbar = scrollbarRef?.current as Scrollbars;
     if (values.top > 0.999) {
       setIsBottom(true);
-      console.log('BOTTOM');
+      scrollHeight.current = scrollbar.getScrollTop();
     }
   };
 
   useEffect(() => {
+    const scrollbar = scrollbarRef?.current as Scrollbars;
     if (videoData) {
       lastVideoId.current = videoData[videoData.length - 1]?.id || '';
+    }
+    if (scrollbar && scrollHeight.current) {
+      scrollbar.scrollTop(scrollHeight.current);
     }
   }, [videoData]);
 
   return (
     <S.VideoContent>
-      {videoData && videoData.length > 0 ? (
-        <Scrollbars autoHide ref={scrollbarRef} onScrollFrame={handleScroll}>
-          {videoData.map(({ id, thumbnail_url }) => (
-            <S.VideoLink to={`/video/${id}`} key={id}>
-              <img src={thumbnail_url} alt="" />
-            </S.VideoLink>
-          ))}
-        </Scrollbars>
-      ) : (
-        <S.MessageContent>{message}</S.MessageContent>
-      )}
+      {videoData &&
+        (videoData.length > 0 ? (
+          <Scrollbars autoHide ref={scrollbarRef} onScrollFrame={handleScroll}>
+            {videoRef.current.map(({ id, thumbnail_url }) => (
+              <S.VideoLink to={`/video/${id}`} key={id}>
+                <img src={thumbnail_url} alt="" />
+              </S.VideoLink>
+            ))}
+          </Scrollbars>
+        ) : (
+          <S.MessageContent>{message}</S.MessageContent>
+        ))}
     </S.VideoContent>
   );
 };

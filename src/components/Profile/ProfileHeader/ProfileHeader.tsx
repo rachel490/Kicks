@@ -8,18 +8,15 @@ import { Loading } from 'components/Common/Loading/Loading';
 import { useEffect, useState } from 'react';
 
 export const ProfileHeader = ({ userId }: { userId: number }) => {
-  // console.log('userId', userId)
   const { data } = useSWR(USER_DATA_API(userId), fetcherWithToken);
   const userData = data?.data as IUserData;
   const [isUser, setIsUser] = useState(false);
 
-  // console.log('userData', userData);
-
   useEffect(() => {
-    if (userData && (userData.name === localStorage.getItem('name'))) {
+    if (userData && userData.name === localStorage.getItem('name')) {
       setIsUser(true);
     }
-  }, []);
+  }, [userData]);
 
   return (
     <S.Wrap>
@@ -43,7 +40,10 @@ export const ProfileHeader = ({ userId }: { userId: number }) => {
               <span className="profile-stat-name">Videos</span>
             </li>
             <li>
-              <Link to={userData.followers ? `${userId}/follower` : '#'}>
+              <Link
+                to={userData.followers ? `/${userData.name}/follower` : '#'}
+                state={{ userId }}
+              >
                 <strong className="profile-stat-value">
                   {userData.followers}
                 </strong>
@@ -51,7 +51,10 @@ export const ProfileHeader = ({ userId }: { userId: number }) => {
               </Link>
             </li>
             <li>
-              <Link to={userData.followings ? `${userId}/following` : '#'}>
+              <Link
+                to={userData.followings ? `/${userData.name}/following` : '#'}
+                state={{ userId }}
+              >
                 <strong className="profile-stat-value">
                   {userData.followings}
                 </strong>

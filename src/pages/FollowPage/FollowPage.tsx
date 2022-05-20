@@ -6,20 +6,29 @@ import { USER_DATA_API, FOLLOWER_API, FOLLOWING_API } from 'utils/api';
 import { fetcher, fetcherWithToken } from 'utils/swr';
 import * as S from './styles';
 
+interface RouteState {
+  state: {
+    userId: number;
+  };
+}
+
 export const FollowPage = () => {
   const location = useLocation();
-  const { userId } = useParams();
-  const page = location.pathname.split('/profile/')[1];
-  const id = Number(userId) as number;
+  const { state } = useLocation() as RouteState;
+  const page = location.pathname.split('/')[2];
 
-  const { data: user } = useSWR(USER_DATA_API(id), fetcherWithToken);
+  const { data: user } = useSWR(USER_DATA_API(state.userId), fetcherWithToken);
   const { data: follow } = useSWR(
-    page === 'following' ? FOLLOWING_API(id) : FOLLOWER_API(id),
+    page === 'following'
+      ? FOLLOWING_API(state.userId)
+      : FOLLOWER_API(state.userId),
     fetcher
   );
 
   const userData = user?.data as IUserData;
   const followData = follow?.data as IFollow[];
+
+  console.log('follow', followData, 'userData', userData);
 
   const pageTitle =
     userData &&

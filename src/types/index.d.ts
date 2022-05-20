@@ -1,4 +1,5 @@
 export interface IUser {
+  id: number;
   name: string;
   profile_image_url: string;
 }

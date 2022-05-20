@@ -1,33 +1,23 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as S from './styles';
-import { ReactComponent as FollowIcon } from 'assets/svg/follow.svg';
 import { ReactComponent as SaveIcon } from 'assets/svg/save.svg';
 import { ReactComponent as UnSaveIcon } from 'assets/svg/unSave.svg';
 import { ReactComponent as ChatIcon } from 'assets/svg/chat.svg';
 import { ReactComponent as MoreIcon } from 'assets/svg/more.svg';
 import { LIKE_API, UNLIKE_API } from 'utils/api';
-import { Link } from 'react-router-dom';
-import { ProfileImage } from 'components/Common/ProfileImage/ProfileImage';
+import { ProfileFollow } from './IconFeature';
+import { IVideoItem } from 'types';
 
 interface Prop {
-  profile_image_url: string;
+  videoData: IVideoItem;
   isShown: boolean;
-  like_count: number;
   videoId: number;
-  userId: number;
-  name: string;
 }
 
-export const PlayerMenu = ({
-  profile_image_url,
-  isShown,
-  like_count,
-  userId,
-  videoId,
-  name
-}: Prop) => {
+export const PlayerMenu = ({ isShown, videoId, videoData }: Prop) => {
   const [isLiked, setIsLiked] = useState(false);
+  const { like_count, user } = videoData;
 
   useEffect(() => {
     const checkLike = async () => {
@@ -78,12 +68,7 @@ export const PlayerMenu = ({
 
   return (
     <S.Wrap isShown={isShown}>
-      <S.Button>
-        <Link to={`/${name}`} state={{ userId: userId }}>
-          <ProfileImage size="48" url={profile_image_url} />
-        </Link>
-        <FollowIcon className="follow" />
-      </S.Button>
+      <ProfileFollow userData={user} />
       <S.Button>
         {isLiked ? (
           <SaveIcon className="icon" onClick={handleLike} />

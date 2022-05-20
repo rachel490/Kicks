@@ -42,14 +42,7 @@ export const ContentsWrap = ({
       videoData.user.name === localStorage.getItem('name') ? (
         <ControlMenu id={videoId} />
       ) : (
-        <PlayerMenu
-          profile_image_url={videoData.user.profile_image_url || ''}
-          isShown={isShown}
-          like_count={videoData.like_count}
-          userId={videoData.user.id}
-          videoId={videoId}
-          name={videoData.user.name}
-        />
+        <PlayerMenu videoData={videoData} isShown={isShown} videoId={videoId} />
       )}
       <DescriptionBox
         title={videoData.title}

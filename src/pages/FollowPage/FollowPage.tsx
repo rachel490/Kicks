@@ -1,9 +1,9 @@
 import { PageHeader } from 'components';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import useSWR from 'swr';
-import { IFollow, IUserData } from 'types';
-import { USER_DATA_API, FOLLOWER_API, FOLLOWING_API } from 'utils/api';
-import { fetcher, fetcherWithToken } from 'utils/swr';
+import { IFollow } from 'types';
+import { FOLLOWER_API, FOLLOWING_API } from 'utils/api';
+import { fetcher } from 'utils/swr';
 import * as S from './styles';
 
 interface RouteState {
@@ -15,9 +15,9 @@ interface RouteState {
 export const FollowPage = () => {
   const location = useLocation();
   const { state } = useLocation() as RouteState;
+  const userName = decodeURI(location.pathname.split('/')[1]);
   const page = location.pathname.split('/')[2];
 
-  const { data: user } = useSWR(USER_DATA_API(state.userId), fetcherWithToken);
   const { data: follow } = useSWR(
     page === 'following'
       ? FOLLOWING_API(state.userId)
@@ -25,21 +25,18 @@ export const FollowPage = () => {
     fetcher
   );
 
-  const userData = user?.data as IUserData;
   const followData = follow?.data as IFollow[];
 
-  console.log('follow', followData, 'userData', userData);
-
-  const pageTitle =
-    userData &&
-    `${userData.name}님의 ${page === 'following' ? '팔로잉' : '팔로워'}`;
+  const pageTitle = `${userName}님의 ${
+    page === 'following' ? '팔로잉' : '팔로워'
+  }`;
 
   const addFollowing = () => {};
   const deleteFollowing = () => {};
 
   return (
     <S.Wrap>
-      <PageHeader title={pageTitle} backTo="/profile" />
+      <PageHeader title={pageTitle} backTo={'/' + userName} />
       <S.FollowList>
         {followData &&
           followData?.map(({ id, member }) => (
@@ -52,7 +49,7 @@ export const FollowPage = () => {
                 alt="profile"
               />
               <S.Name>{member.name || ''}</S.Name>
-              {userData.name === localStorage.getItem('name') ? (
+              {userName === localStorage.getItem('name') ? (
                 page === 'following' ? (
                   <S.Button onClick={deleteFollowing}>삭제</S.Button>
                 ) : (

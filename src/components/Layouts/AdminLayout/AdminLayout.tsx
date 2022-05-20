@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import * as S from './styles';
 import { AdminNav } from 'components';
-import { AdminLogo } from 'assets';
+import { ReactComponent as AdminLogo } from 'assets/svg/admin_logo.svg';
 
 export const AdminLayout = () => {
   const navigate = useNavigate();

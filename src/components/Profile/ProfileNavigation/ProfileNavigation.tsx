@@ -3,7 +3,7 @@ import * as S from './styles';
 import { MY_LIKES_API, MY_VIDEOS_API } from 'utils/api';
 import { VideoList } from 'components';
 
-export const ProfileNavigation = () => {
+export const ProfileNavigation = ({ userId }: { userId: number }) => {
   const [selectedMenu, setSelectedMenu] = useState<String>('uploaded');
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -30,9 +30,9 @@ export const ProfileNavigation = () => {
         </button>
       </S.ProfileNav>
       {selectedMenu === 'uploaded' ? (
-        <VideoList api={MY_VIDEOS_API} />
+        <VideoList api={MY_VIDEOS_API(userId)} message="No Uploaded Videos" />
       ) : (
-        <VideoList api={MY_LIKES_API} />
+        <VideoList api={MY_LIKES_API(userId)} message="No Liked Videos" />
       )}
     </S.Wrap>
   );

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const VideoContent = styled.div`
   flex: 1;
+
   & > div > div:first-child {
     width: 100%;
     height: 100%;
@@ -17,11 +18,19 @@ export const VideoContent = styled.div`
 export const VideoLink = styled(Link)`
   display: block;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
+
   img {
     display: block;
-    min-width: 115px;
-    width: 100%;
+    width: 115px;
     height: 157px;
     object-fit: cover;
   }
+`;
+
+export const MessageContent = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
 `;

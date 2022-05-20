@@ -14,20 +14,15 @@ import {
 } from 'components';
 
 interface Props {
-  id: number;
+  videoId: number;
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
   type?: string;
 }
 
-export const ContentsWrap = ({
-  id,
-  active,
-  setActive,
-  type = 'delete'
-}: Props) => {
+export const ContentsWrap = ({ videoId, active, setActive, type = 'play' }: Props) => {
   const [isShown, setIsShown] = useState(true);
-  const { data } = useSWR(VIDEO_ITEM_API(id), fetcher);
+  const { data } = useSWR(VIDEO_ITEM_API(videoId), fetcher);
 
   if (!data) return <Loading />;
 
@@ -40,7 +35,7 @@ export const ContentsWrap = ({
       <VideoPlayer video_url={videoData.video_url} />
       {type === 'delete' &&
       videoData.user.name === localStorage.getItem('name') ? (
-        <ControlMenu id={id} />
+        <ControlMenu id={videoId} />
       ) : (
         <PlayerMenu
           profile_image_url={
@@ -49,6 +44,10 @@ export const ContentsWrap = ({
               : 'https://user-images.githubusercontent.com/68415905/166093018-2819a713-a7df-4703-bcd5-29b60507bdbf.jpg'
           }
           isShown={isShown}
+          like_count={videoData.like_count}
+          userId={videoData.user.id}
+          videoId={videoId}
+          name={videoData.user.name}
         />
       )}
       <DescriptionBox

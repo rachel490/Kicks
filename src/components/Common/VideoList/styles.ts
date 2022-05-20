@@ -30,7 +30,15 @@ export const VideoLink = styled(Link)`
 export const MessageContent = styled.div`
   height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #bbb;
+  img {
+    margin-top: -30px;
+    width: 80px;
+    opacity: 0.1;
+  }
 `;

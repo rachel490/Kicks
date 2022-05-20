@@ -25,9 +25,15 @@ export const SearchResultPage = () => {
         ))}
       </S.SortByList>
       {activeIdx ? (
-        <VideoList api={SEARCHED_VIDEO_API(searchedText, null)} />
+        <VideoList
+          api={SEARCHED_VIDEO_API(searchedText, null)}
+          message="No Related Videos"
+        />
       ) : (
-        <VideoList api={SEARCHED_VIDEO_API(searchedText, 'hits')} />
+        <VideoList
+          api={SEARCHED_VIDEO_API(searchedText, 'hits')}
+          message="No Related Videos"
+        />
       )}
     </S.Wrap>
   );

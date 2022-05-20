@@ -61,7 +61,13 @@ export const VideoList = ({ message, api }: Props) => {
             ))}
           </Scrollbars>
         ) : (
-          <S.MessageContent>{message}</S.MessageContent>
+          <S.MessageContent>
+            <img
+              src="https://static.thenounproject.com/png/3255444-200.png"
+              alt="novideo"
+            />
+            <p>{message}</p>
+          </S.MessageContent>
         ))}
     </S.VideoContent>
   );

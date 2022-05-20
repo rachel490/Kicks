@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MessageContent } from 'components/Common/VideoList/styles';
 
 export const Wrap = styled.div`
   width: 100%;
@@ -6,6 +7,11 @@ export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  ${MessageContent} {
+    img {
+      margin-top: -90px;
+    }
+  }
 `;
 
 export const SortByList = styled.ul`

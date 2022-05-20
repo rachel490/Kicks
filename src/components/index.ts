@@ -31,8 +31,8 @@ export { MessageBox } from './ChatRoom/MessageBox/MessageBox';
 
 // Main
 export { VideoPlayer } from './Main/VideoPlayer/VideoPlayer';
-export { PlayerMenu } from './Main/NavMenu/PlayerMenu';
-export { ControlMenu } from './Main/NavMenu/ControlMenu';
+export { MyVideoNav } from './Main/NavMenu/MyVideoNav/MyVideoNav';
+export { UserVideoNav } from './Main/NavMenu/UserVideoNav/UserVideoNav';
 export { DescriptionBox } from './Main/DescriptionBox/DescriptionBox';
 export { MainHeader } from './Main/MainHeader/MainHeader';
 export { ContentsWrap } from './Main/ContentsWrap/ContentsWrap';

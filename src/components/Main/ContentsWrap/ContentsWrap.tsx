@@ -7,8 +7,8 @@ import { IVideoItem } from 'types';
 import {
   MainHeader,
   VideoPlayer,
-  PlayerMenu,
-  ControlMenu,
+  MyVideoNav,
+  UserVideoNav,
   DescriptionBox,
   Loading
 } from 'components';
@@ -32,7 +32,6 @@ export const ContentsWrap = ({
   if (!data) return <Loading />;
 
   const videoData = data?.data as IVideoItem;
-  // console.log(videoData);
 
   return (
     <S.Wrap>
@@ -40,15 +39,12 @@ export const ContentsWrap = ({
       <VideoPlayer video_url={videoData.video_url} />
       {type === 'delete' &&
       videoData.user.name === localStorage.getItem('name') ? (
-        <ControlMenu id={videoId} />
+        <MyVideoNav id={videoId} />
       ) : (
-        <PlayerMenu videoData={videoData} isShown={isShown} videoId={videoId} />
+        <UserVideoNav videoData={videoData} isShown={isShown} />
       )}
       <DescriptionBox
-        title={videoData.title}
-        description={videoData.description}
-        price={videoData.price}
-        used_status={videoData.used_status}
+        videoData={videoData}
         isShown={isShown}
         setIsShown={setIsShown}
       />

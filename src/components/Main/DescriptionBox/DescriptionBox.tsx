@@ -1,26 +1,17 @@
 import React, { useEffect } from 'react';
+import { IVideoItem } from 'types';
 import * as S from './styles';
 
 interface Prop {
-  title: string;
-  description: string;
-  price: number;
-  used_status: boolean;
+  videoData: IVideoItem;
   isShown: boolean;
   setIsShown: Function;
 }
 
-export const DescriptionBox = ({
-  title,
-  description,
-  price,
-  used_status,
-  isShown,
-  setIsShown
-}: Prop) => {
-  const handleClick = () => {
-    setIsShown(!isShown);
-  };
+export const DescriptionBox = ({ videoData, isShown, setIsShown }: Prop) => {
+  const { title, description, price, used_status } = videoData;
+
+  const handleClick = () => setIsShown(!isShown);
 
   useEffect(() => {
     setIsShown(true);

@@ -1,23 +1,17 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
-import * as S from './styles';
+import { Button } from './styles';
+import { useEffect, useState } from 'react';
 import { ReactComponent as SaveIcon } from 'assets/svg/save.svg';
 import { ReactComponent as UnSaveIcon } from 'assets/svg/unSave.svg';
-import { ReactComponent as ChatIcon } from 'assets/svg/chat.svg';
-import { ReactComponent as MoreIcon } from 'assets/svg/more.svg';
 import { LIKE_API, UNLIKE_API } from 'utils/api';
-import { ProfileFollow } from './IconFeature';
-import { IVideoItem } from 'types';
 
-interface Prop {
-  videoData: IVideoItem;
-  isShown: boolean;
+interface Props {
   videoId: number;
+  like_count: number;
 }
 
-export const PlayerMenu = ({ isShown, videoId, videoData }: Prop) => {
+export const LikeButton = ({ videoId, like_count }: Props) => {
   const [isLiked, setIsLiked] = useState(false);
-  const { like_count, user } = videoData;
 
   useEffect(() => {
     const checkLike = async () => {
@@ -67,22 +61,13 @@ export const PlayerMenu = ({ isShown, videoId, videoData }: Prop) => {
   };
 
   return (
-    <S.Wrap isShown={isShown}>
-      <ProfileFollow userData={user} />
-      <S.Button>
-        {isLiked ? (
-          <SaveIcon className="icon" onClick={handleLike} />
-        ) : (
-          <UnSaveIcon className="icon" onClick={handleLike} />
-        )}
-        <p>{like_count}</p>
-      </S.Button>
-      <S.Button>
-        <ChatIcon className="icon" />
-      </S.Button>
-      <S.Button>
-        <MoreIcon className="icon" />
-      </S.Button>
-    </S.Wrap>
+    <Button>
+      {isLiked ? (
+        <SaveIcon className="icon" onClick={handleLike} />
+      ) : (
+        <UnSaveIcon className="icon" onClick={handleLike} />
+      )}
+      <p className="likes">{like_count}</p>
+    </Button>
   );
 };

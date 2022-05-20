@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FOLLOWING_API, FOLLOW_API } from 'utils/api';
-import { Button } from '../styles';
+import { Button } from './styles';
 import { ProfileImage } from 'components';
 import { IFollow, IUser } from 'types';
 import { ReactComponent as FollowIcon } from 'assets/svg/follow.svg';

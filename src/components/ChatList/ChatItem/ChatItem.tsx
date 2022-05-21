@@ -2,6 +2,7 @@ import React from 'react';
 import * as S from './styles';
 import { IChatList } from 'types';
 import { dateConverter } from 'utils/dateConverter';
+import { ProfileImage } from 'components';
 
 interface Prop {
   chatItem: IChatList;
@@ -16,7 +17,7 @@ export const ChatItem = ({ chatItem }: Prop) => {
 
   return (
     <S.ChatItemContainer>
-      <img src={profile_image_url} alt={name} />
+      <ProfileImage size="50" url={profile_image_url} />
       <S.ChatPreview>
         <p className="chat_user">
           {name}

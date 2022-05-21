@@ -7,18 +7,9 @@ export const Wrap = styled.div`
   align-items: center;
   margin-top: 20px;
 
-  .profile-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    display: block;
-    margin-bottom: 10px;
-  }
-
   .profile-username {
-    span {
-      font-size: 15px;
-    }
+    margin-top: 10px;
+    font-size: 15px;
   }
 `;
 

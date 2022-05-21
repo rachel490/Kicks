@@ -1,31 +1,16 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
-import * as S from './styles';
-import { ReactComponent as FollowIcon } from 'assets/svg/follow.svg';
+import { Button } from './styles';
+import { useEffect, useState } from 'react';
 import { ReactComponent as SaveIcon } from 'assets/svg/save.svg';
 import { ReactComponent as UnSaveIcon } from 'assets/svg/unSave.svg';
-import { ReactComponent as ChatIcon } from 'assets/svg/chat.svg';
-import { ReactComponent as MoreIcon } from 'assets/svg/more.svg';
 import { LIKE_API, UNLIKE_API } from 'utils/api';
-import { Link } from 'react-router-dom';
 
-interface Prop {
-  profile_image_url: string;
-  isShown: boolean;
-  like_count: number;
+interface Props {
   videoId: number;
-  userId: number;
-  name: string;
+  like_count: number;
 }
 
-export const PlayerMenu = ({
-  profile_image_url,
-  isShown,
-  like_count,
-  userId,
-  videoId,
-  name
-}: Prop) => {
+export const LikeButton = ({ videoId, like_count }: Props) => {
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
@@ -76,27 +61,13 @@ export const PlayerMenu = ({
   };
 
   return (
-    <S.Wrap isShown={isShown}>
-      <S.Button>
-        <Link to={`/${name}`} state={{ userId: userId }}>
-          <img src={profile_image_url} alt="profile" />
-        </Link>
-        <FollowIcon className="follow" />
-      </S.Button>
-      <S.Button>
-        {isLiked ? (
-          <SaveIcon className="icon" onClick={handleLike} />
-        ) : (
-          <UnSaveIcon className="icon" onClick={handleLike} />
-        )}
-        <p>{like_count}</p>
-      </S.Button>
-      <S.Button>
-        <ChatIcon className="icon" />
-      </S.Button>
-      <S.Button>
-        <MoreIcon className="icon" />
-      </S.Button>
-    </S.Wrap>
+    <Button>
+      {isLiked ? (
+        <SaveIcon className="icon" onClick={handleLike} />
+      ) : (
+        <UnSaveIcon className="icon" onClick={handleLike} />
+      )}
+      <p className="likes">{like_count}</p>
+    </Button>
   );
 };

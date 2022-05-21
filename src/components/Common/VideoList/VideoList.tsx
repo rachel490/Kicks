@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const VideoList = ({ message, api }: Props) => {
-  const [_, setIsBottom] = useState(false);
+  const [, setIsBottom] = useState(false);
   const videoRef = useRef<IVideoListItem[]>([]);
   const lastVideoId = useRef<number | string>('');
   const scrollbarRef = useRef<Scrollbars>(null);

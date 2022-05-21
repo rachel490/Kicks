@@ -44,6 +44,12 @@ export const LIKE_API = (video_id: number) =>
 export const UNLIKE_API = (video_id: number) =>
   `${BASE_URL}/v1/videos/likes/${video_id}`;
 
+// Follow
+export const FOLLOW_API = (user_id: number) =>
+  `${BASE_URL}/v1/users/following/${user_id}`;
+export const UNFOLLOW_API = (follow_id: number) =>
+  `${BASE_URL}/v1/users/following/${follow_id}`;
+
 // Admin Page
 export const ADMIN_USER_API = (keyword: string) =>
   `${BASE_URL}/v1/users?keyword=${keyword}`;

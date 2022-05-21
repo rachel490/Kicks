@@ -8,12 +8,15 @@ import { ReactComponent as SearchIcon } from 'assets/svg/searchbar.svg';
 import { ReactComponent as UploadIcon } from 'assets/svg/upload.svg';
 
 export const AppLayout = () => {
+  const username = localStorage.getItem('name');
+  const userId = localStorage.getItem('id');
+
   const menuList = [
     { name: '홈', linkTo: '/', component: <HomeIcon /> },
     { name: '검색', linkTo: '/search', component: <SearchIcon /> },
     { name: '업로드', linkTo: '/upload', component: <UploadIcon /> },
     { name: '채팅', linkTo: '/chats', component: <ChatIcon /> },
-    { name: '프로필', linkTo: '/profile', component: <ProfileIcon /> }
+    { name: '프로필', linkTo: `/${username}`, component: <ProfileIcon /> }
   ];
 
   return (
@@ -25,6 +28,7 @@ export const AppLayout = () => {
             <NavLink
               to={menu.linkTo}
               className={({ isActive }) => (isActive ? 'active' : '')}
+              state={{ userId: userId }}
             >
               <div className="icon">{menu.component}</div>
               <span>{menu.name}</span>

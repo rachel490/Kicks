@@ -3,50 +3,48 @@ import * as S from './styles';
 import useSWR from 'swr';
 import { VIDEO_ITEM_API } from 'utils/api';
 import { fetcher } from 'utils/swr';
-import { IVideoItem } from 'data/types';
+import { IVideoItem } from 'types';
 import {
   MainHeader,
   VideoPlayer,
-  PlayerMenu,
-  ControlMenu,
+  MyVideoNav,
+  UserVideoNav,
   DescriptionBox,
   Loading
 } from 'components';
 
 interface Props {
-  id: number;
+  videoId: number;
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
   type?: string;
 }
 
 export const ContentsWrap = ({
-  id,
+  videoId,
   active,
   setActive,
   type = 'play'
 }: Props) => {
   const [isShown, setIsShown] = useState(true);
-  const { data: videoData } = useSWR<IVideoItem>(VIDEO_ITEM_API(id), fetcher);
+  const { data } = useSWR(VIDEO_ITEM_API(videoId), fetcher);
 
-  if (!videoData) return <Loading />;
+  if (!data) return <Loading />;
+
+  const videoData = data?.data as IVideoItem;
 
   return (
     <S.Wrap>
       <MainHeader active={active} setActive={setActive} />
       <VideoPlayer video_url={videoData.video_url} />
-      {/* videoData.user.name === localStorage.getItem('name') */}
-      {type === 'delete' ? (
-        <ControlMenu id={id} />
+      {type === 'delete' &&
+      videoData.user.name === localStorage.getItem('name') ? (
+        <MyVideoNav id={videoId} />
       ) : (
-        <PlayerMenu
-          profile_image_url={videoData.user.profile_image_url}
-          isShown={isShown}
-        />
+        <UserVideoNav videoData={videoData} isShown={isShown} />
       )}
       <DescriptionBox
-        title={videoData.title}
-        description={videoData.description}
+        videoData={videoData}
         isShown={isShown}
         setIsShown={setIsShown}
       />

@@ -1,6 +1,7 @@
-import React from 'react';
-import GlobalStyle from 'styles/GlobalStyle';
 import { Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyle from 'styles/GlobalStyle';
+import defaultTheme from 'styles/DefaultTheme';
 import {
   AdminLayout,
   AppLayout,
@@ -23,8 +24,7 @@ import {
   FollowPage,
   PlayPage
 } from 'pages';
-import { ThemeProvider } from 'styled-components';
-import defaultTheme from 'styles/DefaultTheme';
+
 
 function App() {
   return (
@@ -34,11 +34,11 @@ function App() {
         <Routes>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<MainPage />} />
+            <Route path="/:username" element={<ProfilePage />} />
             <Route path="search" element={<SearchPage />} />
             <Route path="search_result" element={<SearchResultPage />} />
             <Route path="chats" element={<ChatListPage />} />
-            <Route path="profile" element={<ProfilePage />} />
-            <Route path="profile/:userId/:follow/" element={<FollowPage />} />
+            <Route path="/:username/:follow/" element={<FollowPage />} />
             <Route path="/video/:videoId" element={<PlayPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/oauth/callback" element={<KakaoRedirectHandler />} />

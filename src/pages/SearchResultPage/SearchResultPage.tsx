@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import * as S from './styles';
-import useSWR from 'swr';
-import { fetcher } from 'utils/swr';
 import { SEARCHED_VIDEO_API } from 'utils/api';
 import { AdBanner, PageHeader, VideoList } from 'components';
 import { useLocation } from 'react-router-dom';
@@ -10,15 +8,6 @@ export const SearchResultPage = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   const location = useLocation();
   const searchedText = (location.state as string) || '';
-
-  const { data: latestVideos } = useSWR(
-    SEARCHED_VIDEO_API(searchedText, null),
-    fetcher
-  );
-  const { data: popularVideos } = useSWR(
-    SEARCHED_VIDEO_API(searchedText, 'hits'),
-    fetcher
-  );
 
   return (
     <S.Wrap>
@@ -36,9 +25,15 @@ export const SearchResultPage = () => {
         ))}
       </S.SortByList>
       {activeIdx ? (
-        <VideoList videos={latestVideos?.data} />
+        <VideoList
+          api={SEARCHED_VIDEO_API(searchedText, null)}
+          message="No Related Videos"
+        />
       ) : (
-        <VideoList videos={popularVideos?.data} />
+        <VideoList
+          api={SEARCHED_VIDEO_API(searchedText, 'hits')}
+          message="No Related Videos"
+        />
       )}
     </S.Wrap>
   );

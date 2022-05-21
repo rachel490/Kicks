@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { UserDataTable } from 'components';
-import USERS from '../../components/Admin/UserDataTable/userData.json';
 import * as S from './styles';
-import { IUserAdmin } from 'data/types';
+import { IUserAdmin } from 'types';
 import { GoSearch } from 'react-icons/go';
+import useSWR from 'swr';
+import { ADMIN_USER_API } from 'utils/api';
+import { fetcherWithToken } from 'utils/swr';
 
 export const AdminUserPage = () => {
-  const [userData, setUserData] = useState<IUserAdmin[]>(USERS);
+  const [keyword, setKeyword] = useState('');
   const [input, setInput] = useState('');
+
+  const { data: users } = useSWR(ADMIN_USER_API(keyword), fetcherWithToken);
+  const userData = users?.data as IUserAdmin[];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -15,17 +20,13 @@ export const AdminUserPage = () => {
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      const searched = USERS.filter(data => {
-        const x = Object.values(data).filter(v => v.toString().includes(input));
-        return x.length > 0 && data;
-      });
-      setUserData(searched);
+      setKeyword(input);
       setInput('');
     }
   };
 
   return (
-    <S.Wrap>
+    <S.AdminContainer>
       <S.PageOption>
         <S.SearchUser>
           <input
@@ -39,8 +40,8 @@ export const AdminUserPage = () => {
         </S.SearchUser>
       </S.PageOption>
       <S.TableContainer>
-        <UserDataTable userData={userData} />
+        {userData && <UserDataTable userData={userData} />}
       </S.TableContainer>
-    </S.Wrap>
+    </S.AdminContainer>
   );
 };

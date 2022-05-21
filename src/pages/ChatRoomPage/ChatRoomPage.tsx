@@ -7,7 +7,7 @@ import {
   PageHeader
 } from 'components';
 import { useEffect, useState } from 'react';
-import { IChat, IChatRoom } from 'data/types';
+import { IChat, IChatRoom } from 'types';
 import { CHAT_ROOM_API } from 'utils/api';
 import { fetcher } from 'utils/swr';
 import useSWR from 'swr';

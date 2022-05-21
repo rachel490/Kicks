@@ -1,4 +1,4 @@
-import { IChat } from 'data/types';
+import { IChat } from 'types';
 import React, { useRef, useState } from 'react';
 import * as S from './styles';
 import { ReactComponent as UploadIcon } from 'assets/svg/follow.svg';

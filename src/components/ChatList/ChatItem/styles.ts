@@ -8,11 +8,6 @@ export const ChatItemContainer = styled.li`
   &:hover {
     background-color: #fafafa;
   }
-  img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-  }
 `;
 
 export const ChatPreview = styled.div`

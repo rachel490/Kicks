@@ -1,4 +1,5 @@
 export interface IUser {
+  id: number;
   name: string;
   profile_image_url: string;
 }
@@ -56,8 +57,9 @@ export interface IVideoItem {
   title: string;
   description: string;
   price: number;
-  usedStatus: boolean;
+  used_status: boolean;
   view_count: number;
+  like_count: number;
   user: {
     id: number;
     name: string;
@@ -66,11 +68,17 @@ export interface IVideoItem {
 }
 
 export interface IUserAdmin {
-  id: number;
+  createAt: string;
   email: string;
-  nickname: string;
-  data_joined: string;
-  last_login: string;
+  emailVerified: boolean;
+  id: number;
+  lastLoginDate: any;
+  modifiedAt: string;
+  name: string;
+  profileImageUrl: any;
+  provider: string;
+  role: string;
+  userId: number;
 }
 
 export interface IFollow {

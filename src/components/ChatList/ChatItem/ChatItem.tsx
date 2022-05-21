@@ -1,7 +1,8 @@
 import React from 'react';
 import * as S from './styles';
-import { IChatUser } from 'data/types';
+import { IChatUser } from 'types';
 import { dateConverter } from 'utils/dateConverter';
+import { ProfileImage } from 'components';
 import useSWR from 'swr';
 import { USER_DATA_API } from 'utils/api';
 import { fetcherWithToken } from 'utils/swr';
@@ -18,13 +19,7 @@ export const ChatItem = ({ chatItem }: Prop) => {
 
   return (
     <S.ChatItemContainer>
-      <img
-        src={
-          userData?.profile_image_url ||
-          'https://ussecuritysupply.com/wp-content/uploads/2013/05/default_avatar.png'
-        }
-        alt={chatItem.buyerName}
-      />
+      <ProfileImage size="50" url={userData?.profile_image_url} />
       <S.ChatPreview>
         <p className="chat_user">
           {chatItem.buyerName}

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { IChat } from 'data/types';
+import { IChat } from 'types';
 import { MessageItem } from 'components';
 import { dividedByDate } from 'utils/dividedByDate';
 import { Scrollbars } from 'react-custom-scrollbars';

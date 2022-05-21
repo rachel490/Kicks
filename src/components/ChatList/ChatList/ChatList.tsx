@@ -16,11 +16,18 @@ export const ChatList = ({ chatList }: Prop) => {
   return chatList.length ? (
     <S.ChatListContainer>
       <Scrollbars autoHide ref={scrollbarRef}>
-        {chatList.map(room => (
-          <Link to={`/chat/${room.id}`} key={room.id}>
-            <ChatItem chatItem={room} />
-          </Link>
-        ))}
+        {chatList.map(room => {
+          const iamBuyer = localStorage.getItem('name') === room.buyerName;
+          return (
+            <Link
+              to={`/chat/${room.id}`}
+              key={room.id}
+              state={iamBuyer ? room.sellerId : room.buyerId}
+            >
+              <ChatItem chatItem={room} />
+            </Link>
+          );
+        })}
       </Scrollbars>
     </S.ChatListContainer>
   ) : (

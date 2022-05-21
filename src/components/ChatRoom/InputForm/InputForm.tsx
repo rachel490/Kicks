@@ -4,11 +4,9 @@ import * as S from './styles';
 import { ReactComponent as UploadIcon } from 'assets/svg/follow.svg';
 import { FileUpload } from 'components';
 
-interface Props {
-  sendMessage: (message: IChat) => void;
-}
+interface Props {}
 
-export const InputForm = ({ sendMessage }: Props) => {
+export const InputForm = () => {
   const [input, setInput] = useState('');
   const [upload, setUpload] = useState(false);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -21,11 +19,11 @@ export const InputForm = ({ sendMessage }: Props) => {
   ) => {
     e.preventDefault();
     if (input) {
-      sendMessage({
-        sender: 'me',
-        content: input,
-        send_at: new Date()
-      });
+      // sendMessage({
+      //   sender: 'me',
+      //   content: input,
+      //   send_at: new Date()
+      // });
       setInput('');
     }
   };

@@ -12,7 +12,7 @@ export const MessageListContainer = styled.ul`
 `;
 
 export const DateSection = styled.section`
-  margin-right: 10px;
+  margin-right: 20px;
   & + & {
     margin-top: 25px;
   }

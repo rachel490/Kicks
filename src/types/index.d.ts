@@ -25,13 +25,6 @@ export interface IChatUser {
   sellerName: string;
 }
 
-export interface IChatList {
-  id: number;
-  with_user: IUser;
-  last_content: string;
-  last_chatted_at: string;
-}
-
 export interface IChatRoom {
   id: number;
   with_user: IUser;
@@ -39,9 +32,10 @@ export interface IChatRoom {
 }
 
 export interface IChat {
-  sender: string;
   content: string;
-  send_at: LocalDateTime;
+  createAt: string;
+  userId: number;
+  userName: string;
 }
 
 export interface IVideoListItem {

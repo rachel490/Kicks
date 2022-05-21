@@ -12,8 +12,10 @@ interface Prop {
 }
 
 export const ChatItem = ({ chatItem }: Prop) => {
+  const { buyerId, buyerName, sellerId, sellerName } = chatItem;
+  const iamBuyer = localStorage.getItem('name') === buyerName;
   const { data: userData } = useSWR(
-    USER_DATA_API(chatItem.buyerId),
+    USER_DATA_API(iamBuyer ? sellerId : buyerId),
     fetcherWithToken
   );
 
@@ -22,7 +24,7 @@ export const ChatItem = ({ chatItem }: Prop) => {
       <ProfileImage size="50" url={userData?.profile_image_url} />
       <S.ChatPreview>
         <p className="chat_user">
-          {chatItem.buyerName}
+          {iamBuyer ? sellerName : buyerName}
           <span className="last_chatted_at">
             {dateConverter('2022-05-16T01:04:43.091965')}
           </span>

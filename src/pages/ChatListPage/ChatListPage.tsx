@@ -1,11 +1,11 @@
+import { useEffect } from 'react';
 import * as S from './styles';
 import useSWR from 'swr';
-import SockJS from 'sockjs-client';
 import * as StompJS from '@stomp/stompjs';
 import { AdBanner, ChatList, LoginModal } from 'components';
 import { CHAT_LIST_API, WS_CONNECT_API } from 'utils/api';
 import { fetcherWithToken } from 'utils/swr';
-import { useEffect } from 'react';
+import { IChatUser } from 'types';
 
 var client: StompJS.Client | null = null;
 
@@ -13,7 +13,8 @@ export const ChatListPage = () => {
   const isLoggedIn =
     !!localStorage.getItem('name') && !!localStorage.getItem('email');
 
-  const { data: chatData } = useSWR(CHAT_LIST_API, fetcherWithToken);
+  const { data: chats } = useSWR(CHAT_LIST_API, fetcherWithToken);
+  const chatData = chats?.data as IChatUser[];
 
   const connect = () => {
     client = new StompJS.Client({
@@ -54,7 +55,7 @@ export const ChatListPage = () => {
       <S.PageTitle>채팅</S.PageTitle>
       <AdBanner height="100px" />
       {isLoggedIn ? (
-        chatData && <ChatList chatList={chatData.data} />
+        chatData && <ChatList chatList={chatData} />
       ) : (
         <LoginModal />
       )}

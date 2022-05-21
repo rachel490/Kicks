@@ -1,38 +1,29 @@
-import { useParams } from 'react-router-dom';
-import {
-  AppContainer,
-  Loading,
-  InputForm,
-  MessageList,
-  PageHeader
-} from 'components';
-import { useEffect, useState } from 'react';
-import { IChat, IChatRoom } from 'types';
-import { CHAT_ROOM_API } from 'utils/api';
-import { fetcher } from 'utils/swr';
+import { useLocation, useParams } from 'react-router-dom';
+import { AppContainer, InputForm, MessageList, PageHeader } from 'components';
+import { IChat, IUserData } from 'types';
+import { CHAT_ROOM_API, USER_DATA_API } from 'utils/api';
+import { fetcherWithToken } from 'utils/swr';
 import useSWR from 'swr';
 
 export const ChatRoomPage = () => {
   const { id } = useParams();
-  const { data, error } = useSWR<IChatRoom>(CHAT_ROOM_API(Number(id)), fetcher);
-  const name = data?.with_user?.name || '';
-  const profile = data?.with_user?.profile_image_url || '';
+  const { state } = useLocation();
 
-  const [messages, setMessages] = useState<IChat[]>([]);
+  const { data: messages } = useSWR(CHAT_ROOM_API(id || ''), fetcherWithToken);
+  const { data: user } = useSWR(
+    USER_DATA_API(state as number),
+    fetcherWithToken
+  );
 
-  useEffect(() => {
-    if (data) setMessages(data.chats);
-  }, [data]);
-
-  const sendMessage = (message: IChat) => {
-    setMessages([...messages, message]);
-  };
+  const userData = user?.data as IUserData;
+  const messageData = messages?.data as IChat[];
+  const { name, profile_image_url } = userData;
 
   return (
     <AppContainer>
       <PageHeader title={name} backTo="/chats" />
-      {data ? <MessageList profile={profile} /> : <Loading />}
-      <InputForm sendMessage={sendMessage} />
+      <MessageList profile={profile_image_url} messageData={messageData} />
+      <InputForm />
     </AppContainer>
   );
 };

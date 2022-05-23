@@ -1,15 +1,23 @@
 import styled from 'styled-components';
 
-export const MessageBoxContainer = styled.div`
-  display: flex;
-  align-items: center;
+export const InputFormContainer = styled.div`
   width: 100%;
   padding: 10px ${({ theme }) => theme.style.edge_padding};
-  background: #ccc;
-  img {
-    width: 20px;
-    height: 20px;
+  border-top: 1px solid #dadada;
+  position: relative;
+  .icon {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    circle {
+      fill: #333;
+    }
   }
+`;
+
+export const FormBox = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const Form = styled.form`
@@ -17,13 +25,14 @@ export const Form = styled.form`
   align-items: center;
   width: 100%;
   margin-left: 10px;
+  position: relative;
 `;
 
-export const InputContainer = styled.div`
+export const Input = styled.div`
   flex: 1;
   border-radius: 20px;
   padding: 5px 10px;
-  background: #aaa;
+  background: #eaeaea;
   height: auto;
 
   textarea {
@@ -33,13 +42,13 @@ export const InputContainer = styled.div`
     font-size: 14px;
     padding: 5px 0;
     border: none;
-    background: #aaa;
+    background: inherit;
     font-family: inherit;
     resize: none;
     white-space: pre-wrap;
     overflow-y: scroll;
     &::placeholder {
-      color: #555;
+      color: #888;
     }
     &:focus {
       outline: none;
@@ -65,14 +74,12 @@ export const InputContainer = styled.div`
 `;
 
 export const SendButton = styled.button`
+  position: absolute;
+  right: 7px;
   width: 25px;
   height: 25px;
   margin-left: 8px;
   border-radius: 50%;
   color: #fff;
-  background-color: ${({ theme }) => theme.color.nav_active_bg};
-
-  &.active {
-    background-color: ${({ theme }) => theme.color.main};
-  }
+  background-color: ${({ theme }) => theme.color.main};
 `;

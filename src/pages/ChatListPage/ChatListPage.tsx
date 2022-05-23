@@ -1,19 +1,26 @@
 import * as S from './styles';
 import useSWR from 'swr';
-import { AdBanner, ChatList, Loading, LoginModal } from 'components';
+import { AdBanner, ChatList, LoginModal } from 'components';
 import { CHAT_LIST_API } from 'utils/api';
-import { fetcher } from 'utils/swr';
-import { IChatList } from 'types';
+import { fetcherWithToken } from 'utils/swr';
+import { IChatUser } from 'types';
 
 export const ChatListPage = () => {
-  const { data: chatData, error } = useSWR<IChatList[]>(CHAT_LIST_API, fetcher);
-  const userData = '';
+  const isLoggedIn =
+    !!localStorage.getItem('name') && !!localStorage.getItem('email');
+
+  const { data: chats } = useSWR(CHAT_LIST_API, fetcherWithToken);
+  const chatData = chats?.data as IChatUser[];
 
   return (
     <S.Wrap>
       <S.PageTitle>채팅</S.PageTitle>
       <AdBanner height="100px" />
-      {userData ? <LoginModal /> : chatData && <ChatList chatList={chatData} />}
+      {isLoggedIn ? (
+        chatData && <ChatList chatList={chatData} />
+      ) : (
+        <LoginModal />
+      )}
     </S.Wrap>
   );
 };

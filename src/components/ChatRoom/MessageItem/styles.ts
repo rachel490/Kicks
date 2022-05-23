@@ -11,11 +11,6 @@ export const MessageItemContainer = styled.li`
       background-color: ${({ theme }) => theme.color.main};
     }
   }
-  img {
-    width: 30px;
-    width: 30px;
-    border-radius: 50%;
-  }
   p {
     max-width: 80%;
     margin-left: 10px;

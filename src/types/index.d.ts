@@ -17,11 +17,12 @@ export interface IUserData {
   videos: number;
 }
 
-export interface IChatList {
+export interface IChatUser {
+  buyerId: number;
+  buyerName: string;
   id: number;
-  with_user: IUser;
-  last_content: string;
-  last_chatted_at: string;
+  sellerId: number;
+  sellerName: string;
 }
 
 export interface IChatRoom {
@@ -31,9 +32,10 @@ export interface IChatRoom {
 }
 
 export interface IChat {
-  sender: string;
   content: string;
-  send_at: LocalDateTime;
+  createAt: string;
+  userId: number;
+  userName: string;
 }
 
 export interface IVideoListItem {
@@ -80,4 +82,17 @@ export interface IFollow {
     name: string;
     profile_image_url: string;
   };
+}
+
+export interface IData {
+  message: string;
+  pageInfo: IPageInfo;
+}
+
+export interface IPageInfo {
+  currentPage: number;
+  numberOfElements: number;
+  pageSize: number;
+  totalElements: number;
+  totalPages: number;
 }

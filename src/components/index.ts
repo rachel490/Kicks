@@ -27,7 +27,8 @@ export { ChatItem } from './ChatList/ChatItem/ChatItem';
 // ChatRoom
 export { MessageList } from './ChatRoom/MessageList/MessageList';
 export { MessageItem } from './ChatRoom/MessageItem/MessageItem';
-export { MessageBox } from './ChatRoom/MessageBox/MessageBox';
+export { InputForm } from './ChatRoom/InputForm/InputForm';
+export { FileUpload } from './ChatRoom/FileUpload/FileUpload';
 
 // Main
 export { VideoPlayer } from './Main/VideoPlayer/VideoPlayer';

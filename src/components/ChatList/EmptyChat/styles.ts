@@ -8,6 +8,7 @@ export const EmptyChatContainer = styled.div`
   justify-content: center;
 
   p {
+    font-size: 15px;
     margin-bottom: 15px;
     font-weight: bold;
   }

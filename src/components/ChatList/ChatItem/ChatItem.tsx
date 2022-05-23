@@ -1,31 +1,35 @@
 import React from 'react';
 import * as S from './styles';
-import { IChatList } from 'types';
+import { IChatUser } from 'types';
 import { dateConverter } from 'utils/dateConverter';
 import { ProfileImage } from 'components';
+import useSWR from 'swr';
+import { USER_DATA_API } from 'utils/api';
+import { fetcherWithToken } from 'utils/swr';
 
 interface Prop {
-  chatItem: IChatList;
+  chatItem: IChatUser;
 }
 
 export const ChatItem = ({ chatItem }: Prop) => {
-  const {
-    with_user: { profile_image_url, name },
-    last_content,
-    last_chatted_at
-  } = chatItem;
+  const { buyerId, buyerName, sellerId, sellerName } = chatItem;
+  const iamBuyer = localStorage.getItem('name') === buyerName;
+  const { data: userData } = useSWR(
+    USER_DATA_API(iamBuyer ? sellerId : buyerId),
+    fetcherWithToken
+  );
 
   return (
     <S.ChatItemContainer>
-      <ProfileImage size="50" url={profile_image_url} />
+      <ProfileImage size="50" url={userData?.profile_image_url} />
       <S.ChatPreview>
         <p className="chat_user">
-          {name}
+          {iamBuyer ? sellerName : buyerName}
           <span className="last_chatted_at">
-            {dateConverter(last_chatted_at)}
+            {dateConverter('2022-05-16T01:04:43.091965')}
           </span>
         </p>
-        <p className="last_content">{last_content}</p>
+        <p className="last_content">구매가능한가요?</p>
       </S.ChatPreview>
     </S.ChatItemContainer>
   );

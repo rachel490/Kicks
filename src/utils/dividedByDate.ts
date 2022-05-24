@@ -6,10 +6,10 @@ export const dividedByDate = (messages: IChat[]) => {
   messages.forEach(message => {
     const date = dayjs(message.createAt).format('YYYY년 MM월 DD일');
     if (Array.isArray(sections[date])) {
-      sections[date].push(message);
+      sections[date].unshift(message);
     } else {
       sections[date] = [message];
     }
   });
-  return sections;
+  return Object.entries(sections).reverse();
 };

@@ -17,13 +17,8 @@ export const ChatList = ({ chatList }: Prop) => {
     <S.ChatListContainer>
       <Scrollbars autoHide ref={scrollbarRef}>
         {chatList.map(room => {
-          const iamBuyer = localStorage.getItem('name') === room.buyerName;
           return (
-            <Link
-              to={`/chat/${room.id}`}
-              key={room.id}
-              state={iamBuyer ? room.sellerId : room.buyerId}
-            >
+            <Link to={`/chat/${room.id}`} key={room.id}>
               <ChatItem chatItem={room} />
             </Link>
           );

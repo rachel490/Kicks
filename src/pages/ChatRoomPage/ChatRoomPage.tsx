@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { AppContainer, InputForm, MessageList, PageHeader } from 'components';
-import { IChat, IUserData } from 'types';
-import { CHAT_ROOM_API, USER_DATA_API } from 'utils/api';
+import { IChatUser, IUserData } from 'types';
+import { CHAT_LIST_API, CHAT_ROOM_API, USER_DATA_API } from 'utils/api';
 import { fetcherWithToken } from 'utils/swr';
 import useSWR from 'swr';
 import * as StompJS from '@stomp/stompjs';
@@ -17,22 +17,18 @@ interface MessageType {
 
 export const ChatRoomPage = () => {
   const { id } = useParams();
-  const { state } = useLocation() as { state: number };
-  const [otherId, setOtherId] = useState(state);
   const [content, setContent] = useState<MessageType[]>([]);
 
-  useEffect(() => {
-    setOtherId(state);
-  }, [state]);
+  // User Data
+  const { data: chats } = useSWR(CHAT_LIST_API, fetcherWithToken);
+  const chatData = chats?.data as IChatUser[];
+  const room = chatData?.filter(chat => chat.id === Number(id))[0];
+  const iamBuyer = localStorage.getItem('name') === room?.buyerName;
+  const userId = iamBuyer ? room?.sellerId : room?.buyerId;
+  const { data: user } = useSWR(USER_DATA_API(userId), fetcherWithToken);
+  const userData = user?.data as IUserData;
 
-  const { data: messages, mutate } = useSWR(
-    CHAT_ROOM_API(id || ''),
-    fetcherWithToken
-  );
-  const { data: other } = useSWR(USER_DATA_API(otherId), fetcherWithToken);
-  const messageData = messages?.data as IChat[];
-  const otherData = other?.data as IUserData;
-  console.log(messageData);
+  const { mutate } = useSWR(CHAT_ROOM_API(room?.id), fetcherWithToken);
 
   const connect = () => {
     client = new StompJS.Client({
@@ -91,11 +87,8 @@ export const ChatRoomPage = () => {
 
   return (
     <AppContainer>
-      <PageHeader title={otherData?.name} backTo="/chats" />
-      <MessageList
-        profile={otherData?.profile_image_url}
-        messageData={messageData}
-      />
+      <PageHeader title={userData?.name} backTo="/chats" />
+      <MessageList roomId={room?.id} profile={userData?.profile_image_url} />
       <InputForm sendMessage={sendMessage} />
     </AppContainer>
   );

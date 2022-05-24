@@ -5,7 +5,7 @@ const BASE_URL = 'https://www.numble-kicks.shop';
 // Chat Page
 export const WS_CONNECT_API = 'ws://13.209.18.253:8080/ws-connection/websocket';
 export const CHAT_LIST_API = `${BASE_URL}/rooms`;
-export const CHAT_ROOM_API = (room_id: string) =>
+export const CHAT_ROOM_API = (room_id: number) =>
   `${BASE_URL}/rooms/${room_id}/messages?messageId=&size=20`;
 export const SEND_MESSAGE_API = (room_id: string) =>
   `ws://13.209.18.253:8080/pub/rooms/${room_id}`;

@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { AppContainer, InputForm, MessageList, PageHeader } from 'components';
+import {
+  AppContainer,
+  InputForm,
+  Loading,
+  MessageList,
+  PageHeader
+} from 'components';
 import { IChatUser, IUserData } from 'types';
 import { CHAT_LIST_API, CHAT_ROOM_API, USER_DATA_API } from 'utils/api';
 import { fetcherWithToken } from 'utils/swr';
 import useSWR from 'swr';
 import * as StompJS from '@stomp/stompjs';
 import { GET_MESSAGE_API, SEND_MESSAGE_API, WS_CONNECT_API } from 'utils/api';
+import axios from 'axios';
 
 var client: StompJS.Client | null = null;
 
@@ -22,13 +29,12 @@ export const ChatRoomPage = () => {
   // User Data
   const { data: chats } = useSWR(CHAT_LIST_API, fetcherWithToken);
   const chatData = chats?.data as IChatUser[];
-  const room = chatData?.filter(chat => chat.id === Number(id))[0];
-  const iamBuyer = localStorage.getItem('name') === room?.buyerName;
-  const userId = iamBuyer ? room?.sellerId : room?.buyerId;
-  const { data: user } = useSWR(USER_DATA_API(userId), fetcherWithToken);
-  const userData = user?.data as IUserData;
-
+  const room = chatData?.filter(
+    chat => chat.sellerId === Number(id) || chat.buyerId === Number(id)
+  )[0];
   const { mutate } = useSWR(CHAT_ROOM_API(room?.id), fetcherWithToken);
+  const { data: user } = useSWR(USER_DATA_API(Number(id)), fetcherWithToken);
+  const userData = user?.data as IUserData;
 
   const connect = () => {
     client = new StompJS.Client({
@@ -85,10 +91,32 @@ export const ChatRoomPage = () => {
     return () => disConnect();
   });
 
+  // 채팅방 없으면 생성
+  useEffect(() => {
+    if (room === undefined) {
+      const seller = { sellerId: id };
+      axios
+        .post(CHAT_LIST_API, JSON.stringify(seller), {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
+          }
+        })
+        .then(() => {
+          mutate();
+        })
+        .catch(error => console.log(error));
+    }
+  }, [room, id]);
+
   return (
     <AppContainer>
       <PageHeader title={userData?.name} backTo="/chats" />
-      <MessageList roomId={room?.id} profile={userData?.profile_image_url} />
+      {userData ? (
+        <MessageList roomId={room?.id} profile={userData?.profile_image_url} />
+      ) : (
+        <Loading />
+      )}
       <InputForm sendMessage={sendMessage} />
     </AppContainer>
   );

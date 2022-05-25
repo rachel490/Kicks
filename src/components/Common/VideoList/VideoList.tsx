@@ -11,11 +11,11 @@ interface Props {
 }
 
 export const VideoList = ({ message, api }: Props) => {
-  const [, setIsBottom] = useState(false);
-  const videoRef = useRef<IVideoListItem[]>([]);
+  // const [, setIsBottom] = useState(false);
+  // const videoRef = useRef<IVideoListItem[]>([]);
   const lastVideoId = useRef<number | string>('');
   const scrollbarRef = useRef<Scrollbars>(null);
-  const scrollHeight = useRef(0);
+  // const scrollHeight = useRef(0);
 
   const { data } = useSWR(
     `${api}last_id=${lastVideoId.current}`,
@@ -24,37 +24,36 @@ export const VideoList = ({ message, api }: Props) => {
 
   const videoData = data?.data as IVideoListItem[];
 
-  if (videoData) {
-    if (!videoRef.current.find(x => x.id === videoData[0]?.id)) {
-      videoRef.current.push(...videoData);
-      console.log(videoRef.current);
-    }
-  }
+  // if (videoData) {
+  //   if (!videoRef.current.find(x => x.id === videoData[0]?.id)) {
+  //     videoRef.current.push(...videoData);
+  //   }
+  // }
 
-  const handleScroll = (values: positionValues) => {
-    const scrollbar = scrollbarRef?.current as Scrollbars;
-    if (values.top > 0.999) {
-      setIsBottom(true);
-      scrollHeight.current = scrollbar.getScrollTop();
-    }
-  };
+  // const handleScroll = (values: positionValues) => {
+  //   const scrollbar = scrollbarRef?.current as Scrollbars;
+  //   if (values.top > 0.999) {
+  //     setIsBottom(true);
+  //     scrollHeight.current = scrollbar.getScrollTop();
+  //   }
+  // };
 
-  useEffect(() => {
-    const scrollbar = scrollbarRef?.current as Scrollbars;
-    if (videoData) {
-      lastVideoId.current = videoData[videoData.length - 1]?.id || '';
-    }
-    if (scrollbar && scrollHeight.current) {
-      scrollbar.scrollTop(scrollHeight.current);
-    }
-  }, [videoData]);
+  // useEffect(() => {
+  //   const scrollbar = scrollbarRef?.current as Scrollbars;
+  //   if (videoData) {
+  //     lastVideoId.current = videoData[videoData.length - 1]?.id || '';
+  //   }
+  //   if (scrollbar && scrollHeight.current) {
+  //     scrollbar.scrollTop(scrollHeight.current);
+  //   }
+  // }, [videoData]);
 
   return (
     <S.VideoContent>
       {videoData &&
         (videoData.length > 0 ? (
-          <Scrollbars autoHide ref={scrollbarRef} onScrollFrame={handleScroll}>
-            {videoRef.current.map(({ id, thumbnail_url }) => (
+          <Scrollbars autoHide ref={scrollbarRef}>
+            {videoData.map(({ id, thumbnail_url }) => (
               <S.VideoLink to={`/video/${id}`} key={id}>
                 <img src={thumbnail_url} alt="" />
               </S.VideoLink>

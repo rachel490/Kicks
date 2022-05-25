@@ -6,12 +6,7 @@ export const ChatItemContainer = styled.li`
   border-bottom: ${({ theme }) => theme.style.border_light};
   cursor: pointer;
   &:hover {
-    background-color: ${({ theme }) => theme.color.nav_active_bg};
-  }
-  img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
+    background-color: #fafafa;
   }
 `;
 

@@ -13,6 +13,7 @@ export { LoginButton } from './Common/LoginButton/LoginButton';
 export { LoginModal } from './Common/Modal/LoginModal';
 export { DeleteModal } from './Common/Modal/DeleteModal';
 export { MessageModal } from './Common/Modal/MessageModal';
+export { ProfileImage } from './Common/ProfileImage/ProfileImage';
 
 // Profile
 export { ProfileHeader } from './Profile/ProfileHeader/ProfileHeader';
@@ -26,12 +27,13 @@ export { ChatItem } from './ChatList/ChatItem/ChatItem';
 // ChatRoom
 export { MessageList } from './ChatRoom/MessageList/MessageList';
 export { MessageItem } from './ChatRoom/MessageItem/MessageItem';
-export { MessageBox } from './ChatRoom/MessageBox/MessageBox';
+export { InputForm } from './ChatRoom/InputForm/InputForm';
+export { FileUpload } from './ChatRoom/FileUpload/FileUpload';
 
 // Main
 export { VideoPlayer } from './Main/VideoPlayer/VideoPlayer';
-export { PlayerMenu } from './Main/NavMenu/PlayerMenu';
-export { ControlMenu } from './Main/NavMenu/ControlMenu';
+export { MyVideoNav } from './Main/NavMenu/MyVideoNav/MyVideoNav';
+export { UserVideoNav } from './Main/NavMenu/UserVideoNav/UserVideoNav';
 export { DescriptionBox } from './Main/DescriptionBox/DescriptionBox';
 export { MainHeader } from './Main/MainHeader/MainHeader';
 export { ContentsWrap } from './Main/ContentsWrap/ContentsWrap';
@@ -61,3 +63,6 @@ export { Category } from './Upload/Input/Category';
 export { Condition } from './Upload/Input/Condition';
 export { ImageInput } from './Upload/FileInput/ImageInput';
 export { VideoInput } from './Upload/FileInput/VideoInput';
+
+// Route
+export { PrivateRoute } from './Route/PrivateRoute';

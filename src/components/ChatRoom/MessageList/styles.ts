@@ -12,7 +12,7 @@ export const MessageListContainer = styled.ul`
 `;
 
 export const DateSection = styled.section`
-  margin-right: 10px;
+  margin-right: 20px;
   & + & {
     margin-top: 25px;
   }
@@ -30,7 +30,7 @@ export const Date = styled.p`
     content: '';
     height: 1px;
     width: 120px;
-    background-color: #bbb;
+    background-color: #dadada;
     top: 50%;
     transform: translateY(-50%);
     position: absolute;

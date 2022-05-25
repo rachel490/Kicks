@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { UserDataTable } from 'components';
 import * as S from './styles';
-import { IUserAdmin } from 'data/types';
+import { IUserAdmin } from 'types';
 import { GoSearch } from 'react-icons/go';
 import useSWR from 'swr';
 import { ADMIN_USER_API } from 'utils/api';

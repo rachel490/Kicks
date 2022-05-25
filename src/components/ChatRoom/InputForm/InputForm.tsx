@@ -1,14 +1,15 @@
-import { IChat } from 'data/types';
 import React, { useRef, useState } from 'react';
 import * as S from './styles';
+import { ReactComponent as UploadIcon } from 'assets/svg/follow.svg';
+import { FileUpload } from 'components';
 
 interface Props {
-  sendMessage: (message: IChat) => void;
-  setToBottom: React.Dispatch<React.SetStateAction<boolean>>;
+  sendMessage: (text: string) => void;
 }
 
-export const MessageBox = ({ sendMessage, setToBottom }: Props) => {
+export const InputForm = ({ sendMessage }: Props) => {
   const [input, setInput] = useState('');
+  const [upload, setUpload] = useState(false);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const INPUT_HEIGHT = '30px';
 
@@ -19,12 +20,7 @@ export const MessageBox = ({ sendMessage, setToBottom }: Props) => {
   ) => {
     e.preventDefault();
     if (input) {
-      sendMessage({
-        sender: 'me',
-        content: input,
-        send_at: new Date()
-      });
-      setToBottom(true);
+      sendMessage(input);
       setInput('');
     }
   };
@@ -54,23 +50,23 @@ export const MessageBox = ({ sendMessage, setToBottom }: Props) => {
   };
 
   return (
-    <S.MessageBoxContainer>
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/59/59565.png"
-        alt="add"
-      />
-      <S.Form onSubmit={handleSubmit}>
-        <S.InputContainer>
-          <textarea
-            value={input}
-            onChange={handleChange}
-            onKeyDown={handleEnter}
-            ref={textAreaRef}
-            placeholder="메세지를 입력하세요"
-          />
-        </S.InputContainer>
-        <S.SendButton className={input ? 'active' : ''}>➤</S.SendButton>
-      </S.Form>
-    </S.MessageBoxContainer>
+    <S.InputFormContainer>
+      <S.FormBox>
+        <UploadIcon className="icon" onClick={() => setUpload(!upload)} />
+        <S.Form onSubmit={handleSubmit}>
+          <S.Input>
+            <textarea
+              value={input}
+              onChange={handleChange}
+              onKeyDown={handleEnter}
+              ref={textAreaRef}
+              placeholder="메세지를 입력하세요"
+            />
+          </S.Input>
+          {input && <S.SendButton>➤</S.SendButton>}
+        </S.Form>
+      </S.FormBox>
+      {upload && <FileUpload />}
+    </S.InputFormContainer>
   );
 };

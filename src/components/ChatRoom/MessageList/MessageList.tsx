@@ -1,50 +1,39 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { IChat } from 'data/types';
+import { IChat } from 'types';
 import { MessageItem } from 'components';
-import { dividedByDate } from 'utils/dividedByDate';
 import { Scrollbars } from 'react-custom-scrollbars';
 import * as S from './styles';
+import { dividedByDate } from 'utils/dividedByDate';
+import { CHAT_ROOM_API } from 'utils/api';
+import { fetcherWithToken } from 'utils/swr';
+import useSWR from 'swr';
 
 interface Prop {
-  messages: IChat[];
   profile: string;
-  toBottom: boolean;
+  roomId: number;
 }
 
-type SectionType = { [key: string]: IChat[] };
-
-export const MessageList = ({ messages, profile, toBottom }: Prop) => {
-  const [sections, setSections] = useState<SectionType>({});
-  const scrollbarRef = useRef(null);
-  const listRef = useRef<HTMLUListElement>(null);
-
-  useEffect(() => {
-    setSections(dividedByDate(messages));
-  }, [messages]);
+export const MessageList = ({ profile, roomId }: Prop) => {
+  const [sections, setSections] = useState<[string, IChat[]][]>([]);
+  const scrollbarRef = useRef<Scrollbars>(null);
+  const { data: messages } = useSWR(CHAT_ROOM_API(roomId), fetcherWithToken);
+  const messageData = messages?.data as IChat[];
 
   useEffect(() => {
-    if (listRef.current && Object.keys(sections).length) {
-      const msg = listRef.current?.children[0].children[0].children;
-      if (toBottom) {
-        msg[msg.length - 1].scrollIntoView({
-          behavior: 'smooth'
-        });
-        console.log('smooth');
-      } else {
-        msg[msg.length - 1].scrollIntoView({
-          behavior: 'auto'
-        });
-      }
-    }
-  });
+    if (messageData) setSections(dividedByDate(messageData));
+  }, [messageData]);
+
+  useEffect(() => {
+    scrollbarRef.current?.scrollToBottom();
+  }, [sections]);
 
   return (
-    <S.MessageListContainer ref={listRef}>
+    <S.MessageListContainer>
       <Scrollbars autoHide ref={scrollbarRef}>
-        {Object.entries(sections).map(([date, messages]) => (
+        {sections.map(([date, chatData]) => (
           <S.DateSection key={date}>
             <S.Date>{date}</S.Date>
-            {messages.map((message, i) => (
+            {chatData.map((message, i) => (
               <MessageItem key={i} message={message} profile={profile} />
             ))}
           </S.DateSection>

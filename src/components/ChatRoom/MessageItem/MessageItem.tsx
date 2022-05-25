@@ -1,7 +1,8 @@
 import React from 'react';
 import * as S from './styles';
-import { IChat } from 'data/types';
+import { IChat } from 'types';
 import dayjs from 'dayjs';
+import { ProfileImage } from 'components/Common/ProfileImage/ProfileImage';
 
 interface Prop {
   profile: string;
@@ -9,18 +10,19 @@ interface Prop {
 }
 
 export const MessageItem = ({ profile, message }: Prop) => {
-  const { sender, content, send_at } = message;
+  const { userName, content, createAt } = message;
+  const myName = localStorage.getItem('name');
 
-  return sender === 'me' ? (
+  return userName === myName ? (
     <S.MessageItemContainer className="my-message">
-      <span>{dayjs(send_at).format('A h:mm')}</span>
+      <span>{dayjs(createAt).format('A h:mm')}</span>
       <p>{content}</p>
     </S.MessageItemContainer>
   ) : (
     <S.MessageItemContainer>
-      <img src={profile} alt="profile" />
+      <ProfileImage size="35" url={profile} />
       <p>{content}</p>
-      <span>{dayjs(send_at).format('A h:mm')}</span>
+      <span>{dayjs(createAt).format('A h:mm')}</span>
     </S.MessageItemContainer>
   );
 };

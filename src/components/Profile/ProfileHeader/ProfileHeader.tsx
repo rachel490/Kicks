@@ -1,39 +1,28 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useSWR from 'swr';
 import * as S from './styles';
 import { USER_DATA_API } from 'utils/api';
 import { fetcherWithToken } from 'utils/swr';
-import { IUserData } from 'data/types';
-import { Loading } from 'components/Common/Loading/Loading';
-import { useEffect, useState } from 'react';
+import { IUserData } from 'types';
+import { ProfileImage, Loading } from 'components';
 
 export const ProfileHeader = ({ userId }: { userId: number }) => {
-  // console.log('userId', userId)
   const { data } = useSWR(USER_DATA_API(userId), fetcherWithToken);
   const userData = data?.data as IUserData;
   const [isUser, setIsUser] = useState(false);
 
-  // console.log('userData', userData);
-
   useEffect(() => {
-    if (userData && (userData.name === localStorage.getItem('name'))) {
+    if (userData && userData.name === localStorage.getItem('name')) {
       setIsUser(true);
     }
-  }, []);
+  }, [userData]);
 
   return (
     <S.Wrap>
       {userData ? (
         <>
-          <img
-            src={
-              userData.profile_image_url
-                ? userData.profile_image_url
-                : 'https://images.unsplash.com/photo-1651070216681-22fe5a718c06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
-            }
-            alt="profile"
-            className="profile-img"
-          />
+          <ProfileImage size="100" url={userData.profile_image_url} />
           <div className="profile-username">
             <span>@{userData.name}</span>
           </div>
@@ -43,7 +32,10 @@ export const ProfileHeader = ({ userId }: { userId: number }) => {
               <span className="profile-stat-name">Videos</span>
             </li>
             <li>
-              <Link to={userData.followers ? `${userId}/follower` : '#'}>
+              <Link
+                to={userData.followers ? `/${userData.name}/follower` : '#'}
+                state={{ userId }}
+              >
                 <strong className="profile-stat-value">
                   {userData.followers}
                 </strong>
@@ -51,7 +43,10 @@ export const ProfileHeader = ({ userId }: { userId: number }) => {
               </Link>
             </li>
             <li>
-              <Link to={userData.followings ? `${userId}/following` : '#'}>
+              <Link
+                to={userData.followings ? `/${userData.name}/following` : '#'}
+                state={{ userId }}
+              >
                 <strong className="profile-stat-value">
                   {userData.followings}
                 </strong>

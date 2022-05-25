@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ProfileHeader, ProfileNavigation } from 'components';
 import { useLocation, useParams } from 'react-router-dom';
 import * as S from './styles';
@@ -11,13 +12,24 @@ interface RouteState {
 export const ProfilePage = () => {
   const { username } = useParams();
   const { state } = useLocation() as RouteState;
+  const isMyPage = username === localStorage.getItem('name');
+  const myId = localStorage.getItem('id');
+  const userId = localStorage.getItem('profile-id') || state.userId + '';
+  const [current, setCurrent] = useState(Number(myId) || Number(userId));
 
-  // console.log('profile', state.userId, username, typeof username, typeof state.userId);
+  useEffect(() => {
+    if (isMyPage) {
+      setCurrent(Number(myId));
+    } else {
+      localStorage.setItem('profile-id', userId);
+      setCurrent(Number(userId));
+    }
+  }, [isMyPage, myId, userId]);
 
   return (
     <S.Wrap>
-      <ProfileHeader userId={state.userId} />
-      <ProfileNavigation userId={state.userId} />
+      <ProfileHeader userId={current} />
+      <ProfileNavigation userId={current} />
     </S.Wrap>
   );
 };

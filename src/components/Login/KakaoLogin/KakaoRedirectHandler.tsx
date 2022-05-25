@@ -27,7 +27,7 @@ export const KakaoRedirectHandler = () => {
             const accessToken = token.accessToken;
             const refreshToken = token.refreshToken;
             // let refreshToken = res.headers['refresh-token'];
-            localStorage.setItem('profile-id', id);
+            localStorage.setItem('id', id);
             localStorage.setItem('name', name);
             localStorage.setItem('email', email);
             localStorage.setItem('AC_Token', accessToken);

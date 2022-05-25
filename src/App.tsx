@@ -24,7 +24,8 @@ import {
   SearchResultPage,
   LoginPage,
   FollowPage,
-  PlayPage
+  PlayPage,
+  NotificationPage
 } from 'pages';
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/" element={<AppLayout />}>
             <Route path="/" element={<PrivateRoute />}>
               <Route path="/chats" element={<ChatListPage />} />
+              <Route path="/notice" element={<NotificationPage />} />
             </Route>
             <Route index element={<MainPage />} />
             <Route path="/:username" element={<ProfilePage />} />

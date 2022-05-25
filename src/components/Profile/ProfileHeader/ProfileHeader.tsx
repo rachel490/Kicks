@@ -1,10 +1,10 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useSWR from 'swr';
 import * as S from './styles';
 import { USER_DATA_API } from 'utils/api';
 import { fetcherWithToken } from 'utils/swr';
 import { IUserData } from 'types';
-import { useEffect, useState } from 'react';
 import { ProfileImage, Loading } from 'components';
 
 export const ProfileHeader = ({ userId }: { userId: number }) => {

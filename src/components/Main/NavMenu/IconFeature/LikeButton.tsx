@@ -15,23 +15,26 @@ interface Props {
 
 export const LikeButton = ({ videoId, like_count }: Props) => {
   const [isLiked, setIsLiked] = useState(false);
+  const [likeId, setLikeId] = useState(-1);
+  const [currentLikeCount, setCurrentLikeCount] = useState(like_count);
   const setIsLoginModalOpen = useSetRecoilState(LoginModalState);
 
-  useEffect(() => {
-    const checkLike = async () => {
-      const response = await axios.get(LIKE_API(videoId), {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
-        }
-      });
-      const data = await response.data;
-      if (!(data.message === '동영상 좋아요 등록 여부 조회 성공')) {
-        return;
+  const checkLike = async (videoId: number) => {
+    const response = await axios.get(LIKE_API(videoId), {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
       }
-      setIsLiked(data.data.exist_like_video);
-    };
+    });
+    const data = await response.data;
+    if (!(data.message === '동영상 좋아요 등록 여부 조회 성공')) {
+      return;
+    }
+    setIsLiked(data.data.exist_like_video);
+    setLikeId(data.data.likes_id);
+  };
 
-    isLogin() && checkLike();
+  useEffect(() => {
+    isLogin() && checkLike(videoId);
   }, [videoId]);
 
   const handleLike = () => {
@@ -52,20 +55,28 @@ export const LikeButton = ({ videoId, like_count }: Props) => {
         .then(response => {
           if (response.data.message === '동영상에 좋아요 등록 성공') {
             setIsLiked(true);
+            checkLike(videoId);
+            setCurrentLikeCount(currentLikeCount + 1);
           }
         })
         .catch(error => console.log(error));
     } else {
-      // axios
-      //   .delete(UNLIKE_API(id), {
-      //     headers: {
-      //       Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
-      //     }
-      //   })
-      //   .then(response => {
-      //     console.log(response.data);
-      //     setIsLiked(false);
-      //   });
+      likeId &&
+        axios
+          .delete(UNLIKE_API(likeId), {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
+            }
+          })
+          .then(response => {
+            if (
+              !(response.data.message === '동영상에 등록한 좋아요 삭제 성공')
+            ) {
+              return;
+            }
+            setIsLiked(false);
+            setCurrentLikeCount(currentLikeCount - 1);
+          });
     }
   };
 
@@ -76,7 +87,9 @@ export const LikeButton = ({ videoId, like_count }: Props) => {
       ) : (
         <UnSaveIcon className="icon" onClick={handleLike} />
       )}
-      <p className="likes">{like_count}</p>
+      <p className="likes" style={{ color: 'black'}}>
+        {currentLikeCount}
+      </p>
     </S.Button>
   );
 };

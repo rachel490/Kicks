@@ -1,9 +1,12 @@
-import axios from 'axios';
-import { Button } from './styles';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useSetRecoilState } from 'recoil';
+import * as S from './styles';
 import { ReactComponent as SaveIcon } from 'assets/svg/save.svg';
 import { ReactComponent as UnSaveIcon } from 'assets/svg/unSave.svg';
 import { LIKE_API, UNLIKE_API } from 'utils/api';
+import isLogin from 'utils/isLogin';
+import { LoginModalState } from 'recoil/atom';
 
 interface Props {
   videoId: number;
@@ -12,6 +15,7 @@ interface Props {
 
 export const LikeButton = ({ videoId, like_count }: Props) => {
   const [isLiked, setIsLiked] = useState(false);
+  const setIsLoginModalOpen = useSetRecoilState(LoginModalState);
 
   useEffect(() => {
     const checkLike = async () => {
@@ -26,10 +30,15 @@ export const LikeButton = ({ videoId, like_count }: Props) => {
       }
       setIsLiked(data.data.exist_like_video);
     };
-    checkLike();
-  }, []);
+
+    isLogin() && checkLike();
+  }, [videoId]);
 
   const handleLike = () => {
+    if (!isLogin()) {
+      setIsLoginModalOpen(true);
+    }
+
     if (!isLiked) {
       const config = {
         method: 'post',
@@ -61,13 +70,13 @@ export const LikeButton = ({ videoId, like_count }: Props) => {
   };
 
   return (
-    <Button>
+    <S.Button>
       {isLiked ? (
         <SaveIcon className="icon" onClick={handleLike} />
       ) : (
         <UnSaveIcon className="icon" onClick={handleLike} />
       )}
       <p className="likes">{like_count}</p>
-    </Button>
+    </S.Button>
   );
 };

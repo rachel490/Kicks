@@ -1,21 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { IChat } from 'types';
 import { MessageItem } from 'components';
-import { dividedByDate } from 'utils/dividedByDate';
 import { Scrollbars } from 'react-custom-scrollbars';
 import * as S from './styles';
-import { useParams } from 'react-router-dom';
+import { dividedByDate } from 'utils/dividedByDate';
+import { CHAT_ROOM_API } from 'utils/api';
+import { fetcherWithToken } from 'utils/swr';
+import useSWR from 'swr';
 
 interface Prop {
   profile: string;
-  messageData: IChat[];
+  roomId: number;
 }
 
-type SectionType = { [key: string]: IChat[] };
-
-export const MessageList = ({ profile, messageData }: Prop) => {
-  const [sections, setSections] = useState<SectionType>({});
+export const MessageList = ({ profile, roomId }: Prop) => {
+  const [sections, setSections] = useState<[string, IChat[]][]>([]);
   const scrollbarRef = useRef<Scrollbars>(null);
+  const { data: messages } = useSWR(CHAT_ROOM_API(roomId), fetcherWithToken);
+  const messageData = messages?.data as IChat[];
 
   useEffect(() => {
     if (messageData) setSections(dividedByDate(messageData));
@@ -28,7 +30,7 @@ export const MessageList = ({ profile, messageData }: Prop) => {
   return (
     <S.MessageListContainer>
       <Scrollbars autoHide ref={scrollbarRef}>
-        {Object.entries(sections).map(([date, chatData]) => (
+        {sections.map(([date, chatData]) => (
           <S.DateSection key={date}>
             <S.Date>{date}</S.Date>
             {chatData.map((message, i) => (

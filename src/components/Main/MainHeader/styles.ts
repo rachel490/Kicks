@@ -40,7 +40,7 @@ export const Category = styled.div`
   }
 `;
 
-export const Notification = styled.div`
+export const Notification = styled.button`
   cursor: pointer;
   position: absolute;
   right: 20px;

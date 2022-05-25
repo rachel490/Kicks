@@ -1,12 +1,13 @@
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { FOLLOWING_API, FOLLOW_API } from 'utils/api';
-import { Button } from './styles';
-import { ProfileImage } from 'components';
-import { IFollow, IUser } from 'types';
-import { ReactComponent as FollowIcon } from 'assets/svg/follow.svg';
 import useSWR from 'swr';
+import { Link } from 'react-router-dom';
+import * as S from './styles';
+import { ReactComponent as FollowIcon } from 'assets/svg/follow.svg';
+import { FOLLOWING_API, FOLLOW_API } from 'utils/api';
+import { IFollow, IUser } from 'types';
 import { fetcher } from 'utils/swr';
+import { ProfileImage } from 'components';
+import isLogin from 'utils/isLogin';
 
 interface Props {
   userData: IUser;
@@ -35,11 +36,11 @@ export const ProfileFollow = ({ userData }: Props) => {
   };
 
   return (
-    <Button>
+    <S.Button>
       <Link to={`/${name}`} state={{ userId: id }}>
         <ProfileImage size="48" url={profile_image_url} />
       </Link>
-      {!isFollowed && <FollowIcon className="follow" onClick={handleFollow} />}
-    </Button>
+      {isLogin() && !isFollowed && <FollowIcon className="follow" onClick={handleFollow} />}
+    </S.Button>
   );
 };

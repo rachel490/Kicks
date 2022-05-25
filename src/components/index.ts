@@ -63,3 +63,6 @@ export { Category } from './Upload/Input/Category';
 export { Condition } from './Upload/Input/Condition';
 export { ImageInput } from './Upload/FileInput/ImageInput';
 export { VideoInput } from './Upload/FileInput/VideoInput';
+
+// Route
+export { PrivateRoute } from './Route/PrivateRoute';

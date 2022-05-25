@@ -1,17 +1,24 @@
+import { Link } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
+import * as S from './styles';
+import isLogin from 'utils/isLogin';
+import { LoginModalState } from 'recoil/atom';
 import { ReactComponent as ChatIcon } from 'assets/svg/chat.svg';
-import { useNavigate } from 'react-router-dom';
-import { Button } from './styles';
 
-interface Props {
-  userId: number;
-}
+export const ChatButton = ({ userId }: { userId: number }) => {
+  const setIsLoginModalOpen = useSetRecoilState(LoginModalState);
 
-export const ChatButton = ({ userId }: Props) => {
-  const navigate = useNavigate();
+  const handleClick = () => {
+    if (!isLogin()) {
+      setIsLoginModalOpen(true);
+    }
+  };
 
   return (
-    <Button>
-      <ChatIcon className="icon" onClick={() => navigate(`/chat/${userId}`)} />
-    </Button>
+    <S.Button onClick={handleClick}>
+      <Link to={`/chat/${userId}`}>
+        <ChatIcon className="icon" />
+      </Link>
+    </S.Button>
   );
 };

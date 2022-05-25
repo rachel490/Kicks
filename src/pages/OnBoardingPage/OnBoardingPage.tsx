@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useRecoilState } from 'recoil';
+import { CategoryState } from 'recoil/atom';
 import * as S from './styles';
 import { AppContainer, CategoryButton } from 'components';
+import { Link } from 'react-router-dom';
 
 export const OnBoardingPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState<String[]>([]);
+  const [selectedCategory, setSelectedCategory] = useRecoilState(CategoryState);
 
   const setCategory = (category: string) => {
     if (!selectedCategory.includes(category)) {
@@ -50,21 +53,22 @@ export const OnBoardingPage = () => {
       <S.Form onSubmit={handleSubmit}>
         <S.Header>관심 카테고리를 모두 선택하고 추천 받아 보세요!</S.Header>
         <S.CategoryWrap>
-          {categoryList.map((category, idx) => (
-            <CategoryButton
-              key={idx}
-              category={category}
-              setCategory={setCategory}
-            />
-          ))}
+          <div>
+            {categoryList.map((category, idx) => (
+              <CategoryButton
+                key={idx}
+                category={category}
+                setCategory={setCategory}
+              />
+            ))}
+          </div>
         </S.CategoryWrap>
         <S.Buttons>
-          <S.Button type="submit">다음에 할게요</S.Button>
-          <S.Button
-            type="submit"
-            className={selectedCategory.length > 0 ? 'category' : 'noCategory'}
-          >
-            선택 완료!
+          <S.Button>
+            <Link to="/">다음에 할게요</Link>
+          </S.Button>
+          <S.Button className={selectedCategory.length > 0 ? 'active' : ''}>
+            <Link to="/">선택 완료!</Link>
           </S.Button>
         </S.Buttons>
       </S.Form>

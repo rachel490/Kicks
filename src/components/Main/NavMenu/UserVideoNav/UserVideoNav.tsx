@@ -19,7 +19,7 @@ export const UserVideoNav = ({ isShown, videoData }: Prop) => {
     <S.Wrap isShown={isShown}>
       <ProfileFollow userData={user} />
       <LikeButton videoId={id} like_count={like_count} />
-      <ChatButton />
+      <ChatButton userId={user.id} />
       <MoreButton />
     </S.Wrap>
   );

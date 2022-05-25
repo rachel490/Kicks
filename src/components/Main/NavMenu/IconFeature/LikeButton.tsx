@@ -16,6 +16,7 @@ interface Props {
 export const LikeButton = ({ videoId, like_count }: Props) => {
   const [isLiked, setIsLiked] = useState(false);
   const [likeId, setLikeId] = useState(-1);
+  const [currentLikeCount, setCurrentLikeCount] = useState(like_count);
   const setIsLoginModalOpen = useSetRecoilState(LoginModalState);
 
   const checkLike = async (videoId: number) => {
@@ -55,6 +56,7 @@ export const LikeButton = ({ videoId, like_count }: Props) => {
           if (response.data.message === '동영상에 좋아요 등록 성공') {
             setIsLiked(true);
             checkLike(videoId);
+            setCurrentLikeCount(currentLikeCount + 1);
           }
         })
         .catch(error => console.log(error));
@@ -73,6 +75,7 @@ export const LikeButton = ({ videoId, like_count }: Props) => {
               return;
             }
             setIsLiked(false);
+            setCurrentLikeCount(currentLikeCount - 1);
           });
     }
   };
@@ -84,7 +87,9 @@ export const LikeButton = ({ videoId, like_count }: Props) => {
       ) : (
         <UnSaveIcon className="icon" onClick={handleLike} />
       )}
-      <p className="likes">{like_count}</p>
+      <p className="likes" style={{ color: 'black'}}>
+        {currentLikeCount}
+      </p>
     </S.Button>
   );
 };

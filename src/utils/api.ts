@@ -50,8 +50,6 @@ export const UNLIKE_API = (video_id: number) =>
 // Follow
 export const FOLLOW_API = (user_id: number) =>
   `${BASE_URL}/v1/users/following/${user_id}`;
-export const UNFOLLOW_API = (follow_id: number) =>
-  `${BASE_URL}/v1/users/following/${follow_id}`;
 
 // Admin Page
 export const ADMIN_USER_API = (keyword: string) =>

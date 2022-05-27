@@ -10,13 +10,12 @@ interface RouteState {
 }
 
 export const ProfilePage = () => {
-  const [current, setCurrent] = useState(0);
   const { username } = useParams();
   const { state } = useLocation() as RouteState;
-
   const isMyPage = username === localStorage.getItem('name');
-  const myId = localStorage.getItem('id') || '36';
+  const myId = localStorage.getItem('id');
   const userId = localStorage.getItem('profile-id') || state.userId + '';
+  const [current, setCurrent] = useState(Number(myId) || Number(userId));
 
   useEffect(() => {
     if (isMyPage) {

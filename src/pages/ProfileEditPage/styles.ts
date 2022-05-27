@@ -29,5 +29,8 @@ export const SubmitButton = styled.button`
   margin-top: auto;
   padding: 15px 0;
   color: #fff;
-  background-color: ${({ theme }) => theme.color.main};
+  background-color: #bebebe;
+  &.active {
+    background-color: ${({ theme }) => theme.color.main};
+  }
 `;

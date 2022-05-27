@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { AppContainer, PageHeader, ProfileImage } from 'components';
 import * as S from './styles';
 import useSWR from 'swr';
-import { USER_DATA_API } from 'utils/api';
+import { EDIT_NAME_API, USER_DATA_API } from 'utils/api';
 import { fetcherWithToken } from 'utils/swr';
 import { IUserData } from 'types';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export const ProfileEditPage = () => {
   const userId = localStorage.getItem('id');
@@ -13,14 +15,36 @@ export const ProfileEditPage = () => {
     fetcherWithToken
   );
   const userData = user?.data as IUserData;
-  const [nickname, setNickname] = useState('');
+  const [newName, setNewName] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNickname(e.target.value);
+    setNewName(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    if (newName !== userData?.name) {
+      axios
+        .put(
+          EDIT_NAME_API,
+          {
+            name: newName
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
+            }
+          }
+        )
+        .then(() => {
+          localStorage.setItem('name', newName);
+          navigate(`/${newName}`);
+        });
+    }
   };
 
   useEffect(() => {
-    setNickname(userData?.name);
+    setNewName(userData?.name);
   }, [userData]);
 
   return (
@@ -28,10 +52,15 @@ export const ProfileEditPage = () => {
       <PageHeader title="프로필 수정" backTo="/" />
       <S.EditContent>
         <ProfileImage size="140" url={userData?.profile_image_url} />
-        <input type="text" value={nickname} onChange={handleChange} />
+        <input type="text" value={newName || ''} onChange={handleChange} />
         <span>프로필 사진과 닉네임을 입력해주세요</span>
       </S.EditContent>
-      <S.SubmitButton>완료</S.SubmitButton>
+      <S.SubmitButton
+        onClick={handleSubmit}
+        className={newName !== userData?.name ? 'active' : ''}
+      >
+        완료
+      </S.SubmitButton>
     </AppContainer>
   );
 };

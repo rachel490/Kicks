@@ -22,6 +22,10 @@ export const FOLLOWING_API = (user_id: number) =>
 export const FOLLOWER_API = (user_id: number) =>
   `${BASE_URL}/v1/users/following/to?to_member=${user_id}`;
 
+// Profile Edit Page
+export const EDIT_NAME_API = `${BASE_URL}/v1/users/name`;
+export const EDIT_IMAGE_API = `${BASE_URL}/v1/users/image`;
+
 // Video
 export const VIDEO_ITEM_API = (video_id: number) =>
   `${BASE_URL}/v1/videos/${video_id}`;

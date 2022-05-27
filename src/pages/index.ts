@@ -7,6 +7,7 @@ export { VideoUploadPage } from './VideoUploadPage/VideoUploadPage';
 export { ProfilePage } from './ProfilePage/ProfilePage';
 export { FollowPage } from './FollowPage/FollowPage';
 export { OnBoardingPage } from './OnBoardingPage/OnBoardingPage';
+export { ProfileEditPage } from './ProfileEditPage/ProfileEditPage';
 export { AdminUserPage } from './AdminUserPage/AdminUserPage';
 export { AdminContentPage } from './AdminContentPage/AdminContentPage';
 export { AdminDashBoard } from './AdminDashBoard/AdminDashBoard';

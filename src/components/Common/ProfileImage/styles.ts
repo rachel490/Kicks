@@ -5,7 +5,7 @@ export const ImageContainer = styled.div<{ size: string }>`
   height: ${({ size }) => size + 'px'};
   border-radius: 50%;
   overflow: hidden;
-
+  cursor: pointer;
   img {
     width: 100%;
     height: 100%;

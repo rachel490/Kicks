@@ -45,7 +45,7 @@ export const VideoUploadPage = () => {
     formData.append('thumbnail', img);
     formData.append('title', title);
     formData.append('category', category);
-    formData.append('usedStatus', String(condition));
+    formData.append('used_status', String(condition));
     formData.append('price', price);
     formData.append('description', desc);
 

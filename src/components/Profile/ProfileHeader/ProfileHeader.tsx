@@ -56,7 +56,9 @@ export const ProfileHeader = ({ userId }: { userId: number }) => {
           </S.ProfileStats>
           {isUser ? (
             <S.Buttons>
-              <button className="profile-btn">Edit</button>
+              <button className="profile-btn">
+                <Link to="/profile/edit">Edit</Link>
+              </button>
               <button className="profile-btn">Logout</button>
             </S.Buttons>
           ) : (

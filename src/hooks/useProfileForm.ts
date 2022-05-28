@@ -29,7 +29,7 @@ export const useProfileForm = (userData: IUserData) => {
     const formData = new FormData();
     formData.append('file', newImage.file);
 
-    if (isUpdated) {
+    if (isUpdated || newName) {
       axios
         .all([
           // axios({

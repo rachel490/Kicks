@@ -33,6 +33,7 @@ export const ProfileInputs = ({
         type="text"
         value={newName || ''}
         onChange={handleNameChange}
+        autoFocus
       />
     </S.InputContainer>
   );

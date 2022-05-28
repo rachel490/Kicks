@@ -69,10 +69,10 @@ export const OnBoardingPage = () => {
         </S.CategoryWrap>
         <S.Buttons>
           <S.Button>
-            <Link to="/profile/edit">다음에 할게요</Link>
+            <Link to="/onboard/profile">다음에 할게요</Link>
           </S.Button>
           <S.Button className={selectedCategory.length > 0 ? 'active' : ''}>
-            <Link to={selectedCategory.length > 0 ? '/profile/edit' : '#'}>
+            <Link to={selectedCategory.length > 0 ? '/onboard/profile' : '#'}>
               선택 완료!
             </Link>
           </S.Button>

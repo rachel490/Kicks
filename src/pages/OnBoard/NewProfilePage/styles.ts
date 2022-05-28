@@ -5,4 +5,7 @@ export const EditForm = styled.form`
   flex-direction: column;
   flex: 1;
   margin-top: 120px;
+  & > div:first-of-type {
+    flex: 1;
+  }
 `;

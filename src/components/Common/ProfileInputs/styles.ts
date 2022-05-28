@@ -5,7 +5,6 @@ export const InputContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  flex: 1;
   #profile {
     display: none;
   }

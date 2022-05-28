@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const Wrap = styled.div`
   width: 250px;
+  min-height: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 0 50px;
 
   .profile-username {
     margin-top: 10px;

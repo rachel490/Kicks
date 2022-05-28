@@ -74,18 +74,18 @@ export const FollowPage = () => {
               <Link to={`/${member.name}`} state={{ userId: member.id }}>
                 <ProfileImage size="50" url={member.profile_image_url} />
                 <S.Name>{member.name || ''}</S.Name>
-                {userName === localStorage.getItem('name') ? (
-                  page === 'following' ? (
-                    <S.Button onClick={() => deleteFollowing(id)}>
-                      언팔로우
-                    </S.Button>
-                  ) : (
-                    <S.Button onClick={() => addFollowing(member.id)}>
-                      팔로우
-                    </S.Button>
-                  )
-                ) : null}
               </Link>
+              {userName === localStorage.getItem('name') ? (
+                page === 'following' ? (
+                  <S.Button onClick={() => deleteFollowing(id)}>
+                    언팔로우
+                  </S.Button>
+                ) : (
+                  <S.Button onClick={() => addFollowing(member.id)}>
+                    팔로우
+                  </S.Button>
+                )
+              ) : null}
             </S.FollowItem>
           ))}
       </S.FollowList>

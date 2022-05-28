@@ -10,22 +10,25 @@ export const FollowList = styled.ul`
 `;
 
 export const FollowItem = styled.li`
+  display: flex;
+  align-items: center;
+  padding: 0 ${({ theme }) => theme.style.edge_padding};
+  border-bottom: ${({ theme }) => theme.style.border_light};
+  cursor: pointer;
+  &:hover {
+    background-color: #fafafa;
+  }
   a {
     display: flex;
     align-items: center;
-    padding: 12px ${({ theme }) => theme.style.edge_padding};
-    border-bottom: ${({ theme }) => theme.style.border_light};
-    cursor: pointer;
-    &:hover {
-      background-color: #fafafa;
-    }
+    flex: 1;
+    padding: 12px 0;
   }
 `;
 
 export const Name = styled.p`
   margin-left: 10px;
   font-weight: 500;
-  margin-bottom: 5px;
 `;
 
 export const Button = styled.button`

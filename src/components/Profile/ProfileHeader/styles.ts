@@ -50,11 +50,15 @@ export const Buttons = styled.div`
   .profile-btn {
     border: ${({ theme }) => theme.style.border_light};
     width: 100%;
-    padding: 10px 0;
+    height: 37px;
     border-radius: 20px;
 
     &:first-child {
       margin-right: 10px;
+    }
+    a {
+      display: block;
+      padding: 10px 0;
     }
   }
 `;

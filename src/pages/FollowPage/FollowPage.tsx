@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { Loading, PageHeader, ProfileImage } from 'components';
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { PageHeader, ProfileImage } from 'components';
+import { Link, useLocation } from 'react-router-dom';
 import useSWR from 'swr';
 import { IFollow } from 'types';
 import { FOLLOWER_API, FOLLOWING_API, FOLLOW_API } from 'utils/api';
@@ -34,7 +33,6 @@ export const FollowPage = () => {
   }`;
 
   const addFollowing = (id: number) => {
-    console.log('add',id);
     const config = {
       method: 'post',
       url: FOLLOW_API(id),
@@ -73,17 +71,21 @@ export const FollowPage = () => {
         {followData &&
           followData?.map(({ id, member }) => (
             <S.FollowItem key={id}>
-              <ProfileImage size="50" url={member.profile_image_url} />
-              <S.Name>{member.name || ''}</S.Name>
-              {userName === localStorage.getItem('name') ? (
-                page === 'following' ? (
-                  <S.Button onClick={() => deleteFollowing(id)}>
-                    언팔로우
-                  </S.Button>
-                ) : (
-                  <S.Button onClick={() => addFollowing(member.id)}>팔로우</S.Button>
-                )
-              ) : null}
+              <Link to={`/${member.name}`} state={{ userId: member.id }}>
+                <ProfileImage size="50" url={member.profile_image_url} />
+                <S.Name>{member.name || ''}</S.Name>
+                {userName === localStorage.getItem('name') ? (
+                  page === 'following' ? (
+                    <S.Button onClick={() => deleteFollowing(id)}>
+                      언팔로우
+                    </S.Button>
+                  ) : (
+                    <S.Button onClick={() => addFollowing(member.id)}>
+                      팔로우
+                    </S.Button>
+                  )
+                ) : null}
+              </Link>
             </S.FollowItem>
           ))}
       </S.FollowList>

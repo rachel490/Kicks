@@ -14,6 +14,7 @@ export { LoginModal } from './Common/Modal/LoginModal';
 export { DeleteModal } from './Common/Modal/DeleteModal';
 export { MessageModal } from './Common/Modal/MessageModal';
 export { ProfileImage } from './Common/ProfileImage/ProfileImage';
+export { ProfileInputs } from './Common/ProfileInputs/ProfileInputs';
 
 // Profile
 export { ProfileHeader } from './Profile/ProfileHeader/ProfileHeader';

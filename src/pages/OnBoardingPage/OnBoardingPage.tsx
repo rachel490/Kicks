@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { CategoryState } from 'recoil/atom';
 import * as S from './styles';
 import { AppContainer, CategoryButton } from 'components';
 import { Link } from 'react-router-dom';
+
+const categoryList = [
+  '구두',
+  '단화',
+  '아식스',
+  '휠라',
+  '나이키',
+  '슬립온',
+  '아디다스',
+  '블루',
+  '무채색',
+  '덩크',
+  '리복',
+  '컨버스',
+  '오프화이트',
+  '프라다',
+  '조던',
+  '하이탑',
+  '골든구스',
+  '마르지엘라',
+  '구찌',
+  '화이트',
+  '클락스',
+  '레더',
+  '뉴발란스'
+];
 
 export const OnBoardingPage = () => {
   const [selectedCategory, setSelectedCategory] = useRecoilState(CategoryState);
@@ -22,31 +48,9 @@ export const OnBoardingPage = () => {
     e.preventDefault();
   };
 
-  const categoryList = [
-    '구두',
-    '단화',
-    '아식스',
-    '휠라',
-    '나이키',
-    '슬립온',
-    '아디다스',
-    '블루',
-    '무채색',
-    '덩크',
-    '리복',
-    '컨버스',
-    '오프화이트',
-    '프라다',
-    '조던',
-    '하이탑',
-    '골든구스',
-    '마르지엘라',
-    '구찌',
-    '화이트',
-    '클락스',
-    '레더',
-    '뉴발란스'
-  ];
+  useEffect(() => {
+    setSelectedCategory([]);
+  }, [setSelectedCategory]);
 
   return (
     <AppContainer>

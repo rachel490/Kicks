@@ -37,11 +37,18 @@ export const Buttons = styled.div`
 export const Button = styled.button`
   width: 152px;
   height: 45px;
+  line-height: 45px;
   border-radius: 3px;
   font-size: 16px;
   font-weight: 500;
   border: 1px solid #e3e3e3;
   margin: 0 5px;
+  color: white;
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 
   &:last-of-type {
     background-color: #d0d0d0;

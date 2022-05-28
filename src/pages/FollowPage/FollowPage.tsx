@@ -1,9 +1,9 @@
-import axios from 'axios';
 import { PageHeader, ProfileImage } from 'components';
+import { FollowButton } from 'components/Profile/FollowButton/FollowButton';
 import { Link, useLocation } from 'react-router-dom';
 import useSWR from 'swr';
 import { IFollow } from 'types';
-import { FOLLOWER_API, FOLLOWING_API, FOLLOW_API } from 'utils/api';
+import { FOLLOWER_API, FOLLOWING_API } from 'utils/api';
 import { fetcher } from 'utils/swr';
 import * as S from './styles';
 
@@ -32,38 +32,6 @@ export const FollowPage = () => {
     page === 'following' ? '팔로잉' : '팔로워'
   }`;
 
-  const addFollowing = (id: number) => {
-    const config = {
-      method: 'post',
-      url: FOLLOW_API(id),
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
-      }
-    };
-
-    axios(config)
-      .then(response => {
-        if (!(response.data.message === '팔로우 생성 성공')) {
-          return;
-        }
-        mutate();
-      })
-      .catch(error => alert(error.response.data.message));
-  };
-
-  const deleteFollowing = (id: number) => {
-    axios
-      .delete(FOLLOW_API(id), {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
-        }
-      })
-      .then(() => {
-        mutate();
-      })
-      .catch(error => console.log(error));
-  };
-
   return (
     <S.Wrap>
       <PageHeader title={pageTitle} backTo={'/' + userName} />
@@ -75,17 +43,13 @@ export const FollowPage = () => {
                 <ProfileImage size="50" url={member.profile_image_url} />
                 <S.Name>{member.name || ''}</S.Name>
               </Link>
-              {userName === localStorage.getItem('name') ? (
-                page === 'following' ? (
-                  <S.Button onClick={() => deleteFollowing(id)}>
-                    언팔로우
-                  </S.Button>
-                ) : (
-                  <S.Button onClick={() => addFollowing(member.id)}>
-                    팔로우
-                  </S.Button>
-                )
-              ) : null}
+              {userName === localStorage.getItem('name') && (
+                <FollowButton
+                  mutate={mutate}
+                  page={page}
+                  id={page === 'following' ? id : member.id}
+                />
+              )}
             </S.FollowItem>
           ))}
       </S.FollowList>

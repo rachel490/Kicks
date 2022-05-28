@@ -30,10 +30,3 @@ export const Name = styled.p`
   margin-left: 10px;
   font-weight: 500;
 `;
-
-export const Button = styled.button`
-  margin-left: auto;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  padding: 2px 5px;
-`;

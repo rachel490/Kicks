@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import * as S from './styles';
@@ -7,6 +7,7 @@ import { FOLLOW_API } from 'utils/api';
 import { IUser } from 'types';
 import { ProfileImage } from 'components';
 import isLogin from 'utils/isLogin';
+import { useFollow } from 'hooks/useFollow';
 
 interface Props {
   userData: IUser;
@@ -15,28 +16,15 @@ interface Props {
 export const ProfileFollow = ({ userData }: Props) => {
   const { id, name, profile_image_url } = userData;
   const isMyProfile = id === Number(localStorage.getItem('id'));
-  const [isFollowed, setIsFollowed] = useState(false);
-  // const [followId, setFollowId] = useState(-1);
-
-  const checkFollow = async (videoId: number) => {
-    const response = await axios.get(FOLLOW_API(videoId), {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('AC_Token')}`
-      }
-    });
-    const data = await response.data;
-    if (!(data.message === '특정 사용자 팔로잉 여부 조회 성공')) {
-      return;
-    }
-    setIsFollowed(data.data.exist_follow);
-    // setFollowId(data.data.follow_id);
-  };
+  const { isFollowed, setIsFollowed, checkFollow, loading, setLoading } =
+    useFollow();
 
   useEffect(() => {
     isLogin() && checkFollow(id);
-  }, [id]);
+  }, [checkFollow, id]);
 
   const handleFollow = () => {
+    setLoading(true);
     const config = {
       method: 'post',
       url: FOLLOW_API(id),
@@ -67,7 +55,11 @@ export const ProfileFollow = ({ userData }: Props) => {
         <ProfileImage size="48" url={profile_image_url} />
       </Link>
       {isLogin() && !isFollowed && !isMyProfile && (
-        <FollowIcon className="follow" onClick={handleFollow} />
+        <FollowIcon
+          className="follow"
+          onClick={handleFollow}
+          style={{ display: loading ? `none` : 'block' }}
+        />
       )}
     </S.Button>
   );

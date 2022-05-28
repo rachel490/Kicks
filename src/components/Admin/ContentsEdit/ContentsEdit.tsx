@@ -1,6 +1,6 @@
 import { Loading } from 'components';
 import { IVideoItem } from 'types';
-import { AdminContainer, PageOption } from 'pages/AdminUserPage/styles';
+import { AdminContainer, PageOption } from 'pages/Admin/AdminUserPage/styles';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';

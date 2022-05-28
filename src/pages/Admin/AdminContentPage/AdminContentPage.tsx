@@ -6,7 +6,7 @@ import { ADMIN_CONTENT_API } from 'utils/api';
 import { IVideoListItem } from 'types';
 import { Loading } from 'components';
 import * as S from './styles';
-import { AdminContainer, PageOption } from 'pages/AdminUserPage/styles';
+import { AdminContainer, PageOption } from 'pages/Admin/AdminUserPage/styles';
 
 export const AdminContentPage = () => {
   const [column, setColumn] = useState('five');

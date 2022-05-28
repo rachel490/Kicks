@@ -1,4 +1,4 @@
-import { DataList } from 'pages/AdminUserPage/styles';
+import { DataList } from 'pages/Admin/AdminUserPage/styles';
 import styled from 'styled-components';
 
 export const DropDown = styled.select`

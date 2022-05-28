@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import * as S from './styles';
-import { AdminContainer } from 'pages/AdminUserPage/styles';
+import { AdminContainer } from 'pages/Admin/AdminUserPage/styles';
 import { IUserAdmin, IVideoItem } from 'types';
 import { UserDataTable, VideoDataTable } from 'components';
 import { ADMIN_CONTENT_API } from 'utils/api';

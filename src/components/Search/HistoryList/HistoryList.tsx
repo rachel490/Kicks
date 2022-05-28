@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 import { VscClose } from 'react-icons/vsc';
-import { HistoryType } from 'pages/SearchPage/types';
+import { HistoryType } from 'pages/Search/SearchPage/types';
 import { useNavigate } from 'react-router-dom';
 
 interface Props {

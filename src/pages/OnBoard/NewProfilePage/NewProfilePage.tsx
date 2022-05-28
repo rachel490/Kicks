@@ -1,12 +1,12 @@
-import * as S from './styles';
 import useSWR from 'swr';
 import { USER_DATA_API } from 'utils/api';
 import { fetcherWithToken } from 'utils/swr';
 import { IUserData } from 'types';
 import { AppContainer, ProfileInputs } from 'components';
 import { useProfileForm } from 'hooks/useProfileForm';
-import { Button, Buttons, Header } from 'pages/OnBoardingPage/styles';
+import { Button, Buttons, Header } from 'pages/OnBoard/OnBoardingPage/styles';
 import { Link } from 'react-router-dom';
+import * as S from './styles';
 
 export const NewProfilePage = () => {
   const userId = localStorage.getItem('id');

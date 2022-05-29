@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const Wrap = styled.div`
   width: 250px;
+  min-height: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 0 50px;
 
   .profile-username {
     margin-top: 10px;
@@ -50,11 +51,15 @@ export const Buttons = styled.div`
   .profile-btn {
     border: ${({ theme }) => theme.style.border_light};
     width: 100%;
-    padding: 10px 0;
+    height: 37px;
     border-radius: 20px;
 
     &:first-child {
       margin-right: 10px;
+    }
+    a {
+      display: block;
+      padding: 10px 0;
     }
   }
 `;

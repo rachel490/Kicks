@@ -21,10 +21,10 @@ export const ProfilePage = () => {
     if (isMyPage) {
       setCurrent(Number(myId));
     } else {
-      localStorage.setItem('profile-id', userId);
+      localStorage.setItem('profile-id', state ? state.userId + '' : userId);
       setCurrent(Number(userId));
     }
-  }, [isMyPage, myId, userId]);
+  }, [isMyPage, myId, userId, state]);
 
   return (
     <S.Wrap>

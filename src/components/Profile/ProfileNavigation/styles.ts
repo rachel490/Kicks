@@ -6,7 +6,6 @@ export const Wrap = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
 `;
 
 export const ProfileNav = styled.div`
